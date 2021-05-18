@@ -1,0 +1,31 @@
+.container {
+    font-family: Roboto;
+    background-color: white;
+    box-sizing: border-box;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, .10);
+    color: #6b6b6a;
+}
+
+li {
+    display: inline-block;
+    margin-bottom: 0px;
+}
+
+.container .get {
+    background-color: #fcfcfc;
+    text-align: center;
+    border-radius: 5px;
+    font-family: Anton;
+    font-size: 60px;
+}
+
+u {
+    color: #6b6b6a;
+    font-family: Oswald;
+}
+
+.cus {
+    color: #6b6b6a;
+    background-color: #fefefc;
+    border-radius: 5px;
+}

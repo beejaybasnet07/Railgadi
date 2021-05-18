@@ -1,0 +1,47 @@
+ #con1 {
+     background-color:skyblue;
+     border:1px soid antiquewhite;
+     border-radius: 5px;
+     margin-bottom:20px;
+     
+     
+ }
+
+ #ro {
+     background-color: bisque;
+     font-weight: bold;
+     font-size: large;
+     height: 100px;
+     padding-top: 30px;
+ }
+
+ #ro2 {
+     background-color: white;
+     
+ }
+
+ #app #ap {
+     /*border: 2px solid coral;*/
+     padding: 10px 10px 10px 10px;
+     margin: 0px 10px 0px 10px;
+     border-radius: 6px;
+     background-color: snow;
+     
+ }
+
+ .row {
+     padding-top: 10px;
+     padding-bottom: 10px;
+ }
+
+ #res #re {
+     margin-top: 10px;
+     margin-bottom: 10px;
+     color: red;
+     background-color: seashell;
+     padding-top: 3px;
+ }
+
+ #con1 #source {
+     background-color: whitesmoke;
+ }
