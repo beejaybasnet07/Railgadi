@@ -1,5 +1,5 @@
 #main{
-    background-color:darkgrey;
+    
     border: 1px solid bisque;
 }
 #source{}
@@ -30,4 +30,7 @@
     margin:0px 50px 10px 50px ;/*top right bottom left*/
     border-radius: 10px;
     
+}
+#des{
+    margin-top: 10px;
 }

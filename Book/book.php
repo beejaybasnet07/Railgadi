@@ -1,6 +1,15 @@
 <?php
+
 include('database\dbcon.php');
 include('headfoot\head.php'); ?>
+<script>
+    $(function() {
+                $('#btn').click(function() {
+ $('#con').append("<form id='con'><div class='form-row'><div class='col-md-3'><input type='text' class='form-control' id='inputEmail4' placeholder='Name'></div><div class='col-md-2'><input type='number' class='form-control' id='inputEmail4' placeholder='Age'></div><div class='col-md-2'><div class='form-group'><select name='gender' class='form-control'><option>Male</option><option>female</option></select></div></div><div class='col-md-3'><input type='text' class='form-control' id='inputEmail4' placeholder='Preferences'></div><div class='col-md-2'><div class=form-group'><select name='country' class='form-control'><option>Nepal</option><option>India</option></select></div></div></div></form>");
+
+                        });
+                });
+</script>
 
 <div class="container-fluid" id="main">
     <div class="row">
@@ -57,7 +66,7 @@ include('headfoot\head.php'); ?>
                 <h5> Passengers Details</h5>
             </div>
         </div>
-        <form>
+        <form id="con">
             <div class="form-row">
                 <div class="col-md-3">
                     <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
@@ -67,11 +76,9 @@ include('headfoot\head.php'); ?>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <select name="gender" class="form-control" >
+                        <select name="gender" class="form-control">
                             <option>Male</option>
                             <option>female</option>
-                            
-                            
                         </select>
                     </div>
                 </div>
@@ -79,30 +86,44 @@ include('headfoot\head.php'); ?>
                     <input type="text" class="form-control" id="inputEmail4" placeholder="Preferences">
                 </div>
                 <div class="col-md-2">
-                <div class="form-group">
-                        <select name="country" class="form-control" >
+                    <div class="form-group">
+                        <select name="country" class="form-control">
                             <option>Nepal</option>
                             <option>India</option>
-                            
-                            
+
+
                         </select>
                     </div>
                 </div>
 
             </div>
+
             <div class="row">
                 <div class="col">
-                <button type="button" class="btn btn-info"><i class="fa fa-plus"></i> Add Passenger</button>
-  
-               
+                    <button type="button" class="btn btn-info" id="btn"><i class="fa fa-plus"></i> Add Passenger</button>
+
                 </div>
             </div>
-
+             
         </form>
+    </div>
+    <div class="container" id="des">
+    <div class="row">Destination details</div>
+    <div class="row"><div class="col-md-3">
+                    <input type="text" class="form-control" id="inputEmail4" placeholder="State">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="inputEmail4" placeholder="City">
+                </div><div class="col-md-3">
+                    <input type="text" class="form-control" id="inputEmail4" placeholder="Post Office">
+                </div><div class="col-md-3">
+                    <input type="text" class="form-control" id="inputEmail4" placeholder="Postal Code">
+                </div></div>
+    </div>
+    <div class="row">
+    <div class="col-2 offset-md-1">
+    <button type="button" class="btn btn-primary">Back</button>
+     <button type="button" class="btn btn-success">Continue</button></div>
     </div>
 </div>
 
-</div>
-
-
-<?php include('headfoot\foot.php'); ?>

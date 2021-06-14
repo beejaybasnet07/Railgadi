@@ -29,6 +29,7 @@
 </head>
 
 <body>
+
 	<div id="booking" class="section">
 		<div class="section-center">
 			<div class="container">
@@ -36,25 +37,13 @@
 					<div class="col-md-4">
 						<div class="booking-cta">
 							<h1>Book your ticket today</h1>
-							<p>we provide best train seat booking service </p>
+							<h5>we provide best  booking services </h5>
 						</div>
 					</div>
 					<div class="col-md-7 col-md-offset-1">
 						<div class="booking-form">
 							<form method="POST" action="../Search/search.php">
-								<div class="form-group">
-									<div class="form-checkbox">
-										<label for="roundtrip">
-											<input type="radio" id="roundtrip" name="flight-type">
-											<span></span>Roundtrip
-										</label>
-										<label for="one-way">
-											<input type="radio" id="one-way" name="flight-type">
-											<span></span>One way
-										</label>
-
-									</div>
-								</div>
+								
 								<div class="row">
 									<div class="col-md-4">
 										<div class="form-group">
@@ -77,11 +66,9 @@
 										</div>
 									</div>
 								</div>
-								
-								
 								<div class="form-btn">
 									<button class="submit-btn">Show Trains</button>
-									</div>
+								</div>
 								</div>
 							</form>
 						</div>
