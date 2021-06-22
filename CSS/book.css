@@ -1,6 +1,12 @@
+*{font-family:Roboto;}
 #main{
     
     border: 1px solid bisque;
+    margin-top: ;
+}
+#logo{
+    margin-top:100px;
+    margin-bottom: 100px;
 }
 #source{}
 #sub{
@@ -34,3 +40,4 @@
 #des{
     margin-top: 10px;
 }
+#des #inside_des{ padding-left: 10px; }
