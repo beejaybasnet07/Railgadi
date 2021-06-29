@@ -17,13 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $stmt->bindParam(':date', $date);
   $stmt->execute();
   $result = $stmt->fetchAll(PDO::FETCH_OBJ);
-  $class = "ac2";
-               $query1 = "Select COUNT(*) from book;";
-               $stmt = $pdo->query($query1);
-               echo $stmt->rowCount();
-               $stmt->bindParam(':tnumber', $a);/*
-               $stmt->bindParam(':date', $date);
-               $stmt->bindParam(':class', $class);*/
+ 
+   $res=array();
+               
+               
               
 }
 ?>
@@ -143,20 +140,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="col-sm-3" id="ap">
               <h4> AC 3 Tire(3A)</h4><div class="col" id="a"><hr size="50" >
               <?php
-              
+               $class = "ac3";
+              $query1 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class";
+              $stmt = $pdo->prepare($query1);
+              $stmt->bindParam(':tnumber', $a);
+              $stmt->bindParam(':date', $date);
+              $stmt->bindParam(':class', $class);
+              $stmt->execute();
+               $res=$stmt->fetch();
                
 
                
               ?>
-              <h5>Seats<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;0110</span> </h5>
+              <h5>Seats<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;<?php echo(22-$res[0]);?></span> </h5>
               <h5>Price<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;Rs 750</span></h5></div>
               <div class="col" id="btn">
 
-                <input type="hidden" name="tname" value="<?php echo $row->name; ?>"></input>
-                <input type="hidden" name="tire1" value=" <?php echo $ac3; ?>  "></input>
-                <input type="hidden" name="_to" value="<?php echo $row->_to; ?>"></input>
-                <input type="hidden" name="_from" value="<?php echo $row->_from; ?>"></input>
-                <input type="hidden" name="date" value="<?php echo $row->date; ?>"></input>
+                
                 <input type="hidden" name="tnumber" value="<?php echo $row->tnumber; ?>"></input>
                 <input type="submit" class="btn btn-success btn-block" id="register" name="ac3" value="BOOK"></input>
               </div>
@@ -164,28 +164,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="col-sm-3" id="ap">
             
               <h4> AC 2 Tire(2A)</h4><div class="col" id="a"><hr size="50" >
-              <h5>Seats<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;0110</span> </h5>
+              <?php
+               $class = "ac2";
+              $query1 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class";
+              $stmt = $pdo->prepare($query1);
+              $stmt->bindParam(':tnumber', $a);
+              $stmt->bindParam(':date', $date);
+              $stmt->bindParam(':class', $class);
+              $stmt->execute();
+               $res=$stmt->fetch();
+               
+
+               
+              ?>
+              <h5>Seats<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;<?php echo(32-$res[0]);?></span> </h5>
+              
               <h5>Price<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;Rs 750</span></h5></div>
               <div class="col" id="btn">
-                <input type="hidden" name="tname" value="<?php echo $row->name; ?>"></input>
-                <input type="hidden" name="tire2" value=" <?php echo $ac2; ?> "></input>
-                <input type="hidden" name="_to" value="<?php echo $row->_to; ?>"></input>
-                <input type="hidden" name="_from" value="<?php echo $row->_from; ?>"></input>
-                <input type="hidden" name="date" value="<?php echo $row->date; ?>"></input>
+                
+                <input type="hidden" name="tnumber" value="<?php echo $row->tnumber; ?>"></input>
                 <input type="submit" class="btn btn-success btn-block" id="register" name="ac2" value="BOOK"></input>
               </div>
             </div>
 
             <div class="col-sm-3" id="ap">
               <h4> SLEEPER CLASS(SL)</h4><div class="col" id="a"><hr size="50" >
-              <h5>Seats<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;0110</span> </h5>
+              <?php
+               $class = "sleeper";
+              $query1 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class";
+              $stmt = $pdo->prepare($query1);
+              $stmt->bindParam(':tnumber', $a);
+              $stmt->bindParam(':date', $date);
+              $stmt->bindParam(':class', $class);
+              $stmt->execute();
+               $res=$stmt->fetch();
+               
+
+               
+              ?>
+              <h5>Seats<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;<?php echo(46-$res[0]);?></span> </h5>
               <h5>Price<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;Rs 750</span></h5></div>
               <div class="col" id="btn">
-                <input type="hidden" name="tname" value="<?php echo $row->name; ?>"></input>
-                <input type="hidden" name="tire3" value="<?php echo $sleeper; ?>"></input>
-                <input type="hidden" name="_to" value="<?php echo $row->_to; ?>"></input>
-                <input type="hidden" name="_from" value="<?php echo $row->_from; ?>"></input>
-                <input type="hidden" name="date" value="<?php echo $row->date; ?>"></input>
+               
+                <input type="hidden" name="tnumber" value="<?php echo $row->tnumber; ?>"></input>
                 <input type="submit" class="btn btn-success btn-block" id="register" name="sleeper" value="BOOK"></input>
               </div>
             </div>

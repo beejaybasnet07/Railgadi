@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include('database\dbcon.php');
 include('headfoot\head.php');
 ?>
@@ -20,24 +20,15 @@ if (isset($_POST['continue'])) {
     $phone = $_POST['phone'];
     $email = $_POST['email'];
 
-    $query = "INSERT INTO passenger(pname, age, scity, country, station, phone, email, gender) VALUES (:pname, :age, :scity, :country, :station,:phone, :email, :gender)";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':pname', $pname);
-    $stmt->bindParam(':age', $age);
-    $stmt->bindParam(':scity', $scity);
-    $stmt->bindParam(':country', $country);
-    $stmt->bindParam(':station', $station);
-    $stmt->bindParam(':phone', $phone);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':gender', $gender);
-    $stmt->execute();
+   
 
-    $tname = $_POST['tname'];
-    $tnumber = $_POST['tnumber'];
-    $tire = $_POST['tire'];
-    $_to = $_POST['_to'];
-    $_from = $_POST['_from'];
-    $date = $_POST['date'];
+    
+
+  $query = "Select * from train where tnumber=:tnumber";
+  $stmt = $pdo->prepare($query);
+  $stmt->bindParam(':tnumber', $_SESSION["trainid"]);
+  $stmt->execute();
+  $result = $stmt->fetch();
 } ?>
 
 <div class="container-fluid" id="remain">
@@ -53,20 +44,20 @@ if (isset($_POST['continue'])) {
             <div class="col-9" id="up">
                 <div class="row" id="rename">
                     <div class="col">
-                        <h2><?php echo $tname; ?></h2>
+                        <h2><?php echo $result['name']; ?></h2>
                     </div>
                 </div>
                 <div class="row" id="resource">
                     <div class="col-md-3">
-                        <h4>6:00 | <?php echo $_from; ?></h4>
-                        <h5><?php echo $date; ?></h5>
+                        <h4>6:00 | <?php echo $result['_from']; ?></h4>
+                        <h5><?php echo $result['date']; ?></h5>
                     </div>
                     <div class="col-md-3">
                         <h4> -5hrs-</h4>
                     </div>
                     <div class="col-md-3">
-                        <h4><?php echo $_to; ?></h4>
-                        <h5><?php echo $date; ?></h5>
+                        <h4><?php echo $result['_to']; ?></h4>
+                        <h5><?php echo $result['date']; ?></h5>
                     </div>
                     <div class="col-md-3">
                         <h4>Available-0077</h4>
@@ -76,7 +67,8 @@ if (isset($_POST['continue'])) {
 
                 <div class="row" id="reboarding">
                     <div class="col-md">
-                        <h6>1 Adult | 0 children | <?php echo $tire; ?> | Boarding at <?php echo $_to; ?> |<?php echo $date; ?> </h6>
+                        <h6>1 Adult | 0 children | <?php echo $_SESSION["tire"]; ?> | 
+                        Boarding at <?php echo $result['_to']; ?> |<?php echo $result['date']; ?> </h6>
                     </div>
                 </div>
             </div>
@@ -100,7 +92,8 @@ if (isset($_POST['continue'])) {
             <h5 style="font-weight:bold;">Passenger Details</h5>
         </div>
         <div class="row" id="name">
-            <h6> 1 <span style="font-weight:bold;"><?php echo $pname; ?></span> <?php echo $age; ?>yrs | <?php echo $gender; ?> | <?php echo $country; ?> | <?php echo $_from; ?>
+            <h6> 1 <span style="font-weight:bold;"><?php echo $pname; ?>
+        </span> <?php echo $age; ?>yrs | <?php echo $gender; ?> | <?php echo $country; ?> | <?php echo $result['_from']; ?>
 
         </div>
     </div>
@@ -114,17 +107,17 @@ if (isset($_POST['continue'])) {
 
 
 </div>
-<form action="../Ticket/ticket.php" method="POST">
+<form action="../Ticket/ticketcopy.php" method="POST">
     <div class="row">
 
         <div class="col-2 offset-md-1">
             <a href="../Book/book.php"><button type="button" class="btn btn-primary">Back</button></a>
-            <input type="hidden" name="tname" value="<?php echo $tname; ?>"></input>
+          <!--  <input type="hidden" name="tname" value="<?php echo $tname; ?>"></input>
             <input type="hidden" name="_to" value="<?php echo $_to; ?>"></input>
             <input type="hidden" name="_from" value="<?php echo $_from; ?>"></input>
             <input type="hidden" name="date" value="<?php echo $date; ?>"></input>
             <input type="hidden" name="tire" value="<?php echo $tire ?>"></input>
-            <input type="hidden" name="tnumber" value="<?php echo $tnumber ?>"></input>
+            <input type="hidden" name="tnumber" value="<?php echo $tnumber ?>"></input>-->
 
             <input type="hidden" name="pname" value="<?php echo $pname; ?>"></input>
             <input type="hidden" name="page" value="<?php echo $age; ?>"></input>

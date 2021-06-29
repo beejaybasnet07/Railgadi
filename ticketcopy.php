@@ -4,12 +4,13 @@ include('database\dbcon.php');
 include('headfoot\head.php');
 ?>
 <?php
-function  funname() {
-  return(rand(200,300));
+function  random() {
+  return(rand(1,11));
   
 }?>
 <?php
-$arr=array();
+$ar=array();
+$result=array();
 if (isset($_POST['submit'])) {
     $ac3 = "AC 3 Tire (3A) | HIGH CLASS";
     $ac2 = "AC 2 Tire (2A) | MEDIUM CLASS";
@@ -56,24 +57,99 @@ if (isset($_POST['submit'])) {
     if (preg_match("/HIGH/", $tire)) {
         $ac3name = "ac3";
         if ($preference == "Lower berth") {
-        
-            $seatava=rand(1, 11);
-        
-            $query2 = "select * from book WHERE tid=:tid AND date=:date AND berth=:berth;";
+
+            $query2 = "select count(seat) from book WHERE tid=:tid AND date=:date AND berth=:berth;";
             $stmt = $pdo->prepare($query2);
             $stmt->bindParam(':tid', $trainid);
             $stmt->bindParam(':date', $date);
             $stmt->bindParam(':berth', $preference);
             $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_OBJ);
-           foreach ($result as $row) {
-                if ($seatava == $row->seat) {
-
-                    echo "<script>alert('assign seat again.')</script>";
-                    
-                }
-              }  
+            $result = $stmt->fetch();
+            if((11-$result[0])<$phone)
+            { 
+                echo("no seat available");
+            }
+            else
+             {   
+                    for($x=1;$x<=$n;$x++) 
+                      {
+                         l1:
+                           $count=0;
+                           $ab=random();
+                           $ar[$x]=$ab;
+                           $query1 = "Select seat from book where pid=87 AND tid=1;";
+                           $stmt = $pdo->query($query1);
+                           $stmt->execute();
+                            $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+                            //echo $ab;
+                           foreach($result as $ro)
+                          {  
+                              if($ab==$ro->seat) 
+                              $count=1;
+                          }
+                              if ($count==1)
+                                {
+                                       //echo("this is already assigned."); 
+                                      goto l1;
+                                 }
+                             if($count==0)
+                            {
+                                $query3 = "insert into book(tid,pid,class,berth,seat,date) values(:tid ,:pid ,:class, :berth, :seat, :date);";
+                                $stmt = $pdo->prepare($query3);
+                                $stmt->bindParam(':tid', $trainid);
+                                $stmt->bindParam(':pid', $passid);
+                                $stmt->bindParam(':class', $ac3name);
+                                $stmt->bindParam(':berth', $preference);
+                                $stmt->bindParam(':seat', $ab);
+                                $stmt->bindParam(':date', $date);
+                                $stmt->execute();
+                                echo "<script>alert('passenger booking successfully.')</script>";
+                             }
+            }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         if ($preference == "upper berth") {
              rand(12, 22);
             echo $a;
@@ -93,45 +169,7 @@ if (isset($_POST['submit'])) {
         $stmt->execute();
         echo "<script>alert('passenger booking successfully.')</script>";}
     }
-    if (preg_match("/MEDIUM/", $tire)) {
-        $ac3name = "ac2";
-        if ($preference == "Lower berth") {
-
-            $a = rand(1, 11);
-            echo $a;
-            $seatava = $a;
-            $query2 = "select * from book WHERE tid=:tid AND date=:date AND berth=:berth;";
-            $stmt = $pdo->prepare($query2);
-            $stmt->bindParam(':tid', $trainid);
-            $stmt->bindParam(':date', $date);
-            $stmt->bindParam(':berth', $preference);
-            $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_OBJ);
-            foreach ($result as $row) {
-                if ($a == $row->seat) {
-
-                    echo "<script>alert('assign seat again.')</script>";
-                }
-            }
-        }
-        if ($preference == "upper berth") {
-            $a = rand(12, 22);
-            $seatava = $a;
-
-            echo $a;
-        }
-
-        $query3 = "insert into book(tid,pid,class,berth,seat,date) values(:tid ,:pid ,:class, :berth, :seat, :date);";
-        $stmt = $pdo->prepare($query3);
-        $stmt->bindParam(':tid', $trainid);
-        $stmt->bindParam(':pid', $passid);
-        $stmt->bindParam(':class', $ac3name);
-        $stmt->bindParam(':berth', $preference);
-        $stmt->bindParam(':seat', $a);
-        $stmt->bindParam(':date', $date);
-        $stmt->execute();
-        echo "<script>alert('passenger booking successfully.')</script>";
-    }
+   
 }
 
 
@@ -189,7 +227,7 @@ if (isset($_POST['submit'])) {
 
         <div class="col">
             <h5> Seat Number</h5>
-            <h3> <?php for($i=0;$i<$phone;$i++){ echo $arr[$i]." "; }?></h3>
+            <h3> <?php for($i=1;$i<=$phone;$i++){ echo $ar[$i]." "; }?></h3>
         </div>
 
 
