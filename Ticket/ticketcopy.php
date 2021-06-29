@@ -207,6 +207,7 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
     <div>
+    
         <div class="row" id="name">
             <div class="col-9">
                 <h3> <?php echo $result['name']; ?>[<?php echo $result['tnumber']; ?>] </h3>
