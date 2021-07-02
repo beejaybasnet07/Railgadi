@@ -2,7 +2,7 @@
 include('database\dbcon.php');
 include('headfoot\head.php'); ?>
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if (isset($_POST['search'])){
   $ac3 = "AC 3 Tire (3A) | HIGH CLASS";
   $ac2 = "AC 2 Tire (2A) | MEDIUM CLASS";
   $sleeper = " SLEEPER CLASS(SL) | GENERAL";
@@ -17,11 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $stmt->bindParam(':date', $date);
   $stmt->execute();
   $result = $stmt->fetchAll(PDO::FETCH_OBJ);
- 
-   $res=array();
-               
-               
-              
+    
+    
+    
+  $res = array();
 }
 ?>
 
@@ -38,33 +37,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <div class="col-1"> <input class="btn btn-primary" type="submit" value="Regiter"></div>
       <div class="col-1"><input class="btn btn-primary" type="submit" value="login"></div>
     </div>
+    <form action="" method="post">
     <div class="row" id="ro2">
-      <div class="col-lg">
-        <div class="form-group">
-          <div class="form-label-group">
-            <label for="exampleInputEmail1">From</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="From">
+     
+        <div class="col-lg">
+          <div class="form-group">
+            <div class="form-label-group">
+              <label for="exampleInputEmail1">From</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" name="from" aria-describedby="emailHelp" value="<?php echo $from;?>" placeholder="From">
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-lg">
-        <div class="form-group">
-          <div class="form-label-group">
-            <label for="name"> TO</label>
-            <input type="text" id="name" class="form-control" placeholder=" to" name="destination" required="required" pattern="^[A-Za-z][A-Za-z ,.'-]+">
+        <div class="col-lg">
+          <div class="form-group">
+            <div class="form-label-group">
+              <label for="name"> TO</label>
+              <input type="text" id="name" class="form-control" placeholder=" to" name="to" required="required" value="<?php echo $to;?>"pattern="^[A-Za-z][A-Za-z ,.'-]+">
 
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg">
-        <div class="form-group">
-          <div class="form-label-group">
-            <label for="name"> Date</label>
-            <input type="date" id="name" class="form-control" placeholder=" Date" name="destination" required="required" pattern="^[A-Za-z][A-Za-z ,.'-]+">
+        <div class="col-lg">
+          <div class="form-group">
+            <div class="form-label-group">
+              <label for="name"> Date</label>
+              <input type="date" id="name" class="form-control" placeholder=" Date" name="date" required="required" value="<?php echo $date;?>"pattern="^[A-Za-z][A-Za-z ,.'-]+">
+            </div>
           </div>
         </div>
-      </div>
+        <!--
       <div class="col-lg">
         <div class="form-group">
           <div class="form-label-group">
@@ -77,19 +79,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <span class="select-arrow"></span>
           </div>
         </div>
-      </div>
+      </div>-->
 
-      <div class="col-lg">
-        <div class="form-label-group">
+        <div class="col-lg">
           <div class="form-label-group">
-            <label for="name">Modify Search</label>
-            <input type="submit" class="btn btn-success btn-block" id="register" name="submit" value="submit"></input>
+            <div class="form-label-group">
+              <label for="name">Modify Search</label>
+              <input type="submit" class="btn btn-success btn-block" id="register" name="search" value="submit"></input>
+            </div>
           </div>
         </div>
-      </div>
-
+    
     </div>
-
+</form><?php
+if(!empty($result))
+  { ?>
     <div class="row" id="res">
       <div class="col-8" id="re">
         <h5> Result filters</h5>
@@ -97,19 +101,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <div class="col-4" id="re">
         <h6> Number of result for source to destination</h6>
       </div>
-    </div>
-    <?php foreach ($result as $row) {  
-      $a= $row->id;
-              
-              ?>
+    </div><?php }?>
+
+    <?php
+    if(empty($result))
+  { ?>
+      <div class="row">
+        <div class="col">
+          <img style=" margin:50px 0px 0px 60px;"src="http://www.medical.sjp.ac.lk/my-scripts/staff-profiles/view-profiles/supports/images/no-results-found.png" >
+        </div>
+      </div>
+<?php  }?>
+
+    <?php foreach ($result as $row) {
+      $a = $row->id;
+
+    ?>
       <div class="container" id="con1">
         <div class="row">
           <div class="col-lg-5">
-            <h3 style="color:white;"> <?php echo $row->name;?>[<?php echo $row->tnumber;?>]
-                                      </h3>
+            <h3 style="color:white;"> <?php echo $row->name; ?>[<?php echo $row->tnumber; ?>]
+            </h3>
           </div>
           <div class="col-lg-5">
-            <h5> <span style="color: white;">Runs On<span> <span style="font-size:20px; color:black;">&nbsp;&nbsp;&nbsp;M T U T F S S</span></h5>
+            <h5> <span style="color: white;">Runs On<span> <span style=" color:black;">&nbsp;&nbsp;&nbsp;M T U T F S S</span></h5>
           </div>
           <div class="col-lg-2">
             <input class="btn btn-primary" type="submit" value="Schedule">
@@ -138,81 +153,90 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form method="POST" action="../Book/book.php">
           <div class="row" id="app">
             <div class="col-sm-3" id="ap">
-              <h4> AC 3 Tire(3A)</h4><div class="col" id="a"><hr size="50" >
-              <?php
-               $class = "ac3";
-              $query1 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class";
-              $stmt = $pdo->prepare($query1);
-              $stmt->bindParam(':tnumber', $a);
-              $stmt->bindParam(':date', $date);
-              $stmt->bindParam(':class', $class);
-              $stmt->execute();
-               $res=$stmt->fetch();
-               
+              <h4> AC 3 Tire(3A)</h4>
+              <div class="col" id="a">
+                <hr size="50">
+                <?php
+                $class = "ac3";
+                $query1 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class";
+                $stmt = $pdo->prepare($query1);
+                $stmt->bindParam(':tnumber', $a);
+                $stmt->bindParam(':date', $date);
+                $stmt->bindParam(':class', $class);
+                $stmt->execute();
+                $res = $stmt->fetch();
 
-               
-              ?>
-              <h5>Seats<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;<?php echo(22-$res[0]);?></span> </h5>
-              <h5>Price<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;Rs 750</span></h5></div>
+
+
+                ?>
+                <h5>Seats<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;<?php echo (22 - $res[0]); ?></span> </h5>
+                <h5>Price<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;Rs <?php echo $row->ac3price; ?></span></h5>
+              </div>
               <div class="col" id="btn">
 
-                
+
                 <input type="hidden" name="tnumber" value="<?php echo $row->tnumber; ?>"></input>
                 <input type="submit" class="btn btn-success btn-block" id="register" name="ac3" value="BOOK"></input>
               </div>
             </div>
             <div class="col-sm-3" id="ap">
-            
-              <h4> AC 2 Tire(2A)</h4><div class="col" id="a"><hr size="50" >
-              <?php
-               $class = "ac2";
-              $query1 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class";
-              $stmt = $pdo->prepare($query1);
-              $stmt->bindParam(':tnumber', $a);
-              $stmt->bindParam(':date', $date);
-              $stmt->bindParam(':class', $class);
-              $stmt->execute();
-               $res=$stmt->fetch();
-               
 
-               
-              ?>
-              <h5>Seats<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;<?php echo(32-$res[0]);?></span> </h5>
-              
-              <h5>Price<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;Rs 750</span></h5></div>
+              <h4> AC 2 Tire(2A)</h4>
+              <div class="col" id="a">
+                <hr size="50">
+                <?php
+                $class = "ac2";
+                $query1 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class";
+                $stmt = $pdo->prepare($query1);
+                $stmt->bindParam(':tnumber', $a);
+                $stmt->bindParam(':date', $date);
+                $stmt->bindParam(':class', $class);
+                $stmt->execute();
+                $res = $stmt->fetch();
+
+
+
+                ?>
+                <h5>Seats<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;<?php echo (32 - $res[0]); ?></span> </h5>
+
+                <h5>Price<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;Rs <?php echo $row->ac2price; ?></span></h5>
+              </div>
               <div class="col" id="btn">
-                
+
                 <input type="hidden" name="tnumber" value="<?php echo $row->tnumber; ?>"></input>
                 <input type="submit" class="btn btn-success btn-block" id="register" name="ac2" value="BOOK"></input>
               </div>
             </div>
 
             <div class="col-sm-3" id="ap">
-              <h4> SLEEPER CLASS(SL)</h4><div class="col" id="a"><hr size="50" >
-              <?php
-               $class = "sleeper";
-              $query1 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class";
-              $stmt = $pdo->prepare($query1);
-              $stmt->bindParam(':tnumber', $a);
-              $stmt->bindParam(':date', $date);
-              $stmt->bindParam(':class', $class);
-              $stmt->execute();
-               $res=$stmt->fetch();
-               
+              <h4> SLEEPER CLASS(SL)</h4>
+              <div class="col" id="a">
+                <hr size="50">
+                <?php
+                $class = "sleeper";
+                $query1 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class";
+                $stmt = $pdo->prepare($query1);
+                $stmt->bindParam(':tnumber', $a);
+                $stmt->bindParam(':date', $date);
+                $stmt->bindParam(':class', $class);
+                $stmt->execute();
+                $res = $stmt->fetch();
 
-               
-              ?>
-              <h5>Seats<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;<?php echo(46-$res[0]);?></span> </h5>
-              <h5>Price<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;Rs 750</span></h5></div>
+
+
+                ?>
+                <h5>Seats<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;<?php echo (46 - $res[0]); ?></span> </h5>
+                <h5>Price<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;Rs <?php echo $row->sprice; ?></span></h5>
+              </div>
               <div class="col" id="btn">
-               
+
                 <input type="hidden" name="tnumber" value="<?php echo $row->tnumber; ?>"></input>
                 <input type="submit" class="btn btn-success btn-block" id="register" name="sleeper" value="BOOK"></input>
               </div>
             </div>
           </div>
 
-          
+
 
       </div>
       </form>

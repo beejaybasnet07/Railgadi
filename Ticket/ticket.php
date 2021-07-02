@@ -136,71 +136,130 @@ if (isset($_POST['submit'])) {
 
 
 ?>
+
 <div class="container">
 
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-5 offset-1 "><img src="../images/logo1.jpg" height="200px;"></div>
 
-    </div>
+    </div>-->
+
+
     <div class="row" id="cong">
+
+        <div class="row">
+           <div class="col" id="congru">
         <h1 style="color: greenyellow;">Congratulations your booking is successful</h1>
-        <h5> Please carry required verification documents for validation.</h5>
-    </div>
-    <div class="row" id="ticket">
-        <div class="col" id="tic">
-            <h2> Journey Details</h2>
         </div>
+        </div>
+        <div class="row">
+           <div class="col">
+           <h5> Please carry required verification documents for validation.</h5>
+        </div>
+        </div>
+        
+        
     </div>
-    <div>
-        <div class="row" id="name">
-            <div class="col-9">
-                <h3> <?php echo $tname; ?>[<?php echo $tnumber; ?>] </h3>
+    <div class="row">
+        <div class="col-4 offset-2" id="con1">
+            <div class="row">
+                <div class="col offset-1">
+                    <h2> Passenger's Details</h2>
+                    <hr>
+                </div>
             </div>
-            <div class="col-3">
-                <h3> <?php echo $date; ?> </h3>
+            <div class="row ">
+                <div class="col pl-5">
+                    <h5>Passenger </h5>
+                    <h3> <?php echo $pname; ?></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col pl-5">
+                    <h5>No. of travellers</h5>
+                    <h3> <?php echo $phone;?></h3>
+                </div>
+
+
+                <div class="col">
+                    <h5> phone</h5>
+                    <h3>98484949</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col pl-5">
+                    <h5> Age</h5>
+                    <h3><?php echo $age?></h3>
+                </div>
+
+
+                <div class="col ">
+                    <h5> Gender</h5>
+                    <h3><? echo $gender;?></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col pl-5">
+                    <h5>Email</h5>
+                    <h4><?php echo $email;?></h4>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-5  " id="con2">
+
+            <div class="row">
+                <div class="col offset-1">
+                    <h2> <i class="fa fa-train" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp; Journey Details</h2>
+                    <hr>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col pl-5">
+
+                    <h3><?php echo $result['_from']; ?>&nbsp;&nbsp;
+                    <i class="far fa-arrow-alt-circle-right"></i>&nbsp;&nbsp;<?php echo $result['_to']; ?> </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col pl-5">
+                    <h5>Number</h5>
+                    <h3> <?php echo $result['tnumber']; ?> </h3>
+                </div>
+                <div class="col">
+                    <h5>Date</h5>
+                    <h3> <?php echo $result['date']; ?> </h3>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col pl-5">
+                    <h5> Seat Number</h5>
+                    <h3> <?php for($i=0;$i<$phone;$i++){ echo $arr[$i]." "; }?></h3>
+                </div>
+
+
+                <div class="col">
+                    <h5> Berth</h5>
+                    <h3><?php echo $preference; ?>  </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col pl-5">
+                    <h5>Class</h5>
+                    <h4><?php echo $_SESSION["tire"]; ?> </h4>
+                </div>
+
             </div>
         </div>
 
     </div>
     <div class="row">
-        <div class="col">
-            <h5>From-to</h5>
-            <h2><?php echo $_from; ?> ---- <?php echo $_to; ?> </h2>
+        <div class="col offset-3">
+        <h5 style="color: red;"> ** Please be at boarding station ahead of depature time.</h5>
         </div>
-        <div class="col">
-            <h5>Name</h5>
-            <h3> <?php echo $tname; ?> </h3>
-        </div>
-        <div class="col">
-            <h5>Number</h5>
-            <h3> <?php echo $tnumber; ?> </h3>
-        </div>
-        <div class="col">
-            <h5>Date</h5>
-            <h3> <?php echo $date; ?> </h3>
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="col">
-            <h5>Traveller </h5>
-            <h3> <?php echo $pname; ?> </h3>
-        </div>
-
-        <div class="col">
-            <h5> Seat Number</h5>
-            <h3> <?php for($i=0;$i<$phone;$i++){ echo $arr[$i]." "; }?></h3>
-        </div>
-
-
-        <div class="col">
-            <h5> Berth</h5>
-            <h3><?php echo $preference; ?> </h3>
-        </div>
-        <div class="col">
-            <h5>Class</h5>
-            <h4> <?php echo $tire; ?> </h4>
-        </div>
-
     </div>
 </div>

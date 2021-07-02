@@ -40,9 +40,9 @@
  #res #re {
      margin-top: 10px;
      margin-bottom: 10px;
-     color: red;
+     color:aquamarine;
      background-color: seashell;
-     padding-top: 3px;
+     padding: 5px 10px 0px 0px;
  }
 
  #con1 #source {

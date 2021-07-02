@@ -181,7 +181,7 @@ $result = $stmt->fetch();
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <input type="number" class="form-control" id="inputEmail4" name="phone" placeholder="phone">
+                    <input type="number" class="form-control" id="inputEmail4" name="phone" placeholder="No. of passengers">
                 </div>
                 <div class="col-md-2">
                     <input type="text" class="form-control" id="inputEmail4" name="email" placeholder="email">

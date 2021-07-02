@@ -1,7 +1,53 @@
-*{font-family:Roboto;}
-#ticket{background-color: aliceblue;}
-#cong{padding: 0px 0px 20px 200px ;
-        }
-        #cong h5{padding: 0px 0px 0px 100px; }
-        #ticket #tic{padding-left: 400px;}
-        #name{background-color: aliceblue;}
+          
+          @media screen and (min-width:425px) {
+             #congru{margin:0px; padding: 0px; width: 100%;}
+
+          }
+          * {
+              font-family: Roboto;
+           }
+
+
+           .container {}
+
+           #con1 {
+              background-color: white;
+              border-radius: 10px;
+              border: 1px solid skyblue;
+           }
+
+           #con2 {
+              background-color: white;
+              margin: 0px 0px 20px 10px;
+              border-radius: 10px;
+              border: 1px solid skyblue;
+           }
+
+           #congru {
+              
+              border: 1px solid whitesmoke;
+              margin: 10px 0px 0px 200px;
+              color: greenyellow;
+              border-radius: 5px;}
+            
+
+           #ple {
+              background-color: beige;
+              border: 1px solid white;
+              margin: 10px 0px 10px 10px;
+              color: red;
+              border-radius: 5px;
+              padding: 5px 0px 0px 100px;
+           }
+
+           #bord {
+              background-color: white;
+              border: 1px solid whitesmoke;
+              margin: 0px 200px 0px 300px;
+              color: red;
+              border-radius: 5px;
+              padding: 5px 0px 0px 35px;
+           }
+
+
+           /*top right bottom left*/

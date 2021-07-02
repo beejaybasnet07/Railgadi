@@ -19,16 +19,16 @@ if (isset($_POST['continue'])) {
     $scity = $_POST['scity'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
+    $total = 0;
 
-   
 
-    
 
-  $query = "Select * from train where tnumber=:tnumber";
-  $stmt = $pdo->prepare($query);
-  $stmt->bindParam(':tnumber', $_SESSION["trainid"]);
-  $stmt->execute();
-  $result = $stmt->fetch();
+
+    $query = "Select * from train where tnumber=:tnumber";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':tnumber', $_SESSION["trainid"]);
+    $stmt->execute();
+    $result = $stmt->fetch();
 } ?>
 
 <div class="container-fluid" id="remain">
@@ -41,13 +41,13 @@ if (isset($_POST['continue'])) {
 
     <div class="container" id="resub">
         <div class="row" id="inside">
-            <div class="col-9" id="up">
+            <div class="col-9 mt-3" id="up">
                 <div class="row" id="rename">
-                    <div class="col">
+                    <div class="col ">
                         <h2><?php echo $result['name']; ?></h2>
                     </div>
                 </div>
-                <div class="row" id="resource">
+                <div class="row mt-3" id="resource">
                     <div class="col-md-3">
                         <h4>6:00 | <?php echo $result['_from']; ?></h4>
                         <h5><?php echo $result['date']; ?></h5>
@@ -67,20 +67,48 @@ if (isset($_POST['continue'])) {
 
                 <div class="row" id="reboarding">
                     <div class="col-md">
-                        <h6>1 Adult | 0 children | <?php echo $_SESSION["tire"]; ?> | 
-                        Boarding at <?php echo $result['_to']; ?> |<?php echo $result['date']; ?> </h6>
+                        <h6>1 Adult | 0 children | <?php echo $_SESSION["tire"]; ?> |
+                            Boarding at <?php echo $result['_to']; ?> |<?php echo $result['date']; ?> </h6>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-2" id="re" style="background-color: skyblue;margin-left:30px;">
-                <div class="row" style="background-color:cornflowerblue;color:white">
-                    <h5>FARE SUMMARY</h5>
+            <div class="col-md-2 ml-5 mt-3" id="re" style="border:2px solid gray; border-radius:5px;" >
+                <div class="row" >
+                    <div class="col">
+                        <h5>FARE SUMMARY</h5>
+                    </div>
                 </div>
-                <div class="row">Ticket Fare: <span style="margin-left:27px;"> Rs 340<span> </div>
-                <div class="row"> Tax: <span style="margin-left:80px;"> Rs 45<span></div>
-                <div class="row"> Insurance: <span style="margin-left:38px;"> Rs 2<span> </div>
-                <div class="row" style="font-weight:bold;"> TOTAL FARE: <span style="margin-left:30px;">Rs 387<span> </div>
+                
+                <div class="row">
+                    <div class="col">
+                        Fare:
+                            <?php if ($_SESSION["class"] = "ac3") {
+                                echo ($phone) . "*" . ($result['ac3price']) . "=" . ($phone) * ($result['ac3price']);
+                                $total = ($phone) * ($result['ac3price']);
+                            } else if ($_SESSION["class"] = "ac2") {
+                                echo ($phone) . "*" . ($result['ac2price']) . "=" . ($phone) * ($result['ac2price']);
+                                $total = ($phone) * ($result['ac2']);
+                            } else if ($_SESSION["class"] = "sleeper") {
+                                echo ($phone) . "*" . ($result['sprice']) . "=" . ($phone) * ($result['sprice']);
+                                $total = ($phone) * ($result['sleeper']);
+                            } ?>
+                            </div>
+                </div>
+                <div class="row">
+                    <div class="col"> Tax: <span>
+                            <?php echo $phone . "* 45 =" . ($phone * 45); ?><span></div>
+                </div>
+                <div class="row">
+                    <div class="col"> Insurance: <span>
+                            <?php echo $phone . "* 5 =" . ($phone * 5); ?> <span> </div>
+                </div>
+                <hr>
+                <div class="row" style="font-weight:bold;">
+                    <div class="col">TOTAL FARE: <span>
+                            <?php
+                            echo ($phone * 50) + $total; ?><span> </div>
+                </div>
             </div>
         </div>
 
@@ -93,7 +121,7 @@ if (isset($_POST['continue'])) {
         </div>
         <div class="row" id="name">
             <h6> 1 <span style="font-weight:bold;"><?php echo $pname; ?>
-        </span> <?php echo $age; ?>yrs | <?php echo $gender; ?> | <?php echo $country; ?> | <?php echo $result['_from']; ?>
+                </span> <?php echo $age; ?>yrs | <?php echo $gender; ?> | <?php echo $country; ?> | <?php echo $result['_from']; ?>
 
         </div>
     </div>
@@ -112,7 +140,7 @@ if (isset($_POST['continue'])) {
 
         <div class="col-2 offset-md-1">
             <a href="../Book/book.php"><button type="button" class="btn btn-primary">Back</button></a>
-          <!--  <input type="hidden" name="tname" value="<?php echo $tname; ?>"></input>
+            <!--  <input type="hidden" name="tname" value="<?php echo $tname; ?>"></input>
             <input type="hidden" name="_to" value="<?php echo $_to; ?>"></input>
             <input type="hidden" name="_from" value="<?php echo $_from; ?>"></input>
             <input type="hidden" name="date" value="<?php echo $date; ?>"></input>

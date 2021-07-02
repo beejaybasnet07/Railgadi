@@ -69,7 +69,7 @@
 									</div>
 								</div>
 								<div class="form-btn">
-									<button class="submit-btn">Show Trains</button>
+									<button class="submit-btn" name="search">Show Trains</button>
 								</div>
 						</div>
 						</form>

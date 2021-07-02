@@ -1,5 +1,6 @@
 *{font-family:Roboto;}
 #re #fare{background-color: aliceblue;}
+#re #fare{margin-left: 10px;}
 #remain{
     
     border: 1px solid bisque;
@@ -14,18 +15,22 @@
 #rename{
     background-color:gainsboro;
 }
+
 #reboarding{
-    margin-left: 50px;
-    margin-right: 50px;
-    background-color: gainsboro;
-    color: steelblue;
-    padding-left: 100px;
-    margin:0px 50px 10px 50px ;/*top right bottom left*/
-    border-radius: 5px;
     
+     background-color: white;
+     color: steelblue;
+     margin:0px 0px 0px 20px;
+     border:1px solid white;
+     border-radius: 5px;
+     
+    
+     /*top right bottom left*/  
     
 }
-#pass{ background-color: honeydew;margin:20px 0px 10px 0px;;padding:0px 0px 0px 20px;}
+
+#pass{ background-color: honeydew;margin:20px 0px 10px 0px;;padding:0px 0px 0px 20px;
+     border:2px solid white;border-radius: 5px;}
 #name{padding:0px 0px 0px 20px;margin-top: 10px;}
 #last{margin-top: 20px; border:2px whitesmoke solid; }
 #pass1{margin:20px 0px 10px 0px;padding:0px 0px 0px 20px;}
