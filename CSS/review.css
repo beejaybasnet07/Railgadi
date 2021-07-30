@@ -1,37 +1,65 @@
-*{font-family:Roboto;}
-#re #fare{background-color: aliceblue;}
-#re #fare{margin-left: 10px;}
-#remain{
-    
-    border: 1px solid bisque;
+
+
+#re #fare {
+    background-color: aliceblue;
+    margin-left: 10px;
 }
-#remain #resub #inside #up{background-color: whitesmoke; margin-left: 30px;border: 1px white solid; border-radius: 5px;}
-#resub{
-    
+
+
+#remain #resub #inside #up {
+    background-color: whitesmoke;
+    margin-left: 30px;
+    border: 1px white solid;
+    border-radius: 5px;
+}
+
+#resub {
+
     padding-bottom: 10px;
     margin-bottom: 10px;
 
 }
-#rename{
-    background-color:gainsboro;
+
+#reboarding {
+
+    background-color:#dee3e0;
+    color: steelblue;
+    margin: 0px 0px 0px 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+
+
+    /*top right bottom left*/
+
 }
 
-#reboarding{
-    
-     background-color: white;
-     color: steelblue;
-     margin:0px 0px 0px 20px;
-     border:1px solid white;
-     border-radius: 5px;
-     
-    
-     /*top right bottom left*/  
+#pass {
+    background-color:#cbe4f7;
+    margin: 20px 0px 10px 0px;
+    padding: 0px 0px 0px 20px;
+    border: 2px solid white;
+    border-radius: 5px;
+    opacity: 0.5;
     
 }
 
-#pass{ background-color: honeydew;margin:20px 0px 10px 0px;;padding:0px 0px 0px 20px;
-     border:2px solid white;border-radius: 5px;}
-#name{padding:0px 0px 0px 20px;margin-top: 10px;}
-#last{margin-top: 20px; border:2px whitesmoke solid; }
-#pass1{margin:20px 0px 10px 0px;padding:0px 0px 0px 20px;}
-#last1{margin-top:20px ; border:2px whitesmoke solid; }
+#name {
+    padding: 0px 0px 0px 20px;
+    margin-top: 10px;
+}
+
+#last {
+    margin-top: 20px;
+    border: 2px whitesmoke solid;
+}
+
+#pass1 {
+    margin: 20px 0px 10px 0px;
+    padding: 0px 0px 0px 20px;
+}
+
+#last1 {
+    margin-top: 20px;
+    border: 2px whitesmoke solid;
+}
+#up{border:2px solid gray; border-radius:5px;}

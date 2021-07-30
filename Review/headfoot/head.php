@@ -12,8 +12,9 @@
  
  <link rel="stylesheet" href="../CSS/search.css">
  <link rel="stylesheet" href="../CSS/register.css">
- 
  <link rel="stylesheet" href="../CSS/review.css">
+ <link rel="stylesheet" href="../CSS/footer.css">
+
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

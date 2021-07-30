@@ -1,0 +1,75 @@
+*{ font-family: roboto; }
+
+.main-content{
+	width: 50%;
+	border-radius:20px;
+	box-shadow: 0 5px 5px rgba(0,0,0,.4);
+	margin: 5em auto;
+	display: flex;
+}
+
+
+
+	.login_form{
+		border-top-left-radius:20px;
+		border-bottom-left-radius:20px;
+	}
+}
+@media screen and (min-width: 642px) and (max-width:800px){
+	.main-content{width: 70%;}
+}
+.row > h3{
+	color:#008080;
+	margin-left: 50px;
+}
+.row > h1{
+	color:blue;
+	margin-left: 50px;
+	font-weight: 50px;
+}
+.row->p{
+	margin-left: 50px;
+}
+.login_form{
+	background-color: #fff;
+	border-top-right-radius:20px;
+	border-bottom-right-radius:20px;
+	border-top:1px solid #ccc;
+	border-right:1px solid #ccc;
+}
+form{
+
+	margin-left: 100px;
+}
+
+#loginbtn{
+	border:none;
+	outline: none;
+	height: 50px;
+	background-color: #428df5;
+	color: white;
+	border-radius: 50px;
+	font-weight: bold;
+	width: 80%;
+
+}
+#loginbtn:hover{
+	background-color: white;
+	color: black;
+	border:1px solid skyblue;}
+/*
+.btn{
+	transition: all .5s ease;
+	width: 100%;
+	border-radius: 30px;
+	color:#008080;
+	font-weight: 600;
+	background-color: skyblue;
+	border: 1px solid #008080;
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+}
+.btn:hover, .btn:focus{
+	background-color: white;
+	color:skyblue;
+}

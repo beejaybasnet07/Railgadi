@@ -1,0 +1,78 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family:Roboto;
+}
+.search{
+    height:70vh;
+    background-image:url('https://c4.wallpaperflare.com/wallpaper/901/438/550/winter-train-vehicle-white-wallpaper-preview.jpg');
+    background-size:cover;
+    background-position:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+#h11{
+    
+text-transform: uppercase;
+color: tomato;
+letter-spacing: 3px;
+text-align: center;
+}
+#h66{
+
+letter-spacing: 2px;
+text-align: center;
+color: whitesmoke;
+}
+.search-field{
+    height:50px;
+    padding:10px;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+}
+.location{
+    width: 250px;
+}
+.date{
+    width: 250px;
+}
+.search-btn{
+    height: 50px;
+    width: 150px;
+    font-weight: 38px;
+    font-style: bold;
+    background:blue;
+    border: none;
+    color:white;
+    border-radius: 25px;
+}
+.search-btn:hover{
+    
+    cursor:pointer;
+}
+.form-box{
+    background:#d1d9e6;
+    padding: 30px;
+    border:1px solid white;
+    border-radius: 10px;
+    margin-bottom: 200px;
+}
+#col{
+    margin: 0px 0px 30px 0px;
+  
+}
+
+ .card{
+    border:solid 3px white;
+    border-radius: 10px;
+   /* border-top:solid 7px orange;
+    border-bottom:solid 7px orange;*/
+}
+#con{ background-color: #d3dbe5;
+margin-top: 10px;}
+

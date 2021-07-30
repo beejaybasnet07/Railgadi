@@ -1,31 +1,51 @@
-.container {
-    font-family: Roboto;
-    background-color: white;
+body{
+	font-family:roboto;}
+
+.register_container
+{   margin-top: 70px;
+  
+  
     box-sizing: border-box;
     box-shadow: 0 5px 30px rgba(0, 0, 0, .10);
     color: #6b6b6a;
 }
 
-li {
-    display: inline-block;
-    margin-bottom: 0px;
+#row1,#row2,#row3,#row4
+{ 
+  background-color: #f3f5f2; 
+  border: 1px solid #f3f5f2; 
+  border-radius: 5px;
+  margin: 0px 50px 0 70px;
 }
+#main
+{
+	background-color: #28edd9;
+	border: 1px solid white; 
+	border-radius: 5px; 
+	margin:0 90px 0 90px; 
+	padding: 5px 10px 0px 10px;
 
-.container .get {
-    background-color: #fcfcfc;
-    text-align: center;
-    border-radius: 5px;
-    font-family: Anton;
-    font-size: 60px;
-}
 
-u {
-    color: #6b6b6a;
-    font-family: Oswald;
-}
+} 
+.form-group{padding-left: 20px;}
+#h52{
+	padding:5px 0px 5px 65px;
+	color: white;
+                  }
 
-.cus {
-    color: #6b6b6a;
-    background-color: #fefefc;
-    border-radius: 5px;
+#loginbtn{
+	border:none;
+	outline: none;
+	height: 50px;
+	background-color:#a4a8a3;
+	color: white;
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 20px;
+
+
 }
+#loginbtn:hover{
+	background-color: white;
+	color: black;
+	border:1px solid skyblue;}

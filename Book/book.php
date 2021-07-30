@@ -1,8 +1,9 @@
-<?php
+<?php  
 session_start();
-
 include('database\dbcon.php');
-include('headfoot\head.php'); ?>
+include('inc\header.php'); 
+?>
+
 <script>
     $(function() {
         var count = 1;
@@ -22,6 +23,7 @@ include('headfoot\head.php'); ?>
     $_SESSION["tire"] = "AC 3 Tire (3A) | HIGH CLASS";
     $_SESSION["trainid"] = $tnumber;
     $_SESSION["class"] = "ac3";
+
 } ?>
 <?php if (isset($_POST['ac2'])) {
     
@@ -30,6 +32,7 @@ include('headfoot\head.php'); ?>
     $_SESSION["trainid"] = $tnumber;
     $_SESSION["tire"]="AC 2 Tire (2A) | MEDIUM CLASS";
     $_SESSION["class"] = "ac2";
+    echo  $_SESSION["class"];
 } ?>
 <?php if (isset($_POST['sleeper'])) {
     
@@ -45,24 +48,18 @@ $stmt = $pdo->prepare($query);
 $stmt->bindParam(':train', $_SESSION["trainid"]);
 $stmt->execute();
 $result = $stmt->fetch();
-
-
-
 ?>
-<div class="container-fluid" id="main"><?php
- echo $_SESSION["trainid"] 
-                                        ?>
-    <div class="row" id="logo">
-        <div class="col-5 offset-1 ">
-            <h2 style="color:blue;">Railgadi</h2>
-            <!--<img src="../images/logo.jpg" height="200px"  >-->
-        </div>
-        <div class="col-2 offset-4  ">book
-        </div>
-    </div>
+<div class="container" id="main">
+<nav class="navbar navbar-light bg-white">
+        <a class="navbar-brand" href="..\index.php">
+            <img src="..\images\logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
+            <span style="color:skyblue;"> Railgadi</span>
+        </a>
+    </nav>
     <div class="container" id="sub">
         <div class="row" id="name">
             <div class="col">
+            <?php echo $_SESSION["class"];?>
                 <h2><?php echo $result['name']; ?></h2>
             </div>
         </div>
@@ -86,21 +83,18 @@ $result = $stmt->fetch();
               $stmt = $pdo->prepare($query2);
               $stmt->bindParam(':tnumber', $result['id']);
               $stmt->bindParam(':date', $result['date']);
-              $stmt->bindParam(':class', $_SESSION["class"]);
+              $stmt->bindParam(':class', $_SESSION['class']);
               $stmt->execute();
                $res=$stmt->fetch();
-               echo"he";
-               echo $res[0];
-
-            
-
+               
                
 
                
               ?>
-              <h5>Seats<span style="color:red;font-size:bold;">&nbsp;&nbsp;&nbsp;&nbsp;<?php if( $_SESSION["class"] =="sleeper"){ echo(46-($res[0]));}    
-                elseif( $_SESSION["class"] =="ac3"){ echo(22-($res[0]));} 
-                elseif( $_SESSION["class"] =="ac2"){ echo(32-($res[0]));}  ?> </span> </h5>
+              <h5>Seats<span style="color:red;font-size:bold;">
+              &nbsp;&nbsp;&nbsp;&nbsp;<?php if( $_SESSION["class"] =="sleeper"){ echo(46-($res[0]));}    
+                if( $_SESSION["class"] =="ac3"){ echo(22-($res[0]));} 
+                if( $_SESSION["class"] =="ac2"){ echo(32-($res[0]));}  ?> </span> </h5>
                 
             </div>
         </div>
@@ -111,7 +105,7 @@ $result = $stmt->fetch();
             </div>
         </div>
         <div class="row" id="boarding">
-            <div class="col">
+            <div class="col my-2 pt-2">
                 <h5>Boarding Station | <?php echo $result['_from']; ?> | Arrival: 5:00 | Depature: 6:00 |Boarding Date | <?php echo $result['date']; ?></h5>
             </div>
         </div>
@@ -127,8 +121,9 @@ $result = $stmt->fetch();
                 </div>
             </div>
         </div>
+        <div class="container" style=" border: 2px whitesmoke solid;">
         <div class="row">
-            <div class="col">
+            <div class="col my-3">
                 <h5> Passengers Details</h5>
             </div>
         </div>
@@ -188,16 +183,17 @@ $result = $stmt->fetch();
                 </div>
 
             </div>
+                            </div>
             <div class="row">
-                <div class="col">
+                <div class="col py-2">
                     <button type="button" class="btn btn-info" id="btn"><i class="fa fa-plus"></i> Add Passenger</button>
                 </div>
             </div>
-    </div>
-    <div class="container" id="des">
-        <div class="row" id="inside_des">Destination details
-        </div>
+    <div class="container"  style="  border: 2px whitesmoke solid;">
         <div class="row">
+        <div class="col my-3"><h5>Destination details</h5></div>
+        </div>
+        <div class="row" style="padding-bottom: 20px;">
             <div class="col-md-3">
                 <input type="text" class="form-control" id="inputEmail4" name="station" placeholder="Station Name">
             </div>
@@ -207,9 +203,9 @@ $result = $stmt->fetch();
 
         </div>
     </div>
-
+    </div>
     <div class="row">
-        <div class="col-2 offset-md-1">
+        <div class="col-2 ml-3 py-2 pr-2 mt-2">
 
             <?php if (isset($_POST['ac3'])) { ?> <input type="hidden" name="tire" value=" <?php echo $ac3; ?>"></input><?php } ?>
             <?php if (isset($_POST['ac2'])) { ?> <input type="hidden" name="tire" value=" <?php echo $ac2; ?>"></input><?php } ?>
@@ -223,3 +219,4 @@ $result = $stmt->fetch();
 
     </form>
 </div>
+<?php include('inc\footer.php');?>

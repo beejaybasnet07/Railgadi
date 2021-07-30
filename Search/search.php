@@ -1,8 +1,9 @@
 <?php
+include('headfoot\head.php');
 include('database\dbcon.php');
-include('headfoot\head.php'); ?>
+include('inc\nav.php'); ?>
 <?php
-if (isset($_POST['search'])){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $ac3 = "AC 3 Tire (3A) | HIGH CLASS";
   $ac2 = "AC 2 Tire (2A) | MEDIUM CLASS";
   $sleeper = " SLEEPER CLASS(SL) | GENERAL";
@@ -17,34 +18,19 @@ if (isset($_POST['search'])){
   $stmt->bindParam(':date', $date);
   $stmt->execute();
   $result = $stmt->fetchAll(PDO::FETCH_OBJ);
-    
-    
-    
-  $res = array();
 }
 ?>
 
 <body>
+  <div class="container">
+    <form action="" method="POST">
+      <div class="row" id="ro2">
 
-  <div class="container" id="con">
-    <div class="row" id="ro">
-      <div class="col-5">
-        <h1 style="color:blue;">Railgadi</h1>
-      </div>
-      <div class="col-5">
-
-      </div>
-      <div class="col-1"> <input class="btn btn-primary" type="submit" value="Regiter"></div>
-      <div class="col-1"><input class="btn btn-primary" type="submit" value="login"></div>
-    </div>
-    <form action="" method="post">
-    <div class="row" id="ro2">
-     
         <div class="col-lg">
           <div class="form-group">
             <div class="form-label-group">
               <label for="exampleInputEmail1">From</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" name="from" aria-describedby="emailHelp" value="<?php echo $from;?>" placeholder="From">
+              <input type="text" class="form-control" id="exampleInputEmail1" name="from" aria-describedby="emailHelp" value="<?php echo $from; ?>" placeholder="From">
             </div>
           </div>
         </div>
@@ -53,7 +39,7 @@ if (isset($_POST['search'])){
           <div class="form-group">
             <div class="form-label-group">
               <label for="name"> TO</label>
-              <input type="text" id="name" class="form-control" placeholder=" to" name="to" required="required" value="<?php echo $to;?>"pattern="^[A-Za-z][A-Za-z ,.'-]+">
+              <input type="text" id="name" class="form-control" placeholder=" to" name="to" required="required" value="<?php echo $to; ?>" pattern="^[A-Za-z][A-Za-z ,.'-]+">
 
             </div>
           </div>
@@ -62,60 +48,44 @@ if (isset($_POST['search'])){
           <div class="form-group">
             <div class="form-label-group">
               <label for="name"> Date</label>
-              <input type="date" id="name" class="form-control" placeholder=" Date" name="date" required="required" value="<?php echo $date;?>"pattern="^[A-Za-z][A-Za-z ,.'-]+">
+              <input type="date" id="name" class="form-control" placeholder=" Date" name="date" required="required" value="<?php echo $date; ?>" pattern="^[A-Za-z][A-Za-z ,.'-]+">
             </div>
           </div>
         </div>
-        <!--
-      <div class="col-lg">
-        <div class="form-group">
-          <div class="form-label-group">
-            <label for="name">Seat Class</label>
-            <select class="form-control">
-              <option>Economy class</option>
-              <option>Business class</option>
-              <option>First class</option>
-            </select>
-            <span class="select-arrow"></span>
-          </div>
-        </div>
-      </div>-->
+
 
         <div class="col-lg">
-          <div class="form-label-group">
+          <div class="form-group">
             <div class="form-label-group">
               <label for="name">Modify Search</label>
               <input type="submit" class="btn btn-success btn-block" id="register" name="search" value="submit"></input>
             </div>
           </div>
         </div>
-    
-    </div>
-</form><?php
-if(!empty($result))
-  { ?>
-    <div class="row" id="res">
-      <div class="col-8" id="re">
-        <h5> Result filters</h5>
+
       </div>
-      <div class="col-4" id="re">
-        <h6> Number of result for source to destination</h6>
-      </div>
-    </div><?php }?>
+    </form><?php
+            if (!empty($result)) { ?>
+      <div class="row" id="res">
+        <div class="col-8 pl-5" id="re">
+          <h4> Result Filters</h4>
+        </div>
+        <div class="col-4 pt-2" id="re">
+          <h6> Number of result for source to destination</h6>
+        </div>
+      </div><?php } ?>
 
     <?php
-    if(empty($result))
-  { ?>
+    if (empty($result)) { ?>
       <div class="row">
         <div class="col">
-          <img style=" margin:50px 0px 0px 60px;"src="http://www.medical.sjp.ac.lk/my-scripts/staff-profiles/view-profiles/supports/images/no-results-found.png" >
+          <img style=" margin:50px 0px 0px 60px;" src="http://www.medical.sjp.ac.lk/my-scripts/staff-profiles/view-profiles/supports/images/no-results-found.png">
         </div>
       </div>
-<?php  }?>
+    <?php  } ?>
 
     <?php foreach ($result as $row) {
       $a = $row->id;
-
     ?>
       <div class="container" id="con1">
         <div class="row">
@@ -245,4 +215,4 @@ if(!empty($result))
 
   </div>
 </body>
-<?php include('headfoot\foot.php'); ?>
+<?php include('inc\footer.php'); ?>

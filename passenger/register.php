@@ -1,127 +1,219 @@
 <?php
 include('database\dbcon.php');
 include('headfoot\head.php'); ?>
-<div class="container">
+
+<div class="container" id="register_container">
+    <nav class="navbar navbar-light bg-white">
+        <a class="navbar-brand" href="..\index.php">
+            <img src="images\logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
+            <span style="color:skyblue;"> Railgadi</span>
+        </a>
+    </nav>
     <div class="row">
 
-        <div class="col pt-2 offset-md-9">
-            <p class="display-5">Already have an Account??<a href="#" class="stretched-link">LOGIN</a>
+        <div class="col offset-md-9">
+            <p class="display-5">Already have an Account ?? &nbsp;<a href="../passenger/login.php" class="stretched-link">LOGIN</a>
             <p>
         </div>
     </div>
-    <div class="row mb-2  pl-5 get">
-        <h3 class="text-center display-4"> CONNECT TO OUR SERVICES</h3>
-    </div>
+
     <div class="row">
-        <div class="col ">
+        <div class="col offset-md-1 pb-2">
             <strong>
-                <h5><u> Register your account now</u></h5>
+                <h4><u> Register your account now</u></h4>
             </strong>
         </div>
     </div>
     <div class="row">
+        <div class="col-md  mb-5 pb-1" id="main">
+            <form method="POST" action="" enctype="multipart/form-data">
+                <h5 id="h52">Personal Details</h5>
+                <div class="row" id="row1">
+                    <div class="col-md-5 pt-3">
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <input type="text" class="form-control" placeholder="Your Name" id="name" name="pname" required="required" pattern="^[A-Za-z]{2,25}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 pt-3 ml-3">
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <input type="number" class="form-control" placeholder="age" name="age" id="age" required="required" pattern="^[A-Za-z]{2,25}">
 
-        <form method="POST" action="" enctype="multipart/form-data">
-            <div class="col-6">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 pt-3 ml-3">
+                        <div class="form-group">
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="radio" value="male">
+                                <label class="form-check-label" for="inlineRadio1">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="radio" value="female">
+                                <label class="form-check-label" for="inlineRadio2">Female</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="radio" value="others">
+                                <label class="form-check-label" for="inlineRadio3">Others</label>
+                            </div>
 
 
-                <label for="name">NAME</label>
-                <input type="text" class="form-control" placeholder="Your Name" name="name" required="required" pattern="^[A-Za-z]{2,25}">
+                        </div>
+                    </div>
 
-            </div>
-            <div class="col-6">
-                <div class="form-group">
-                    <div class="form-label-group">
-                        <label for="contact_number">Contact Number</label>
-                        <input type="text" class="form-control" placeholder="eg.(98**********) " name="contact" required="required" pattern="^[98][0-9]{9}">
+
+                </div>
+                <h5 id="h52"> Address</h5>
+                <div class="row" id="row2">
+                    <div class="col-md-5 pt-3">
+                        <div class="form-group">
+                            <div class="form-label-group">
+
+                                <input type="text" class="form-control" placeholder="City" name="scity" id="scity" required="required" pattern="[A-Za-z]+">
+
+                            </div>
+                        </div>
 
                     </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-label-group">
-                    <label for="address">Address</label>
-                    <input type="text" class="form-control" placeholder="District" name="district" required="required" pattern="[A-Za-z]+">
+                    <div class="col-md-5 pt-3">
+                        <div class="form-group">
+                            <div class="form-label-group">
+
+                                <input type="text" class="form-control" placeholder="station" name="station" id="station" required="required">
+
+                            </div>
+                        </div>
+
+                    </div>
 
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="form-label-group">
-                    <label for="address">City</label>
-                    <input type="text" class="form-control" placeholder="City Name" name="city" required="required" pattern="[A-Za-z]+">
+                <h5>Contact Details</h5>
+                <div class="row" id="row3">
+                    <div class="col-md-5 pt-3">
+                        <div class="form-group">
+                            <div class="form-label-group">
+
+                                <input type="text" class="form-control" placeholder="eg.(98**********) " name="phone" id="phone" required="required" pattern="^[98][0-9]{9}">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 pt-3">
+                        <div class="form-group">
+                            <div class="form-label-group">
+
+                                <input type="email" class="form-control" placeholder="Email" name="email" id="email" required="required" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$">
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <h5 id="h52">Password</h5>
+                <div class="row" id="row4">
 
+                    <div class="col-md-5 pt-3">
+                        <div class="form-group">
+                            <div class="form-label-group">
 
-            <div class="form-group">
-                <div class="form-label-group">
-                    <label for="email">Email address</label><span id="span"></span>
-                    <input type="email" class="form-control" placeholder="Email" name="email" id="email" required="required" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$">
+                                <input type="password" class="form-control" placeholder="Must contain 8 characters" id="password" name="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+                            </div>
 
-                </div>
-            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 pt-3">
+                        <div class="form-group">
 
-            <div class="form-group">
-                <div class="form-label-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" placeholder="Must contain 8 characters" name="password" required="required" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
-                </div>
+                            <div class="form-label-group">
+                                <input type="password" class="form-control" placeholder="Retype Password" id="repassword" name="repassword" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" onblur="check()">
 
-            </div>
-            <div class="form-group">
-                <div class="form-label-group">
-                    <label for="password">Gender</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="option1">
-                    <label class="form-check-label" for="inlineRadio1">Male</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="option2">
-                    <label class="form-check-label" for="inlineRadio2">Female</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio3" value="option3">
-                    <label class="form-check-label" for="inlineRadio3">Others</label>
+                            </div>
+                            <label id="lb"></label>
+
+                        </div>
+                    </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-4 offset-md-1 pt-4 pb-3">
+                        <input type="submit" class="btn btn-success btn-block" id="loginbtn" name="submit" onclick="verify()" value="submit"></input>
+                    </div>
+                </div>
+            </form>
 
-            </div>
 
 
-            <input type="submit" class="btn btn-success btn-block" id="register" name="submit" value="submit"></input>
-        </form>
-
-
-
+        </div>
     </div>
 </div>
 
+<script>
+    function check() {
 
-<?php include('headfoot\foot.php'); ?>
+        var text1 = document.getElementById("password").value;
+        var text2 = document.getElementById("repassword").value;
+
+        if (text1 != text2) {
+
+            document.getElementById("lb").style.color = "red";
+            document.getElementById('lb').innerHTML = "password do not match";
+
+        } else {
+            document.getElementById('lb').innerHTML = "";
+        }
+
+    }
+</script>
+
+
+
 <?php
 if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
-    $contact = $_POST['contact'];
-    $district = $_POST['district'];
-    $city = $_POST['city'];
+
+    $country = "nepal";
+    $pname = $_POST['pname'];
+    $_SESSION['passenger'] = $_POST['phone'];
+    $age = $_POST['age'];
+    $scity = $_POST['scity'];
+    $station = $_POST['station'];
     $email = $_POST['email'];
     $pass = $_POST['password'];
     $gender = $_POST['gender'];
+
+
+    if ($_POST['repassword'] == $_POST['password']) {
+    }
     $password = md5($pass);
-    $query = "INSERT INTO passenger (name, district, city ,contact ,email ,gender, password) VALUES (:name, :district ,:city ,:contact, :email,:gender, :password)";
+    echo $country . $_SESSION['passenger'] . $scity . $station . $email . $pass . $gender;
+
+    $query = "INSERT INTO passenger(pname, age, scity, country, station, phone, email ,gender)
+                 VALUES(:pname, :age, :scity, :country, :station, :phone,:email,:gender)";
     $stmt = $pdo->prepare($query);
+    print_r($query);
+    echo ($query);
 
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':contact', $contact);
-    $stmt->bindParam(':gender', $gender);
+    $stmt->bindParam(':pname', $pname);
+    $stmt->bindParam(':age', $age);
+    $stmt->bindParam(':scity', $scity);
+    $stmt->bindParam(':country', $country);
+    $stmt->bindParam(':station', $station);
+    $stmt->bindParam(':phone', $_SESSION['passenger']);
     $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':password', $password);
-    $stmt->bindParam(':district', $district);
-    $stmt->bindParam(':city', $city);
-
+    $stmt->bindParam(':gender', $gender);
     $stmt->execute();
-    echo "<script>alert('Account created successfully. Login to continue')</script>";
-    echo "<script>window.location.href ='../homepage/home.php'</script>";
+    echo ("success");
+
+    $query1 = "INSERT into user(email, pass1) VALUES (:email, :password)";
+    $stmt1 = $pdo->prepare($query1);
+    $stmt1->bindParam(':email', $email);
+    $stmt1->bindParam(':password', $password);
+    $stmt1->execute();
+
+    echo ("sucessful");
+
+    //echo "<script>window.location.href ='../login.php'</script>";
+
 }
-?>
+?><?php include('..\inc\footer.php'); ?>

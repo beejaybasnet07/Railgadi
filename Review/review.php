@@ -1,7 +1,9 @@
 <?php
+
 session_start();
 include('database\dbcon.php');
 include('headfoot\head.php');
+
 ?>
 
 <?php
@@ -21,8 +23,15 @@ if (isset($_POST['continue'])) {
     $email = $_POST['email'];
     $total = 0;
 
-
-
+    $_SESSION['pname'] = $pname;
+    $_SESSION['page'] = $age;
+    $_SESSION['gender'] = $gender;
+    $_SESSION['preference'] =  $preference;
+    $_SESSION['country'] = $country;
+    $_SESSION['station'] = $station;
+    $_SESSION['scity'] = $scity;
+    $_SESSION['passenger'] = $phone;
+    $_SESSION['email'] = $email;
 
     $query = "Select * from train where tnumber=:tnumber";
     $stmt = $pdo->prepare($query);
@@ -30,107 +39,118 @@ if (isset($_POST['continue'])) {
     $stmt->execute();
     $result = $stmt->fetch();
 } ?>
+<?php
 
-<div class="container-fluid" id="remain">
+$query = "Select * from train where tnumber=:tnumber";
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(':tnumber', $_SESSION["trainid"]);
+$stmt->execute();
+$result = $stmt->fetch();
 
-    <div class="row">
-        <div class="col-5 offset-1 ">logo</div>
-        <div class="col-2 offset-4  ">book</div>
-    </div>
+
+?>
 
 
-    <div class="container" id="resub">
-        <div class="row" id="inside">
-            <div class="col-9 mt-3" id="up">
-                <div class="row" id="rename">
-                    <div class="col ">
-                        <h2><?php echo $result['name']; ?></h2>
-                    </div>
+<div class="container" id="resub">
+    <nav class="navbar navbar-light bg-white">
+        <a class="navbar-brand" href="..\index.php">
+            <img src="..\images\logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
+            <span style="color:skyblue;"> Railgadi</span>
+        </a>
+    </nav>
+    <div class="row" id="inside">
+        <div class="col-9 mt-3" id="up">
+            <div class="row" id="rename">
+                <div class="col text-warning">
+                    <h2><?php echo $result['name']; ?></h2>
                 </div>
-                <div class="row mt-3" id="resource">
-                    <div class="col-md-3">
-                        <h4>6:00 | <?php echo $result['_from']; ?></h4>
-                        <h5><?php echo $result['date']; ?></h5>
-                    </div>
-                    <div class="col-md-3">
-                        <h4> -5hrs-</h4>
-                    </div>
-                    <div class="col-md-3">
-                        <h4><?php echo $result['_to']; ?></h4>
-                        <h5><?php echo $result['date']; ?></h5>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Available-0077</h4>
-                    </div>
+            </div>
+            <div class="row mt-3" id="resource">
+                <div class="col-md-3">
+                    <h4>6:00 | <?php echo $result['_from']; ?></h4>
+                    <h5><?php echo $result['date']; ?></h5>
                 </div>
-
-
-                <div class="row" id="reboarding">
-                    <div class="col-md">
-                        <h6>1 Adult | 0 children | <?php echo $_SESSION["tire"]; ?> |
-                            Boarding at <?php echo $result['_to']; ?> |<?php echo $result['date']; ?> </h6>
-                    </div>
+                <div class="col-md-3">
+                    <h4> -5hrs-</h4>
+                </div>
+                <div class="col-md-3">
+                    <h4><?php echo $result['_to']; ?></h4>
+                    <h5><?php echo $result['date']; ?></h5>
+                </div>
+                <div class="col-md-3">
+                    <h4>Available-0077</h4>
                 </div>
             </div>
 
-            <div class="col-md-2 ml-5 mt-3" id="re" style="border:2px solid gray; border-radius:5px;" >
-                <div class="row" >
-                    <div class="col">
-                        <h5>FARE SUMMARY</h5>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col">
-                        Fare:
-                            <?php if ($_SESSION["class"] = "ac3") {
-                                echo ($phone) . "*" . ($result['ac3price']) . "=" . ($phone) * ($result['ac3price']);
-                                $total = ($phone) * ($result['ac3price']);
-                            } else if ($_SESSION["class"] = "ac2") {
-                                echo ($phone) . "*" . ($result['ac2price']) . "=" . ($phone) * ($result['ac2price']);
-                                $total = ($phone) * ($result['ac2']);
-                            } else if ($_SESSION["class"] = "sleeper") {
-                                echo ($phone) . "*" . ($result['sprice']) . "=" . ($phone) * ($result['sprice']);
-                                $total = ($phone) * ($result['sleeper']);
-                            } ?>
-                            </div>
-                </div>
-                <div class="row">
-                    <div class="col"> Tax: <span>
-                            <?php echo $phone . "* 45 =" . ($phone * 45); ?><span></div>
-                </div>
-                <div class="row">
-                    <div class="col"> Insurance: <span>
-                            <?php echo $phone . "* 5 =" . ($phone * 5); ?> <span> </div>
-                </div>
-                <hr>
-                <div class="row" style="font-weight:bold;">
-                    <div class="col">TOTAL FARE: <span>
-                            <?php
-                            echo ($phone * 50) + $total; ?><span> </div>
+
+            <div class="row" id="reboarding">
+                <div class="col-md">
+                    <h6>1 Adult | 0 children | <?php echo $_SESSION["tire"]; ?> |
+                        Boarding at <?php echo $result['_to']; ?> |<?php echo $result['date']; ?> </h6>
                 </div>
             </div>
         </div>
 
+        <div class="col-md-2 ml-5 mt-3" id="re" style="border:2px solid gray; border-radius:5px;">
+            <div class="row">
+                <div class="col text-danger">
+                    <h6 id="register_h5">FARE SUMMARY</h6>
+                </div>
+            </div>
 
-    </div>
-    <div class="container" id="last">
-
-        <div class="row" id="pass">
-            <h5 style="font-weight:bold;">Passenger Details</h5>
+            <div class="row">
+                <div class="col">
+                    Fare:
+                    
+                    <?php if ($_SESSION["class"] == "ac3") {
+                        echo ($_SESSION['passenger']) . "*" . ($result['ac3price']) . "=" . ($_SESSION['passenger']) * ($result['ac3price']);
+                        $total = ($_SESSION['passenger']) * ($result['ac3price']);
+                    } elseif($_SESSION["class"] =="ac2") {
+                        echo ($_SESSION['passenger']) . "*" . ($result['ac2price']) . "=" . ($_SESSION['passenger']) * ($result['ac2price']);
+                        $total = ($_SESSION['passenger']) * ($result['ac2price']);
+                    } elseif($_SESSION["class"] == "sleeper") {
+                        echo ($_SESSION['passenger']) . "*" . ($result['sprice']) . "=" . ($_SESSION['passenger']) * ($result['sprice']);
+                        $total = ($_SESSION['passenger']) * ($result['sprice']);
+                    } ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"> Tax: <span>
+                        <?php echo $_SESSION['passenger'] . "* 45 =" . ($_SESSION['passenger'] * 45); ?><span></div>
+            </div>
+            <div class="row">
+                <div class="col"> Insurance: <span>
+                        <?php echo $_SESSION['passenger'] . "* 5 =" . ($_SESSION['passenger'] * 5); ?> <span> </div>
+            </div>
+            <hr>
+            <div class="row" style="font-weight:bold;">
+                <div class="col">TOTAL FARE: <span>
+                        <?php
+                        echo ($_SESSION['passenger'] * 50) + $total; ?><span> </div>
+            </div>
         </div>
-        <div class="row" id="name">
-            <h6> 1 <span style="font-weight:bold;"><?php echo $pname; ?>
-                </span> <?php echo $age; ?>yrs | <?php echo $gender; ?> | <?php echo $country; ?> | <?php echo $result['_from']; ?>
-
-        </div>
     </div>
+
 
 </div>
-<div class="container" id="last1">
-    <div class="row" id="pass1">Your ticket will be sent to
-        <h5 style="font-weight:bold;"> <?php echo $phone; ?> <span> |</span><?php echo $email; ?> </h5>
+<div class="container" id="last">
 
+    <div class="row" id="pass">
+        <h4>Passenger Details</h4>
+    </div>
+    <div class="row" id="name">
+        <h6> 1 <span style="font-weight:bold;"><?php echo $_SESSION['pname']; ?>
+            </span> <?php echo $_SESSION['page']; ?>yrs | <?php echo $_SESSION['gender']; ?> | <?php echo $_SESSION['country']; ?>
+            | <?php echo $result['_from']; ?>
+    </div>
+</div>
+
+<div class="container" id="last1">
+    <div class="row">
+        <div class="col py-3">Your ticket will be sent to 
+        <span style="font-weight:bold;padding-left:10px;">  <?php echo $_SESSION['passenger']; ?> 
+    </span> |<span <span style="font-weight:bold;padding-left:5px;"><?php echo $_SESSION['email']; ?></span>
+        </div>
     </div>
 
 
@@ -152,7 +172,7 @@ if (isset($_POST['continue'])) {
             <input type="hidden" name="station" value="<?php echo $station; ?>"></input>
             <input type="hidden" name="scity" value="<?php echo $scity; ?>"></input>
             <input type="hidden" name="country" value="<?php echo $country; ?>"></input>
-            <input type="hidden" name="phone" value="<?php echo $phone; ?>"></input>
+            <input type="hidden" name="phone" value="<?php echo $_SESSION['passenger']; ?>"></input>
             <input type="hidden" name="preference" value="<?php echo $preference; ?>"></input>
 
             <input type="hidden" name="email" value="<?php echo $email; ?>"></input>
@@ -162,4 +182,4 @@ if (isset($_POST['continue'])) {
 
     </div>
 </form>
-</div>
+<?php include('..\inc\footer.php'); ?>

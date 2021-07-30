@@ -1,0 +1,33 @@
+.footer{
+    height: 3vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
+  a{
+      height: 100px;
+      width: 100px;
+      text-align: center;
+      line-height: 100px;
+  }
+  
+   a i{
+       transition: all 0.3s linear;
+   }
+  
+   a:hover i{
+       transform: scale(1.4);
+   }
+  
+   .fa-instagram{
+       color: #e84393;
+   }
+   .fa-youtube{
+       color:#e84118;
+   }
+   .fa-twitter{
+       color: #0097e6;
+   }
+   .fa-facebook{
+       color: #3a0ca6;
+   }

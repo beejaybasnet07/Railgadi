@@ -7,9 +7,6 @@
               font-family: Roboto;
            }
 
-
-           .container {}
-
            #con1 {
               background-color: white;
               border-radius: 10px;
@@ -37,7 +34,7 @@
               margin: 10px 0px 10px 10px;
               color: red;
               border-radius: 5px;
-              padding: 5px 0px 0px 100px;
+              padding: 5px 0px 0px 200px;
            }
 
            #bord {
@@ -48,6 +45,8 @@
               border-radius: 5px;
               padding: 5px 0px 0px 35px;
            }
-
+           #cong{
+            border: 2px solid gray;
+           }
 
            /*top right bottom left*/

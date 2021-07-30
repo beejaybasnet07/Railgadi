@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
     $country = $_POST['country'];
     $station = $_POST['station'];
     $scity = $_POST['scity'];
-    $phone = $_POST['phone'];
+    $_SESSION['passenger'] = $_POST['phone'];
     $email = $_POST['email'];
 
     $query = "Select id from train WHERE tnumber=:tnumber;";
@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
     $query1 = "Select id from passenger WHERE pname=:pname AND phone=:phone AND email=:email;";
     $stmt = $pdo->prepare($query1);
     $stmt->bindParam(':pname', $pname);
-    $stmt->bindParam(':phone', $phone);
+    $stmt->bindParam(':phone', $_SESSION['passenger']);
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     $ti = $stmt->fetch();
@@ -79,7 +79,7 @@ if (isset($_POST['submit'])) {
             echo $a;
             $seatava = $a;
         }
-          for ($i=0;$i<$phone;$i++){
+          for ($i=0;$i<$_SESSION['passenger'];$i++){
               $a=funname();
               $arr[$i]=$a;
         $query3 = "insert into book(tid,pid,class,berth,seat,date) values(:tid ,:pid ,:class, :berth, :seat, :date);";
@@ -177,7 +177,7 @@ if (isset($_POST['submit'])) {
             <div class="row">
                 <div class="col pl-5">
                     <h5>No. of travellers</h5>
-                    <h3> <?php echo $phone;?></h3>
+                    <h3> <?php echo $_SESSION['passenger'];?></h3>
                 </div>
 
 
@@ -238,7 +238,7 @@ if (isset($_POST['submit'])) {
             <div class="row">
                 <div class="col pl-5">
                     <h5> Seat Number</h5>
-                    <h3> <?php for($i=0;$i<$phone;$i++){ echo $arr[$i]." "; }?></h3>
+                    <h3> <?php for($i=0;$i<$_SESSION['passenger'];$i++){ echo $arr[$i]." "; }?></h3>
                 </div>
 
 
@@ -263,3 +263,8 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
 </div>
+
+
+
+
+
