@@ -1,86 +1,322 @@
 <?php
+session_start();
 include('database\dbcon.php');
 include('headfoot\head.php'); ?>
+
+<?php
+
+$query = "SELECT * FROM user WHERE id=:id";
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(':id', $_SESSION['id']);
+$stmt->execute();
+$user = $stmt->fetch();
+
+$query1 = "SELECT * FROM book WHERE uid=:id ";
+$stmt1 = $pdo->prepare($query1);
+$stmt1->bindParam(':id', $_SESSION['id']);
+$stmt1->execute();
+$result = $stmt1->fetchAll(PDO::FETCH_OBJ);
+?>
+
+<?php
+if (isset($_POST['btn'])) {
+    $query = "UPDATE book set flag=1";
+    $stmt = $pdo->prepare($query);
+
+    $stmt->execute();
+}
+
+
+?>
+<?php
+if (isset($_POST['submit'])) {
+
+    $pname = $_POST['name'];
+    $phone = $_POST['phone'];
+    $age = $_POST['age'];
+    $scity = $_POST['city'];
+    $station = $_POST['station'];
+    $pass = $_POST['password'];
+    $gender = $_POST['gender'];
+    $password = md5($pass);
+    if ($password == "") {
+        $query = "UPDATE user SET pname=:name, age=:age, gender=:gender, city=:city, station=:station,
+        phone=:phone WHERE id=:id";
+    } else {
+        $query = "UPDATE user SET pname=:name, age=:age, gender=:gender, city=:city, station=:station,
+        phone=:phone, pass1=:password  WHERE id=:id";
+    }
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':name', $pname);
+    $stmt->bindParam(':age', $age);
+    $stmt->bindParam(':gender', $gender);
+    $stmt->bindParam(':city', $scity);
+    $stmt->bindParam(':station', $station);
+
+    $stmt->bindParam(':phone', $phone);
+    $stmt->bindParam(':id', $_SESSION['id']);
+    if ($password != "") {
+        $stmt->bindParam(':password', $password);
+    }
+
+    $stmt->execute();
+    echo "<script>alert('Updated Successfully')</script>";
+    echo "<script>window.location.href ='../Userprofile/userprofile.php'</script>";
+}
+
+
+
+
+?>
+
 <body>
-	
-	<div class="container rounded bg-white mt-5 mb-5">
-           <div class="row">
-        <div class="col border-right">
-            <div class=" align-items-center text-center">
-                <img class="rounded-circle mt-5" src="https://images.creativemarket.com/0.1.0/ps/5161410/1820/1213/m1/fpnw/wm1/vsqkokzhqi4n9sc3egd5rsrwpgkzalgn3avvrlyq4wxexeqmj1kzhj7wv5ft5hag-.jpg?1538906191&s=49c35ea48818c8cc21efce331f008716" height="200px" width="300px"><h3>
-                	<span class="font-weight-bold">Railgadi</span></h3> <h4><span class="text-black-50">beejaybasnet01@gmail.com</span></h4><span> </span>
-            </div>
-        </div>
-    </div>
-           <div class="row">
-        <div class="col-md-4">
-            <div class="p-3 py-5">
-                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Settings</h4>
-                </div>
-                
-                <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">PhoneNumber</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
-                    <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="enter address" value=""></div>
-                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
-                    <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
-                    <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
-                </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Update Profile</button></div>
-            </div>
-        </div>
-        <div class="col-md-8 border-left">
-            <div class="p-3 py-5">
-            	<div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-center">Booking Details</h4>
-                </div>
 
-            	<table class="table table-striped">
-  <thead>
-       <tr class="bg-dark text-white">
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-      <th scope="col"> Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td><button class="btn btn-primary profile-button" type="button">Cancle</button></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-       <td><button class="btn btn-primary profile-button" type="button">Cancle</button></td>
 
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-            <td><button class="btn btn-primary profile-button" type="button">Cancle</button></td>
+    <div class="container rounded  mt-5 mb-5" id="blur">
+        <nav class="navbar navbar-light bg-white">
+            <a class="navbar-brand" href="..\index.php">
+                <img src="..\images\logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
+                <span style="color:skyblue;"> Railgadi</span>
+            </a>
+            <div class=" text-center float-right"><button class="btn btn-primary profile-button" onclick="toggler()" type="button">Update Profile</button></div>
 
-    </tr>
-  </tbody>
-</table>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-5  border-right">
+                <div class="card  mt-3 bg-primary">
+                    
+                    <div class="card-body">
+                    </div>
+                </div>
+                    <div class=" align-items-center text-center">
+                        <i style="color:#428df5;padding-left:20px; margin-top:50px;" class="fas fa-user-circle fa-5x"></i>
+                        <h4><span class="text-black-50 font-weight-bold"><?php echo $user['pname']; ?></span></h4><span> </span>
+                    </div>
+                    <div class="card  mt-5 mb-3 bg-primary">
+                    
+                    <div class="card-body">
+                    </div>
+                </div>
                
+
+
+            </div>
+            <div class="col-md-6  bg-warning ml-3" style="border-radius: 10px; ">
+                <div class="py-4 ">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right text-white">Profile Details</h4>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6"><label class="labels">PhoneNumber <h3>
+                                    <span class="font-weight-bold"><?php echo $user['phone']; ?></span>
+                                </h3></label></div>
+                        <div class="col-md-6"><label class="labels">Address</label>
+                            <h3>
+                                <span class="font-weight-bold"><?php echo $user['city']; ?></span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><label class="labels">Email ID</label>
+                            <h3>
+                                <span class="font-weight-bold"><?php echo $user['email']; ?></span>
+                            </h3>
+                        </div>
+                        <div class="col-md-6"><label class="labels">Near Station</label>
+                            <h3>
+                                <span class="font-weight-bold"><?php echo $user['station']; ?></span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><label class="labels">Gender</label>
+                            <h3>
+                                <span class="font-weight-bold"><?php echo $user['gender']; ?></span>
+                            </h3>
+                        </div>
+                        <div class="col-md-6"><label class="labels">Age</label>
+                            <h3>
+                                <span class="font-weight-bold"><?php echo $user['age']; ?></span>
+                            </h3>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
 
+        <div class="row">
+
+            <div class="col-md">
+                <div class="">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-center">Booking Details</h4>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="bg-dark text-white">
+
+                                <th scope="col">Passenger</th>
+                                <th scope="col">Train</th>
+                                <th scope="col">Class</th>
+                                <th scope="col">Berth</th>
+                                <th scope="col">From</th>
+                                <th scope="col">To</th>
+                                <th scope="col">Time</th>
+                                <th scope="col"> Trevellers No. </th>
+                                <th scope="col">Date</th>
+                                <th scope="col"> Action</th>
+                            </tr>
+                        </thead>
+                        <?php foreach ($result as $row) {
+                            $query3 = "SELECT * FROM passenger WHERE id=:id";
+                            $stmt3 = $pdo->prepare($query3);
+                            $stmt3->bindParam(':id', $row->pid);
+                            $stmt3->execute();
+                            $res = $stmt3->fetch();
+
+                            $query4 = "SELECT * FROM train WHERE id=:id";
+                            $stmt4 = $pdo->prepare($query4);
+                            $stmt4->bindParam(':id', $row->tid);
+                            $stmt4->execute();
+                            $ress = $stmt4->fetch();
+
+
+                        ?>
+                            <tbody>
+                                <tr>
+
+                                    <td><?php echo $res['pname']; ?></td>
+                                    <td><?php echo $ress['name']; ?></td>
+                                    <td><?php echo $row->class; ?></td>
+                                    <td><?php echo $row->berth; ?></td>
+
+                                    <td><?php echo $ress['_from']; ?></td>
+
+                                    <td><?php echo $ress['_to']; ?></td>
+                                    <td><?php echo $ress['time']; ?></td>
+                                    <td><?php echo $res['phone']; ?></td>
+                                    <td><?php echo $row->date; ?></td>
+
+
+                                    <td><button class="btn btn-danger profile-button" type="button" name="btn">Cancle</button></td>
+                                </tr>
+
+                            </tbody><?php } ?>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
     </div>
-    
-</div>
-</div>
-</div>
+
+    <div id="pop">
+        <a href=""><i class="fa fa-times-circle fa-2x" style="margin-left:500px;color:red; " aria-hidden="true"></i></a>
+        <div class="one">
+
+            <h2 style="color:chocolate;">PROFILE SETTING</h2>
+            <h7><label for="inputlg" style="color:blue;">Leave as it is to use existing detail</label></h7><br><br>
+            <div class="second">
+
+
+                <form action="#" method="POST">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input class="form-control input-lg" id="inputlg" type="text" name="name" value="<?php echo $user['pname']; ?>" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="contact">Contact</label>
+                                <input class="form-control input-lg" id="inputlg" type="number" name="phone" value="<?php echo $user['phone']; ?>" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input class="form-control input-lg" id="inputlg" type="text" name="email" value="<?php echo $user['email']; ?>" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Postal Code">City</label>
+                                <input class="form-control input-lg" id="inputlg" type="text" name="city" value="<?php echo $user['city']; ?>" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="address">Station</label>
+                                <input class="form-control input-lg" id="inputlg" type="text" name="station" value=<?php echo $user['station']; ?> required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input class="form-control input-lg" id="inputlg" type="password" name="password" placeholder="password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="form-label-group">
+                                    <input type="number" class="form-control" placeholder="age" name="age" id="age" value=<?php echo $user['age']; ?> required="required" pattern="^[A-Za-z]{2,25}">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="radio"  checked value="male">
+                                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="radio" value="female">
+                                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="radio" value="others">
+                                    <label class="form-check-label" for="inlineRadio3">Others</label>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 ">
+                            <input type="submit" class="btn btn-primary btn-block" name="submit" value="Update"></input>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function toggler() {
+            var blur = document.getElementById('blur');
+            blur.classList.toggle('active');
+            var pop = document.getElementById('pop');
+            pop.classList.toggle('active');
+        }
+    </script>
+
+
 </body>

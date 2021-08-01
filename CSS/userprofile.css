@@ -2,7 +2,7 @@
 
 body {
     font-family: Roboto;
-    background-color:#74cef2;
+    /*background-color:#74cef2;*/
 
     
 }
@@ -11,4 +11,7 @@ body {
 
 .table td, .table th{
    height:  20px;
+}
+#blur{
+    background: #f8f9fa;
 }

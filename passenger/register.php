@@ -1,6 +1,9 @@
 <?php
 include('database\dbcon.php');
 include('headfoot\head.php'); ?>
+<?php
+
+?>
 
 <div class="container" id="register_container">
     <nav class="navbar navbar-light bg-white">
@@ -72,7 +75,8 @@ include('headfoot\head.php'); ?>
                         <div class="form-group">
                             <div class="form-label-group">
 
-                                <input type="text" class="form-control" placeholder="City" name="scity" id="scity" required="required" pattern="[A-Za-z]+">
+                                <input type="text" class="form-control" placeholder="City" 
+                                name="scity" id="scity" required="required" pattern="[A-Za-z]+">
 
                             </div>
                         </div>
@@ -82,7 +86,8 @@ include('headfoot\head.php'); ?>
                         <div class="form-group">
                             <div class="form-label-group">
 
-                                <input type="text" class="form-control" placeholder="station" name="station" id="station" required="required">
+                                <input type="text" class="form-control" placeholder="station" 
+                                name="station" id="station" required="required">
 
                             </div>
                         </div>
@@ -90,13 +95,14 @@ include('headfoot\head.php'); ?>
                     </div>
 
                 </div>
-                <h5>Contact Details</h5>
+                <h5 id="h52">Contact Details</h5>
                 <div class="row" id="row3">
                     <div class="col-md-5 pt-3">
                         <div class="form-group">
                             <div class="form-label-group">
 
-                                <input type="text" class="form-control" placeholder="eg.(98**********) " name="phone" id="phone" required="required" pattern="^[98][0-9]{9}">
+                                <input type="number" class="form-control" placeholder="eg.(98**********)" 
+                                name="phone" id="phone" required="required" pattern="^[98][0-9]{9}">
 
                             </div>
                         </div>
@@ -105,7 +111,8 @@ include('headfoot\head.php'); ?>
                         <div class="form-group">
                             <div class="form-label-group">
 
-                                <input type="email" class="form-control" placeholder="Email" name="email" id="email" required="required" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$">
+                                <input type="email" class="form-control" placeholder="Email" name="email" 
+                                id="email" required="required" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$">
 
                             </div>
                         </div>
@@ -118,7 +125,8 @@ include('headfoot\head.php'); ?>
                         <div class="form-group">
                             <div class="form-label-group">
 
-                                <input type="password" class="form-control" placeholder="Must contain 8 characters" id="password" name="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+                                <input type="password" class="form-control" placeholder="Must contain 8 characters" 
+                                id="password" name="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
                             </div>
 
                         </div>
@@ -127,7 +135,8 @@ include('headfoot\head.php'); ?>
                         <div class="form-group">
 
                             <div class="form-label-group">
-                                <input type="password" class="form-control" placeholder="Retype Password" id="repassword" name="repassword" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" onblur="check()">
+                                <input type="password" class="form-control" placeholder="Retype Password" 
+                                id="repassword" name="repassword"  required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" onblur="check()">
 
                             </div>
                             <label id="lb"></label>
@@ -142,9 +151,6 @@ include('headfoot\head.php'); ?>
                     </div>
                 </div>
             </form>
-
-
-
         </div>
     </div>
 </div>
@@ -172,9 +178,9 @@ include('headfoot\head.php'); ?>
 <?php
 if (isset($_POST['submit'])) {
 
-    $country = "nepal";
+
     $pname = $_POST['pname'];
-    $_SESSION['passenger'] = $_POST['phone'];
+    $phone = $_POST['phone'];
     $age = $_POST['age'];
     $scity = $_POST['scity'];
     $station = $_POST['station'];
@@ -183,37 +189,29 @@ if (isset($_POST['submit'])) {
     $gender = $_POST['gender'];
 
 
-    if ($_POST['repassword'] == $_POST['password']) {
-    }
+    
+    
     $password = md5($pass);
-    echo $country . $_SESSION['passenger'] . $scity . $station . $email . $pass . $gender;
+    echo   $scity . $station . $email . $pass . $gender;
 
-    $query = "INSERT INTO passenger(pname, age, scity, country, station, phone, email ,gender)
-                 VALUES(:pname, :age, :scity, :country, :station, :phone,:email,:gender)";
+    $query = "INSERT INTO user (pname, age, gender, city, station, phone, email, pass1)
+                        VALUES(:pname, :age, :gender, :scity, :station, :phone, :email, :pass)";
     $stmt = $pdo->prepare($query);
     print_r($query);
     echo ($query);
-
     $stmt->bindParam(':pname', $pname);
     $stmt->bindParam(':age', $age);
-    $stmt->bindParam(':scity', $scity);
-    $stmt->bindParam(':country', $country);
-    $stmt->bindParam(':station', $station);
-    $stmt->bindParam(':phone', $_SESSION['passenger']);
-    $stmt->bindParam(':email', $email);
     $stmt->bindParam(':gender', $gender);
-    $stmt->execute();
-    echo ("success");
-
-    $query1 = "INSERT into user(email, pass1) VALUES (:email, :password)";
-    $stmt1 = $pdo->prepare($query1);
-    $stmt1->bindParam(':email', $email);
-    $stmt1->bindParam(':password', $password);
-    $stmt1->execute();
-
-    echo ("sucessful");
-
-    //echo "<script>window.location.href ='../login.php'</script>";
+    $stmt->bindParam(':scity', $scity);
+    $stmt->bindParam(':station', $station);
+    $stmt->bindParam(':phone', $phone);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':pass', $password);
+    $s=$stmt->execute();
+if($s=!null){
+    echo "<script>alert(' SORRY!!  seats are occupied for lower berth. please change preference');
+    window.location.href='../Userprofile/userprofile.php'; </script>";
+}
 
 }
 ?><?php include('..\inc\footer.php'); ?>
