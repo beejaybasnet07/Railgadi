@@ -86,9 +86,10 @@ INSERT INTO `passenger` (`id`, `pname`, `age`, `scity`, `country`, `station`, `p
 CREATE TABLE `train` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `tnumber` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `time` time(2) NOT NULL,
+  `tnumber` varchar(225) NOT NULL,
+  -- `date` date NOT NULL,
+  `arrival_time` time(2) NOT NULL,
+  `departure_time` time(2) NOT NULL,
   `_from` varchar(255) NOT NULL,
   `_to` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -97,10 +98,10 @@ CREATE TABLE `train` (
 -- Dumping data for table `train`
 --
 
-INSERT INTO `train` (`id`, `name`, `tnumber`, `date`, `time`, `_from`, `_to`) VALUES
-(1, 'Sagarmatha Express', 1010, '2021-06-30', '06:00:00.00', 'Biratnagar', 'Kathmandu'),
-(2, 'Rajdhani Express', 2020, '2021-05-16', '12:00:00.00', 'janakpur', 'jainagar'),
-(3, 'Himal Express ', 2021, '2021-06-30', '10:00:00.00', 'Biratnagar', 'Kathmandu');
+-- INSERT INTO `train` (`id`, `name`, `tnumber`, `arrival`, `_from`, `_to`) VALUES
+-- (1, 'Sagarmatha Express', 1010, '06:00:00.00', 'Biratnagar', 'Kathmandu'),
+-- (2, 'Rajdhani Express', 2020, '12:00:00.00', 'janakpur', 'jainagar'),
+-- (3, 'Himal Express ', 2021, '10:00:00.00', 'Biratnagar', 'Kathmandu');
 
 --
 -- Indexes for dumped tables
