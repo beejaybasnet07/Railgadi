@@ -1,4 +1,4 @@
-<title>Add Train::Railgadi</title>
+<title>Add Train :: Railgadi</title>
 <?php 
     require '../database/dbcon.php';
 

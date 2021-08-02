@@ -8,7 +8,7 @@ session_start(); ?>
   <p style="color:#0274b4
 ; padding-top:40px;"><a>Railgadi</a></p></u></span>-->
     <nav class="navbar navbar-light bg-white">
-      <a class="navbar-brand" href="index.php">
+      <a class="navbar-brand" href="/index.php">
         <img src="/images/logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
         <span style="color:skyblue;"> Railgadi</span>
       </a>
