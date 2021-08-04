@@ -10,19 +10,24 @@ $stmt = $pdo->prepare($query);
 $stmt->bindParam(':id', $_SESSION['id']);
 $stmt->execute();
 $user = $stmt->fetch();
+$a=0;
 
-$query1 = "SELECT * FROM book WHERE uid=:id ";
+$query1 = "SELECT * FROM book WHERE uid=:id AND flag=:flag";
 $stmt1 = $pdo->prepare($query1);
 $stmt1->bindParam(':id', $_SESSION['id']);
+$stmt1->bindParam(':flag', $a);
 $stmt1->execute();
 $result = $stmt1->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 <?php
 if (isset($_POST['btn'])) {
-    $query = "UPDATE book set flag=1";
-    $stmt = $pdo->prepare($query);
 
+    $code = $_POST['code'];
+echo"<script>alert($code);</script>";
+    $query = "UPDATE book set flag=1 where code=:code";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':code',$code);
     $stmt->execute();
 }
 
@@ -39,7 +44,7 @@ if (isset($_POST['submit'])) {
     $pass = $_POST['password'];
     $gender = $_POST['gender'];
     $password = md5($pass);
-    if ($password == "") {
+    if ($pass == "") {
         $query = "UPDATE user SET pname=:name, age=:age, gender=:gender, city=:city, station=:station,
         phone=:phone WHERE id=:id";
     } else {
@@ -74,16 +79,15 @@ if (isset($_POST['submit'])) {
 
 
     <div class="container rounded  mt-5 mb-5" id="blur">
-        <nav class="navbar navbar-light bg-white">
+        <nav class="navbar navbar-light " style="background-color:#f8f9fa;">
             <a class="navbar-brand" href="..\index.php">
                 <img src="..\images\logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
-                <span style="color:skyblue;"> Railgadi</span>
+                <span class="font-weight-normal text-info"> Railgadi</span>
             </a>
             <div class=" text-center float-right"><button class="btn btn-primary profile-button" onclick="toggler()" type="button">Update Profile</button></div>
-
         </nav>
 
-        <div class="row">
+        <div class="row pt-5">
             <div class="col-md-5  border-right">
                 <div class="card  mt-3 bg-primary">
                     
@@ -201,9 +205,12 @@ if (isset($_POST['submit'])) {
                                     <td><?php echo $ress['time']; ?></td>
                                     <td><?php echo $res['phone']; ?></td>
                                     <td><?php echo $row->date; ?></td>
-
-
-                                    <td><button class="btn btn-danger profile-button" type="button" name="btn">Cancle</button></td>
+                                    
+                                     <form method="POST" action="#">
+                                     <input type="hidden" name="code" value="<?php echo $row->code;?>">
+                                    <td><button class="btn btn-danger profile-button" type="submit" name="btn">
+                                    Cancle</button></td>
+                                     </form>
                                 </tr>
 
                             </tbody><?php } ?>

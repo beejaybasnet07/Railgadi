@@ -11,21 +11,31 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="search">
+  <div class="container" >
+    <div  class="search" style="padding-top: 50px;">
       <form method="POST" action="../Railgadi/Search/search.php">
-        <div class="row">
+        <div class="row" style="padding-bottom: 20px;">
           <div class="col" id="col">
-            <h1 id="h11">Search For Trains</h1>
-            <h6 id="h66">make your journey easier and faster</h6>
-          </div>
+            <h1  id="h11" class="pt-5 font-weight-bold">Search For Trains</h1>
+            <h5 id="h66" class=" pt-2 text-black-50">make your journey easier and faster</h5>
+</div>
         </div>
 
         <div class="form-box">
+          <div class="row">
+            <div class="col-md-3">
           <input type="text" class="search-field location" placeholder="FROM" name="from" required>
+            </div>
+            <div class="col-md-3">
           <input type="text" class="search-field location" placeholder="TO" name="to" required>
+            </div>
+            <div class="col-md-3">
           <input class="search-field date" type="date" name="date" required>
+            </div>
+            <div class="col-md-3 pr-4">
           <button class="search-btn" type="submit" name="search">Search</button>
+            </div>
+          </div>
 
         </div>
       </form>
@@ -35,7 +45,7 @@
   <div class="container bg-warning" id="con">
     <div class="row">
       <div class="col pl-5 pt-3" >
-        <h2 style="color:white; ">Book trains seats in 3 steps</h2>
+        <h2 style="color:white; " class="text-black-50 font-weight-bold" >Book trains seats in 3 steps</h2>
         <p>Railgadi provies easier and faster bookings</p>
       </div>
     </div>

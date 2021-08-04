@@ -15,7 +15,7 @@ include('headfoot\head.php'); ?>
     <div class="row">
 
         <div class="col offset-md-9">
-            <p class="display-5">Already have an Account ?? &nbsp;<a href="../passenger/login.php" class="stretched-link">LOGIN</a>
+            <p class="text-black-50 font-weight-bold">Already have an Account ?? &nbsp;<a href="../passenger/login.php" class="stretched-link">LOGIN</a>
             <p>
         </div>
     </div>
@@ -23,15 +23,15 @@ include('headfoot\head.php'); ?>
     <div class="row">
         <div class="col offset-md-1 pb-2">
             <strong>
-                <h4><u> Register your account now</u></h4>
+                <h4 class="text-black-50 font-weight-bold"><u> Register your account now</u></h4>
             </strong>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md  mb-5 pb-1" id="main">
+    <div class="row" >
+        <div class="col-md  mb-5 pb-1" id="main" style="background: #f8f9fa;">
             <form method="POST" action="" enctype="multipart/form-data">
-                <h5 id="h52">Personal Details</h5>
-                <div class="row" id="row1">
+                <h5 class="text-black-50 font-weight-bold h52">Personal Details</h5>
+                <div class="row" id="row1" style="background-color: #28edd9;">
                     <div class="col-md-5 pt-3">
                         <div class="form-group">
                             <div class="form-label-group">
@@ -69,8 +69,8 @@ include('headfoot\head.php'); ?>
 
 
                 </div>
-                <h5 id="h52"> Address</h5>
-                <div class="row" id="row2">
+                <h5 class="text-black-50 font-weight-bold"> Address</h5>
+                <div class="row" id="row2" style="background-color: #28edd9;">
                     <div class="col-md-5 pt-3">
                         <div class="form-group">
                             <div class="form-label-group">
@@ -95,8 +95,8 @@ include('headfoot\head.php'); ?>
                     </div>
 
                 </div>
-                <h5 id="h52">Contact Details</h5>
-                <div class="row" id="row3">
+                <h5 class="text-black-50 font-weight-bold">Contact Details</h5>
+                <div class="row" id="row3" style="background-color: #28edd9;">
                     <div class="col-md-5 pt-3">
                         <div class="form-group">
                             <div class="form-label-group">
@@ -118,8 +118,8 @@ include('headfoot\head.php'); ?>
                         </div>
                     </div>
                 </div>
-                <h5 id="h52">Password</h5>
-                <div class="row" id="row4">
+                <h5 class="text-black-50 font-weight-bold">Password</h5>
+                <div class="row" id="row4" style="background-color: #28edd9;">
 
                     <div class="col-md-5 pt-3">
                         <div class="form-group">
@@ -209,8 +209,8 @@ if (isset($_POST['submit'])) {
     $stmt->bindParam(':pass', $password);
     $s=$stmt->execute();
 if($s=!null){
-    echo "<script>alert(' SORRY!!  seats are occupied for lower berth. please change preference');
-    window.location.href='../Userprofile/userprofile.php'; </script>";
+    echo "<script>alert(' Congrulations !!! you are now our member.');
+    window.location.href='../passenger/register.php'; </script>";
 }
 
 }

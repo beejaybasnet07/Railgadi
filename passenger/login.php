@@ -1,26 +1,26 @@
 <?php session_start();
 include('database\dbcon.php');
-include('headfoot\head.php'); 
+include('headfoot\head.php');
 ?>
 
-<div class="container" >
-<nav class="navbar navbar-light bg-white">
-      <a class="navbar-brand" href="..\index.php">
-        <img src="images\logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
-        <span style="color:skyblue;"> Railgadi</span>
-      </a>
-    </nav>
-  <div class="row" >
-    <div class="col-lg-5 border-right text-center">
-      <h1 class="heading1">Login</h1>
-      <i style="color:#428df5;padding-top: 100px; padding-left:20px;" class="fas fa-user-circle fa-5x"></i>
-    </div>
-    <hr>
-    <div class="col-lg-7 px-5">
+<div class="container">
+  <nav class="navbar navbar-light bg-white">
+    <a class="navbar-brand" href="..\index.php">
+      <img src="images\logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
+      <span class="font-weight-normal text-info">Railgadi</span>
+    </a>
+  </nav>
+  <div class="row" id="login_row">
 
-      <h2 class="pb-5 pl-3 text-primary">Sign in to your Account </h2>
+    <div class="col-lg-7 offset-md-3 ">
 
-      <form method="POST">
+
+
+      <form method="POST" class="px-5 py-5" style="box-shadow: 0 5px 30px rgba(0, 0, 0, .50);
+      background: #f8f9fa; border-radius:10px;">
+        <h2 class="pb-3  text-black-50 font-weight-bold">Sign in to your Account
+        </h2>
+
         <div class="form-row">
           <div class="col-lg-7">
             <input type="email" name="email" placeholder="Email" class="form-control my-3 p-4" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$">
@@ -39,7 +39,7 @@ include('headfoot\head.php');
           </div>
 
         </div>
-        <p> Don't have an account??<a href="../passenger/register.php"> Register Now</a></p>
+        <p class="text-black-50 font-weight-bold"> Don't have an account??<a href="../passenger/register.php"> Register Now</a></p>
       </form>
     </div>
   </div>
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $email = $_POST['email'];
   $pass = $_POST['pass1'];
   $password = md5($pass);
-
+  echo $password;
   $query = "SELECT * FROM user WHERE email=:email AND pass1=:password";
   $stmt = $pdo->prepare($query);
   $stmt->bindParam(':email', $email);
@@ -64,11 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     window.location.href='../index.php';</script>";
 
     //echo "<script>window.location.href ='index.php'</script>";
-    
+
 
   } else {
     echo '<script>alert("INVALID LOGIN,\nPLEASE TRY AGAIN WITH VALID CREDENTIALS")</script>';
   }
 }
 
-?><?php include('..\inc\footer.php');?>
+?><?php include('..\inc\footer.php'); ?>

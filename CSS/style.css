@@ -24,7 +24,7 @@ text-align: center;
 }
 #h66{
 
-letter-spacing: 2px;
+
 text-align: center;
 color: whitesmoke;
 }
@@ -51,8 +51,10 @@ color: whitesmoke;
     color:white;
     border-radius: 25px;
 }
+
+
 .search-btn:hover{
-    
+    border-radius: 25px;
     cursor:pointer;
 }
 .form-box{

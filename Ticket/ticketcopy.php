@@ -128,14 +128,18 @@ elseif ($preference == "Lower berth") {
                         //echo("this is already assigned."); 
                         goto l1;
                     }
+                    $code=$result['id'].$passid.$_SESSION['id'];
                     if ($count == 0) {
-                        $query3 = "insert into book(tid,pid,class,berth,seat,date) values(:tid ,:pid ,:class, :berth, :seat, :date);";
+                        $query3 = "insert into book(tid,pid,uid,class,berth,seat,code,date) values(:tid ,:pid ,:uid ,:class ,
+                         :berth, :seat, :code, :date);";
                         $stmt = $pdo->prepare($query3);
                         $stmt->bindParam(':tid', $result['id']);
                         $stmt->bindParam(':pid', $passid);
+                        $stmt->bindParam(':uid', $_SESSION['id']);
                         $stmt->bindParam(':class', $_SESSION['class']);
                         $stmt->bindParam(':berth', $preference);
                         $stmt->bindParam(':seat', $ab);
+                        $stmt->bindParam(':code', $code);
                         $stmt->bindParam(':date', $result['date']);
                         $stmt->execute();
                         echo "<script>alert('passenger booking successfully.')</script>";
@@ -159,14 +163,14 @@ elseif ($preference == "Lower berth") {
 
 
 
-<div class="container">
-    <nav class="navbar navbar-light bg-white">
+<div class="container" style="background-color:#f8f9fa;">
+    <nav class="navbar navbar-light " style="background-color:#f8f9fa;">
         <a class="navbar-brand" href="..\index.php">
             <img src="..\images\logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
             <span style="color:skyblue;"> Railgadi</span>
         </a>
     </nav>
-    <div class="container" style="border: 2px solid whitesmoke;margin-bottom:10px;border-radius:10px;">
+    <div class="container" style="border:2px solid whitesmoke;margin-bottom:10px;border-radius:10px; background-color:white;">
 
         <div class="row">
             <div class="col" >
@@ -179,8 +183,21 @@ elseif ($preference == "Lower berth") {
 
 
     </div>
-    <div class="container" style="border: 2px solid whitesmoke;background-color:#fafa16;padding-top:20px;border-radius:5px;">
-        <div class="row">
+    <div class="container" style="border: 2px solid whitesmoke;background-color:#e6e1e1;padding-top:20px;border-radius:5px;">
+    <form method="POST" action="..\mail\index.php">
+    <input type="text" name="receiver_email" value="<?php echo $email;?>"/>
+    <input type="text" name="receiver_pname" value="<?php echo $pname;?>"/> 
+    <input type="text" name="receiver_pre" value="<?php echo $preference;?>">
+    <input type="text" name="receiver_tname" value="<?php echo $result['name'];?>">
+    <input type="text" name="receiver_tdate" value="<?php echo $result['date'];?>">
+    <input type="text" name="receiver_time" value="<?php echo $result['time'];?>">
+    <div class=" text-center float-right">
+        <button class="btn btn-info profile-button" name="send" type="submit">SendToMail</button>
+    </div>
+    </form>
+           
+    <div class="row">
+        
             <div class="col-md-4 offset-2" id="con1">
                 <div class="row">
                     <div class="col-md offset-1">

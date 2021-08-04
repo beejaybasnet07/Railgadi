@@ -135,3 +135,15 @@ $_from = "BIRATNAGAR";
         </div>
     </div>
 </div>
+color: #606770;
+    font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 24px;
+    margin-bottom: 12px;
+
+
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 32px
+    color: #1c1e21;

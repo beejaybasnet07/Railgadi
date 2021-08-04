@@ -3,7 +3,11 @@ session_start();
 include('database\dbcon.php');
 include('inc\header.php'); 
 ?>
-
+<?php if(!isset($_SESSION['id'])){
+    
+    echo "<script>alert(' SORRY!!  Please make sure you are either LOGGED IN or REGISTERED to connect to our services');
+    window.location.href='../Search/search.php';</script>";
+} ?>
 <script>
     $(function() {
         var count = 1;

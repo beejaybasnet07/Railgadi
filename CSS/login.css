@@ -8,7 +8,7 @@
 	color: white;
 	border-radius: 4px;
 	font-weight: bold;
-
+	border:1px solid skyblue;
 }
 .loginbtn:hover{
 	background-color: white;
@@ -17,6 +17,9 @@
 
 
 }
+#login_row{ box-shadow: 0 5px 30px rgba(0, 0, 0, .50);
+	background: #f8f9fa;}
+
 .heading1{
 font-family:Oswald;
 font-size:50px;
