@@ -2,9 +2,8 @@ body{
 	font-family:roboto;}
 
 .register_container
-{   margin-top: 70px;
-  
-  
+{   
+	margin-top: 70px;
     box-sizing: border-box;
     box-shadow: 0 5px 30px rgba(0, 0, 0, .10);
     color: #6b6b6a;
@@ -29,7 +28,7 @@ body{
 } 
 .form-group{padding-left: 20px;}
 #h52{
-	padding:5px 0px 5px 65px;
+	padding:5px 0px 5px 100px;
 
                   }
 

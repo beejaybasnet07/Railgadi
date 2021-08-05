@@ -5,15 +5,15 @@ include('headfoot\head.php'); ?>
 
 ?>
 
-<div class="container" id="register_container">
-    <nav class="navbar navbar-light bg-white">
-        <a class="navbar-brand" href="..\index.php">
-            <img src="images\logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
-            <span style="color:skyblue;"> Railgadi</span>
-        </a>
-    </nav>
+            
+<div class="container mt-2" id="register_container" style="background-color:#f8f9fa;" >
+<nav class="navbar navbar-light " style="background-color:#f8f9fa;">
+    <a class="navbar-brand" href="..\index.php">
+      <img src="images\logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
+      <span class="font-weight-normal text-info">Railgadi</span>
+    </a>
+  </nav>
     <div class="row">
-
         <div class="col offset-md-9">
             <p class="text-black-50 font-weight-bold">Already have an Account ?? &nbsp;<a href="../passenger/login.php" class="stretched-link">LOGIN</a>
             <p>
@@ -28,7 +28,7 @@ include('headfoot\head.php'); ?>
         </div>
     </div>
     <div class="row" >
-        <div class="col-md  mb-5 pb-1" id="main" style="background: #f8f9fa;">
+        <div class="col-md  mb-5 pb-1" id="main" style="background:white;">
             <form method="POST" action="" enctype="multipart/form-data">
                 <h5 class="text-black-50 font-weight-bold h52">Personal Details</h5>
                 <div class="row" id="row1" style="background-color: #28edd9;">

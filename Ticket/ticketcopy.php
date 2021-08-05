@@ -130,8 +130,10 @@ elseif ($preference == "Lower berth") {
                     }
                     $code=$result['id'].$passid.$_SESSION['id'];
                     if ($count == 0) {
-                        $query3 = "insert into book(tid,pid,uid,class,berth,seat,code,date) values(:tid ,:pid ,:uid ,:class ,
-                         :berth, :seat, :code, :date);";
+                        $flag=0;
+                        $query3 = "insert into book(tid,pid,uid,class,berth,seat,code,date,flag) 
+                        values(:tid ,:pid ,:uid ,:class ,
+                         :berth, :seat, :code, :date, :flag)";
                         $stmt = $pdo->prepare($query3);
                         $stmt->bindParam(':tid', $result['id']);
                         $stmt->bindParam(':pid', $passid);
@@ -141,6 +143,7 @@ elseif ($preference == "Lower berth") {
                         $stmt->bindParam(':seat', $ab);
                         $stmt->bindParam(':code', $code);
                         $stmt->bindParam(':date', $result['date']);
+                        $stmt->bindParam(':flag', $flag);
                         $stmt->execute();
                         echo "<script>alert('passenger booking successfully.')</script>";
                     }
@@ -184,20 +187,23 @@ elseif ($preference == "Lower berth") {
 
     </div>
     <div class="container" style="border: 2px solid whitesmoke;background-color:#e6e1e1;padding-top:20px;border-radius:5px;">
+    <div class=" text-center float-left">
+        <button class="btn btn-info profile-button" name="print" type="submit">Print</button>
+    </div>
     <form method="POST" action="..\mail\index.php">
-    <input type="text" name="receiver_email" value="<?php echo $email;?>"/>
-    <input type="text" name="receiver_pname" value="<?php echo $pname;?>"/> 
-    <input type="text" name="receiver_pre" value="<?php echo $preference;?>">
-    <input type="text" name="receiver_tname" value="<?php echo $result['name'];?>">
-    <input type="text" name="receiver_tdate" value="<?php echo $result['date'];?>">
-    <input type="text" name="receiver_time" value="<?php echo $result['time'];?>">
+    <input type="hidden" name="receiver_email" value="<?php echo $email;?>"/>
+    <input type="hidden" name="receiver_pname" value="<?php echo $pname;?>"/> 
+    <input type="hidden" name="receiver_pre" value="<?php echo $preference;?>">
+    <input type="hidden" name="receiver_tname" value="<?php echo $result['name'];?>">
+    <input type="hidden" name="receiver_tdate" value="<?php echo $result['date'];?>">
+    <input type="hidden" name="receiver_time" value="<?php echo $result['time'];?>">
+    <input type="hidden" name="code" value="<?php echo $code;?>"/> 
     <div class=" text-center float-right">
         <button class="btn btn-info profile-button" name="send" type="submit">SendToMail</button>
     </div>
     </form>
            
     <div class="row">
-        
             <div class="col-md-4 offset-2" id="con1">
                 <div class="row">
                     <div class="col-md offset-1">

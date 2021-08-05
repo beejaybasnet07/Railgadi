@@ -51,21 +51,21 @@ $result = $stmt->fetch();
 ?>
 
 
-<div class="container" id="resub">
-    <nav class="navbar navbar-light bg-white">
+<div class="container" id="resub" style="background-color:#f8f9fa;">
+    <nav class="navbar navbar-light" style="background-color:#f8f9fa;">
         <a class="navbar-brand" href="..\index.php">
             <img src="..\images\logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
-            <span style="color:skyblue;"> Railgadi</span>
+            <span class="font-weight-normal text-info">Railgadi</span>
         </a>
     </nav>
     <div class="row" id="inside">
-        <div class="col-9 mt-3" id="up">
+        <div class="col-9 mt-3 ml-3" id="up">
             <div class="row" id="rename">
                 <div class="col text-warning">
                     <h2><?php echo $result['name']; ?></h2>
                 </div>
             </div>
-            <div class="row mt-3" id="resource">
+            <div class="row mt-3 mb-2" id="resource" style="background-color: white;">
                 <div class="col-md-3">
                     <h4>6:00 | <?php echo $result['_from']; ?></h4>
                     <h5><?php echo $result['date']; ?></h5>
@@ -101,14 +101,14 @@ $result = $stmt->fetch();
             <div class="row">
                 <div class="col">
                     Fare:
-                    
+
                     <?php if ($_SESSION["class"] == "ac3") {
                         echo ($_SESSION['passenger']) . "*" . ($result['ac3price']) . "=" . ($_SESSION['passenger']) * ($result['ac3price']);
                         $total = ($_SESSION['passenger']) * ($result['ac3price']);
-                    } elseif($_SESSION["class"] =="ac2") {
+                    } elseif ($_SESSION["class"] == "ac2") {
                         echo ($_SESSION['passenger']) . "*" . ($result['ac2price']) . "=" . ($_SESSION['passenger']) * ($result['ac2price']);
                         $total = ($_SESSION['passenger']) * ($result['ac2price']);
-                    } elseif($_SESSION["class"] == "sleeper") {
+                    } elseif ($_SESSION["class"] == "sleeper") {
                         echo ($_SESSION['passenger']) . "*" . ($result['sprice']) . "=" . ($_SESSION['passenger']) * ($result['sprice']);
                         $total = ($_SESSION['passenger']) * ($result['sprice']);
                     } ?>
@@ -132,54 +132,55 @@ $result = $stmt->fetch();
     </div>
 
 
-</div>
-<div class="container" id="last">
 
-    <div class="row" id="pass">
-        <h4>Passenger Details</h4>
-    </div>
-    <div class="row" id="name">
-        <h6> 1 <span style="font-weight:bold;"><?php echo $_SESSION['pname']; ?>
-            </span> <?php echo $_SESSION['page']; ?>yrs | <?php echo $_SESSION['gender']; ?> | <?php echo $_SESSION['country']; ?>
-            | <?php echo $result['_from']; ?>
-    </div>
-</div>
+    <div class="container" id="last" style="background-color: white;">
 
-<div class="container" id="last1">
-    <div class="row">
-        <div class="col py-3">Your ticket will be sent to 
-        <span style="font-weight:bold;padding-left:10px;">  <?php echo $_SESSION['passenger']; ?> 
-    </span> |<span <span style="font-weight:bold;padding-left:5px;"><?php echo $_SESSION['email']; ?></span>
+        <div class="row" id="pass">
+            <h4>Passenger Details</h4>
+        </div>
+        <div class="row" id="name">
+            <h6> 1 <span style="font-weight:bold;"><?php echo $_SESSION['pname']; ?>
+                </span> <?php echo $_SESSION['page']; ?>yrs | <?php echo $_SESSION['gender']; ?> | <?php echo $_SESSION['country']; ?>
+                | <?php echo $result['_from']; ?>
         </div>
     </div>
 
+    <div class="container" id="last1" style="background-color: white;">
+        <div class="row">
+            <div class="col py-3">Your ticket will be sent to
+                <span style="font-weight:bold;padding-left:10px;"> <?php echo $_SESSION['passenger']; ?>
+                </span> |<span <span style="font-weight:bold;padding-left:5px;"><?php echo $_SESSION['email']; ?></span>
+            </div>
+        </div>
 
-</div>
-<form action="../Ticket/ticketcopy.php" method="POST">
-    <div class="row">
 
-        <div class="col-2 offset-md-1">
-            <a href="../Book/book.php"><button type="button" class="btn btn-primary">Back</button></a>
-            <!--  <input type="hidden" name="tname" value="<?php echo $tname; ?>"></input>
+    </div>
+    <form action="../Ticket/ticketcopy.php" method="POST">
+        <div class="row">
+            <div class="col-2 offset-md-1">
+                <a href="../Book/book.php"><button type="button" class="btn btn-primary">Back</button></a>
+                <!--  <input type="hidden" name="tname" value="<?php echo $tname; ?>"></input>
             <input type="hidden" name="_to" value="<?php echo $_to; ?>"></input>
             <input type="hidden" name="_from" value="<?php echo $_from; ?>"></input>
             <input type="hidden" name="date" value="<?php echo $date; ?>"></input>
             <input type="hidden" name="tire" value="<?php echo $tire ?>"></input>
             <input type="hidden" name="tnumber" value="<?php echo $tnumber ?>"></input>-->
 
-            <input type="hidden" name="pname" value="<?php echo $pname; ?>"></input>
-            <input type="hidden" name="page" value="<?php echo $age; ?>"></input>
-            <input type="hidden" name="station" value="<?php echo $station; ?>"></input>
-            <input type="hidden" name="scity" value="<?php echo $scity; ?>"></input>
-            <input type="hidden" name="country" value="<?php echo $country; ?>"></input>
-            <input type="hidden" name="phone" value="<?php echo $_SESSION['passenger']; ?>"></input>
-            <input type="hidden" name="preference" value="<?php echo $preference; ?>"></input>
+                <input type="hidden" name="pname" value="<?php echo $pname; ?>"></input>
+                <input type="hidden" name="page" value="<?php echo $age; ?>"></input>
+                <input type="hidden" name="station" value="<?php echo $station; ?>"></input>
+                <input type="hidden" name="scity" value="<?php echo $scity; ?>"></input>
+                <input type="hidden" name="country" value="<?php echo $country; ?>"></input>
+                <input type="hidden" name="phone" value="<?php echo $_SESSION['passenger']; ?>"></input>
+                <input type="hidden" name="preference" value="<?php echo $preference; ?>"></input>
 
-            <input type="hidden" name="email" value="<?php echo $email; ?>"></input>
-            <input type="hidden" name="gender" value="<?php echo $gender; ?>"></input>
-            <button type="submit" name="submit" class="btn btn-success">Submit</button>
+                <input type="hidden" name="email" value="<?php echo $email; ?>"></input>
+                <input type="hidden" name="gender" value="<?php echo $gender; ?>"></input>
+                <button type="submit" name="submit" class="btn btn-success">Submit</button>
+            </div>
+
         </div>
 
-    </div>
-</form>
+    </form>
+</div>
 <?php include('..\inc\footer.php'); ?>

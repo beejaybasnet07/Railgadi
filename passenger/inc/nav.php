@@ -1,8 +1,8 @@
 <?php
 session_start(); ?>
 
-<div class="container" style="margin-bottom:10px;">
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+<div class="container" style="margin-bottom:10px;background-color:#f8f9fa;">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#f8f9fa;">
     <!--
 <img src="images\logore.png" height="100px" widht="100px"><span><u>
   <p style="color:#0274b4

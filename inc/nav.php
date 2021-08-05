@@ -5,7 +5,7 @@ session_start(); ?>
     <nav class="navbar navbar-light bg-white">
       <a class="navbar-brand" href="..\Railgadi\index.php">
         <img src="images\logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
-        <span style="color:skyblue;"> Railgadi</span>
+        <span class="font-weight-normal text-info">Railgadi</span>
       </a>
     </nav>
     <div class="collapse navbar-collapse" id="navbar">

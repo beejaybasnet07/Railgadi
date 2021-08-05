@@ -147,3 +147,9 @@ color: #606770;
     font-weight: normal;
     line-height: 32px
     color: #1c1e21;
+    
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 32px;
+    width: 500px;
