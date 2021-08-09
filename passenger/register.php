@@ -30,8 +30,8 @@ include('headfoot\head.php'); ?>
     <div class="row" >
         <div class="col-md  mb-5 pb-1" id="main" style="background:white;">
             <form method="POST" action="" enctype="multipart/form-data">
-                <h5 class="text-black-50 font-weight-bold h52">Personal Details</h5>
-                <div class="row" id="row1" style="background-color: #28edd9;">
+                <h5 class="text-black-50 font-weight-bold pl-5 pt-3 my-3">Personal Details</h5>
+                <div class="row" id="row1" style="background-color:rgb(237,234,232,0.4)">
                     <div class="col-md-5 pt-3">
                         <div class="form-group">
                             <div class="form-label-group">
@@ -69,8 +69,8 @@ include('headfoot\head.php'); ?>
 
 
                 </div>
-                <h5 class="text-black-50 font-weight-bold"> Address</h5>
-                <div class="row" id="row2" style="background-color: #28edd9;">
+                <h5 class="text-black-50 font-weight-bold pl-5 my-3"> Address</h5>
+                <div class="row" id="row2" style="background-color:rgb(237,234,232,0.4)">
                     <div class="col-md-5 pt-3">
                         <div class="form-group">
                             <div class="form-label-group">
@@ -95,8 +95,8 @@ include('headfoot\head.php'); ?>
                     </div>
 
                 </div>
-                <h5 class="text-black-50 font-weight-bold">Contact Details</h5>
-                <div class="row" id="row3" style="background-color: #28edd9;">
+                <h5 class="text-black-50 font-weight-bold pl-5 my-3">Contact Details</h5>
+                <div class="row" id="row3" style=" background-color:rgb(237,234,232,0.4)">
                     <div class="col-md-5 pt-3">
                         <div class="form-group">
                             <div class="form-label-group">
@@ -118,8 +118,8 @@ include('headfoot\head.php'); ?>
                         </div>
                     </div>
                 </div>
-                <h5 class="text-black-50 font-weight-bold">Password</h5>
-                <div class="row" id="row4" style="background-color: #28edd9;">
+                <h5 class="text-black-50 font-weight-bold pl-5 my-3">Password</h5>
+                <div class="row" id="row4" style="background-color:rgb(237,234,232,0.4)">
 
                     <div class="col-md-5 pt-3">
                         <div class="form-group">
@@ -147,7 +147,8 @@ include('headfoot\head.php'); ?>
 
                 <div class="row">
                     <div class="col-md-4 offset-md-1 pt-4 pb-3">
-                        <input type="submit" class="btn btn-success btn-block" id="loginbtn" name="submit" onclick="verify()" value="submit"></input>
+                        <input type="submit" class="btn btn-success btn-block" id="loginbtn" name="submit"
+                         onclick="verify()" value="submit"></input>
                     </div>
                 </div>
             </form>
