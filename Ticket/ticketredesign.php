@@ -8,6 +8,7 @@ $tnumber = 1220;
 $date = 2021 - 5 - 30;
 $_to = "KATHMANDU";
 $_from = "BIRATNAGAR";
+echo"<script> alert('done');</script>";
 ?>
 <div class="container">
 
@@ -134,7 +135,7 @@ $_from = "BIRATNAGAR";
         <h5 style="color: red;"> ** Please be at boarding station ahead of depature time.</h5>
         </div>
     </div>
-</div>
+</div><!--
 color: #606770;
     font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
     font-size: 15px;
@@ -153,3 +154,35 @@ color: #606770;
     font-weight: normal;
     line-height: 32px;
     width: 500px;
+    include('smtp/PHPMailerAutoload.php');
+echo"<script> alert('button clicked');</script>";
+$html="Dear,\r\n".$pname."\r\n Code:".$code."\r\n".$sfrom."\r\nto\r\n".$sto."\r\nClass:\r\n".$class."\r\n".$preference.
+$tdate."\r\n".$time;	
+smtp_mailer($email,'subject',$html);
+function smtp_mailer($to,$subject, $msg){
+	$mail = new PHPMailer(); 
+	$mail->SMTPDebug  = 3;
+	$mail->IsSMTP(); 
+	$mail->SMTPAuth = true; 
+	$mail->SMTPSecure = 'tls'; 
+	$mail->Host = "smtp.gmail.com";
+	$mail->Port = 587; 
+	$mail->IsHTML(true);
+	$mail->CharSet = 'UTF-8';
+	$mail->Username = "beejay.basnet234@gmail.com";
+	$mail->Password = "s@animabank0455";
+	$mail->SetFrom("beejay.basnet234@gmail.com");
+	$mail->Subject = $subject;
+	$mail->Body =$msg;
+	$mail->AddAddress($to);
+	$mail->SMTPOptions=array('ssl'=>array(
+		'verify_peer'=>false,
+		'verify_peer_name'=>false,
+		'allow_self_signed'=>false
+	));
+	if(!$mail->Send()){
+		 echo $mail->ErrorInfo;
+	}else{
+		echo 1;
+	}
+}

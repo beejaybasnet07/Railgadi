@@ -45,8 +45,8 @@
   <div class="container bg-warning" id="con">
     <div class="row">
       <div class="col pl-5 pt-3" >
-        <h2 style="color:white; " class="text-black-50 font-weight-bold" >Book trains seats in 3 steps</h2>
-        <p>Railgadi provies easier and faster bookings</p>
+        <h2 class="book">Book trains seats in 3 steps</h2>
+        <p class="bookp">Railgadi provies easier and faster bookings</p>
       </div>
     </div>
     <div class="card-columns mt-2 pb-2">

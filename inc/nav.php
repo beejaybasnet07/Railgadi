@@ -2,7 +2,7 @@
 session_start(); ?>
 <div class="container" style="margin-bottom:10px;">
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <nav class="navbar navbar-light bg-white">
+    <nav class="navbar navbar-light bg-white text-black">
       <a class="navbar-brand" href="..\Railgadi\index.php">
         <img src="images\logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
         <span class="font-weight-normal text-info">Railgadi</span>
@@ -11,7 +11,7 @@ session_start(); ?>
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="..Railgadi/index.php">Home</a>
+          <a class="nav-link" href="/Railgadi/index.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="passenger/register.php">Sign up</a>

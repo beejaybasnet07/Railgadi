@@ -187,22 +187,31 @@ elseif ($preference == "Lower berth") {
 
     </div>
     <div class="container" style="border: 2px solid whitesmoke;background-color:#e6e1e1;padding-top:20px;border-radius:5px;">
+    <div class="row">
+    <div class="col pl-2">
+
     <div class=" text-center float-left">
         <button class="btn btn-info profile-button" name="print" type="submit">Print</button>
     </div>
-    <form method="POST" action="..\mail\index.php">
-    <input type="hidden" name="receiver_email" value="<?php echo $email;?>"/>
-    <input type="hidden" name="receiver_pname" value="<?php echo $pname;?>"/> 
-    <input type="hidden" name="receiver_pre" value="<?php echo $preference;?>">
-    <input type="hidden" name="receiver_tname" value="<?php echo $result['name'];?>">
-    <input type="hidden" name="receiver_tdate" value="<?php echo $result['date'];?>">
-    <input type="hidden" name="receiver_time" value="<?php echo $result['time'];?>">
-    <input type="hidden" name="code" value="<?php echo $code;?>"/> 
+    </div>
+    <div class="col offset-5">
+    <form  method="POST" action="">
+    <input type="hidden" name="receiver_email" id="receiver_email" value="<?php echo $email;?>"/>
+    <input type="hidden" name="receiver_pname" id="receiver_pname" value="<?php echo $pname;?>"/> 
+    <input type="hidden" name="receiver_pre"   id="receiver_pre" value="<?php echo $preference;?>">
+    <input type="hidden" name="receiver_tname" id="receiver_tname" value="<?php echo $result['name'];?>">
+    <input type="hidden" name="receiver_tdate" id="receiver_tdate" value="<?php echo $result['date'];?>">
+    <input type="hidden" name="receiver_time"  id="receiver_time" value="<?php echo $result['time'];?>">
+    <input type="hidden" name="code"            id="s_to" value="<?php echo $_SESSION['s_to'];?>"/> 
+    <input type="hidden" name="code"            id="code" value="<?php echo $code;?>"/> 
+    <input type="hidden" name="code"            id="s_from" value="<?php echo $_SESSION['s_from'];?>"/> 
+    <input type="hidden" name="code"            id="class" value="<?php echo $_SESSION['class'];?>"/> 
     <div class=" text-center float-right">
-        <button class="btn btn-info profile-button" name="send" type="submit">SendToMail</button>
+        <button class="btn btn-info profile-button" type="submit" name="send"  id="send">SendToMail</button>
     </div>
     </form>
-           
+    </div>
+    </div> 
     <div class="row">
             <div class="col-md-4 offset-2" id="con1">
                 <div class="row">
@@ -310,3 +319,43 @@ elseif ($preference == "Lower berth") {
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $("#send").on("click",function(e){
+     alert("checked");
+        e.preventDefault();
+      var name=$('#receiver_pname').val();
+      var email=$('#receiver_email').val();
+      var train=$('#receiver_tname').val();
+      var date=$('#receiver_tdate').val();
+      var pre=$('#receiver_pre').val();
+      var clas=$('#class').val();
+      var time=$('#receiver_time').val();
+      var sto=$('#s_to').val();
+      var sfrom=$('#s_from').val();
+      var code=$('#code').val();
+       alert(name);
+        $.ajax({
+        url: "mail/index.php",
+        type: "POST",
+        data: {username:name,useremail:email,usertrain:train,userdate:date,userpre:pre,userclass:clas,userto:sto,userfrom:sfrom,
+        usertime:time,code:code},
+        success : function(data){
+          
+              if(data=="1"){
+                  alert(" sorry !! mail not delevered.'\r\n'\check your EmailId and try again.'\n'Thank you.");
+
+              }
+              else{
+                  alert("mail delevired sucessfully.Thank you.");
+              }
+
+        }
+    });
+});
+});
+</script>
+</script>

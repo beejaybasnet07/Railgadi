@@ -36,7 +36,7 @@ body{
 	border:none;
 	outline: none;
 	height: 50px;
-	background-color:#a4a8a3;
+	background-color:rgba(15, 18, 247, 0.5);
 	color: white;
 	border-radius: 10px;
 	font-weight: bold;

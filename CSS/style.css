@@ -2,7 +2,7 @@
 body{
     margin: 0;
     padding: 0;
-    font-family:Roboto;
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
 }
 .search{
     height:70vh;
@@ -78,3 +78,17 @@ color: whitesmoke;
 #con{ background-color: #d3dbe5;
 margin-top: 10px;}
 
+#book{
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 32px;
+    color: #1c1e21;
+}
+#bookp{
+    font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 24px;
+    margin-bottom: 12px;
+    color: #606770;
+}

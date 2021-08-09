@@ -131,7 +131,7 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
                     <hr size="50">
                     <?php
                     $class = "ac3";
-                    $query1 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class";
+                    $query1 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class AND flag=0";
                     $stmt = $pdo->prepare($query1);
                     $stmt->bindParam(':tnumber', $a);
                     $stmt->bindParam(':date',$_SESSION['s_date']  );
@@ -159,7 +159,7 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
                     <hr size="50">
                     <?php
                     $class = "ac2";
-                    $query1 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class";
+                    $query1 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class AND flag=0";
                     $stmt = $pdo->prepare($query1);
                     $stmt->bindParam(':tnumber', $a);
                     $stmt->bindParam(':date', $_SESSION['s_date'] );
@@ -187,7 +187,7 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
                     <hr size="50">
                     <?php
                     $class = "sleeper";
-                    $query1 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class";
+                    $query1 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class and flag=0";
                     $stmt = $pdo->prepare($query1);
                     $stmt->bindParam(':tnumber', $a);
                     $stmt->bindParam(':date', $_SESSION['s_date'] );

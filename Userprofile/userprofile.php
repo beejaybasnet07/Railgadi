@@ -12,27 +12,23 @@ $stmt->execute();
 $user = $stmt->fetch();
 $a=0;
 
-$query1 = "SELECT * FROM book WHERE uid=:id AND flag=:flag";
+$query1 = "SELECT distinct code,tid,pid,date,class,berth  from book  where uid=:id AND flag=:flag order by date desc limit 0, 3";
 $stmt1 = $pdo->prepare($query1);
 $stmt1->bindParam(':id', $_SESSION['id']);
 $stmt1->bindParam(':flag', $a);
 $stmt1->execute();
 $result = $stmt1->fetchAll(PDO::FETCH_OBJ);
+
+
+
+$query2 = "SELECT distinct code,tid,pid,date,class,berth  from book  where uid=:id AND flag=1 order by date desc limit 0, 2";
+$stmt2 = $pdo->prepare($query2);
+$stmt2->bindParam(':id', $_SESSION['id']);
+$stmt2->execute();
+$result2 = $stmt2->fetchAll(PDO::FETCH_OBJ);
 ?>
 
-<?php
-if (isset($_POST['btn'])) {
 
-    $code = $_POST['code'];
-echo"<script>alert($code);</script>";
-    $query = "UPDATE book set flag=1 where code=:code";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':code',$code);
-    $stmt->execute();
-}
-
-
-?>
 <?php
 if (isset($_POST['submit'])) {
 
@@ -153,14 +149,13 @@ if (isset($_POST['submit'])) {
         </div>
 
         <div class="row">
-
             <div class="col-md">
                 <div class="">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="text-center">Booking Details</h4>
                     </div>
 
-                    <table class="table table-striped">
+                    <table class="table  table-bordered table-striped table-hover">
                         <thead>
                             <tr class="bg-dark text-white">
 
@@ -173,10 +168,11 @@ if (isset($_POST['submit'])) {
                                 <th scope="col">Time</th>
                                 <th scope="col"> Trevellers No. </th>
                                 <th scope="col">Date</th>
-                                <th scope="col"> Action</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <?php foreach ($result as $row) {
+
                             $query3 = "SELECT * FROM passenger WHERE id=:id";
                             $stmt3 = $pdo->prepare($query3);
                             $stmt3->bindParam(':id', $row->pid);
@@ -205,14 +201,75 @@ if (isset($_POST['submit'])) {
                                     <td><?php echo $ress['time']; ?></td>
                                     <td><?php echo $res['phone']; ?></td>
                                     <td><?php echo $row->date; ?></td>
-                                    
-                                     <form method="POST" action="#">
-                                     <input type="hidden" name="code" value="<?php echo $row->code;?>">
-                                    <td><button class="btn btn-danger profile-button" type="submit" name="btn">
-                                    Cancle</button></td>
-                                     </form>
-                                </tr>
+                                    <td>
+                                    <a onclick="return confirm('Are you sure to delete this entry?')" href="cancle.php?id=<?php echo $row->code;?>">
+                                    <button class=" btn btn-danger btn-sm" data-toggle="tool-tip" title="Cancle">Cancle</button></a>
 
+                            </tbody><?php } ?>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md">
+                <div class="">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-center">Booking Cancelled</h4>
+                    </div>
+
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr class="bg-dark text-white">
+
+                                <th scope="col">Passenger</th>
+                                <th scope="col">Train</th>
+                                <th scope="col">Class</th>
+                                <th scope="col">Berth</th>
+                                <th scope="col">From</th>
+                                <th scope="col">To</th>
+                                <th scope="col">Time</th>
+                                <th scope="col"> Trevellers No. </th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <?php foreach ($result2 as $row) {
+
+                            $query3 = "SELECT * FROM passenger WHERE id=:id";
+                            $stmt3 = $pdo->prepare($query3);
+                            $stmt3->bindParam(':id', $row->pid);
+                            $stmt3->execute();
+                            $res = $stmt3->fetch();
+
+                            $query4 = "SELECT * FROM train WHERE id=:id";
+                            $stmt4 = $pdo->prepare($query4);
+                            $stmt4->bindParam(':id', $row->tid);
+                            $stmt4->execute();
+                            $ress = $stmt4->fetch();
+
+
+                        ?>
+                            <tbody>
+                                <tr>
+
+                                    <td><?php echo $res['pname']; ?></td>
+                                    <td><?php echo $ress['name']; ?></td>
+                                    <td><?php echo $row->class; ?></td>
+                                    <td><?php echo $row->berth; ?></td>
+
+                                    <td><?php echo $ress['_from']; ?></td>
+
+                                    <td><?php echo $ress['_to']; ?></td>
+                                    <td><?php echo $ress['time']; ?></td>
+                                    <td><?php echo $res['phone']; ?></td>
+                                    <td><?php echo $row->date; ?></td>
+                                    <td><p class=" font-weight-bold text-info">CANCALLED</p></td>
+                                    
                             </tbody><?php } ?>
                     </table>
 
@@ -323,7 +380,16 @@ if (isset($_POST['submit'])) {
             var pop = document.getElementById('pop');
             pop.classList.toggle('active');
         }
+        function cancle(){
+            var v=$(this).value;
+            alert(v);
+        }
+
+
+
+        
     </script>
+   
 
 
 </body>
