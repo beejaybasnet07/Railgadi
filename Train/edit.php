@@ -5,9 +5,9 @@
 
     $id =  $_GET['id'];
     
-    $sql = 'SELECT * FROM train WHERE id=:id';
+    $sql = "SELECT * FROM train WHERE id = $id";
     $statement = $pdo->prepare($sql);
-    $statement->execute([':id' => $id]);
+    $statement->execute();
 
     $information = $statement->fetch(PDO::FETCH_OBJ);
 

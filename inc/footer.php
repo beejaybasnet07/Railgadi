@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" type="text/css" href="CSS/footer.css">
+<link rel="stylesheet" type="text/css" href="/CSS/footer.css">
 <footer class="page-footer special-color-dark  bg-black pt-4 ">
   <div class="footer">
     <a href="">
