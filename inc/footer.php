@@ -22,15 +22,6 @@
       </a>
       <a href="">
         <i class="fa fa-instagram fa-2x""></i>
-
-<link rel="stylesheet" type="text/css" href="/CSS/footer.css">
-<footer class="page-footer special-color-dark  bg-black pt-4 ">
-  <div class="footer">
-    <a href="">
-      <i class="fa fa-facebook fa-2x"> </i>
-    </a>
-    <a href="">
-      <i class="fa fa-instagram fa-2x""></i>
     </a>
     <a href="">
     <i class=" fa fa-twitter fa-2x""></i>
@@ -42,7 +33,6 @@
 </footer>
 </div>
 <div class=" container" style="background-color:rgb(0,0,0,0.5); height:30px;">
-
           <div class="row offset-4 mt-1 pl-5 pt-1">
             <p>
               <span style="font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;font-size: 15px;font-weight: normal;color: white; ">
