@@ -17,6 +17,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <script src="/datasearch/index.js"></script>
+  <script src="/train/train.js"></script>
  <!--font -->
    
   <link rel="preconnect" href="https://fonts.gstatic.com">
