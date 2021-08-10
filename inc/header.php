@@ -46,10 +46,6 @@ crossorigin="anonymous" />
 <link rel="stylesheet" type="text/css" href="../CSS/search.css">
 <link rel="stylesheet" type="text/css" href="../CSS/about.css">
 <link rel="stylesheet" type="text/css" href="../CSS/book.css">
-<link rel="stylesheet" type= "text/css" href="/CSS/style.css">
-<link rel="stylesheet" type="text/css" href="/CSS/login.css">
-<link rel="stylesheet" type="text/css" href="/CSS/footer.css">
-<link rel="stylesheet" type="text/css" href="/CSS/review.css">
 
 
 </head>
