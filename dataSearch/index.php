@@ -1,6 +1,6 @@
-
+<title>Admin :: Railgadi</title>
 <?php include('../inc/header.php'); ?>
-<?php include('../inc/nav.php'); ?>
+<?php include('../admin/nav.php'); ?>
 
 <?php 
     require '../database/dbcon.php';
@@ -96,8 +96,8 @@
         <div class="card-header">
             <h2>Information</h2>
         </div>
-        <div class="card-body">
-            <table class="table table-bordered">
+    </div>
+    <table class="table table-bordered mt-2">
                 <thead>
                     <tr>
                         <th>S.N</th>
@@ -123,9 +123,7 @@
                             }
                         ?>
                 </tbody>
-            </table>
-        </div>
-    </div>
+    </table>
 </div>
 
 

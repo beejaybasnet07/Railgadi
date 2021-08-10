@@ -1,4 +1,5 @@
-<title>Add Train :: Railgadi</title>
+<title>Add Admin :: Railgadi</title>
+
 <?php 
     require '../database/dbcon.php';
 
@@ -62,7 +63,7 @@
 ?>
 
 <?php include('../inc/header.php'); ?>
-<?php include('../inc/nav.php'); ?>
+<?php include('../admin/nav.php'); ?>
 
 <div class="container">
     <div class="card">
@@ -115,9 +116,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="fa fa-save btn btn-success"> Save</button>
+                    <button type="submit" class="fa fa-save btn btn-success"> Save and Back</button>
                 </div>
             </form>
+            <a href="/train/index.php"><button class="fa fa-ban btn btn-dark"> Cancel</button></a>
         </div>
     </div>
 </div>

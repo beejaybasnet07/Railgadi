@@ -71,12 +71,12 @@
 ?>
 
 <?php include('../inc/header.php'); ?>
-<?php include('../inc/nav.php'); ?>
+<?php include('../admin/nav.php'); ?>
 
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h2>Train</h2>
+            <h2 style="margin-bottom:-30px;">Train <a href="/train/index.php" style="font-size:small"><< Back to Trains</a></h2>
         </div>
         <div class="card-body">
             <form method='post'>
@@ -126,6 +126,7 @@
                     <button type="submit" class="fa fa-save btn btn-success"> Update</button>
                 </div>
             </form>
+            <a href="/train/index.php"><button class="fa fa-ban btn btn-dark"> Cancel</button></a>
         </div>
     </div>
 </div>

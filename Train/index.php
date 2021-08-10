@@ -11,7 +11,7 @@
 ?>
 
 <?php include('../inc/header.php'); ?>
-<?php include('../inc/nav.php'); ?>
+<?php include('../admin/nav.php'); ?>
 
 <div class="container">
     <div class="card">

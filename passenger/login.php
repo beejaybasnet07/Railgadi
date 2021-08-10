@@ -31,7 +31,14 @@ include('headfoot\head.php');
             <button type="submit" class="btn1 mt-3 mb-3 loginbtn">login</button>
           </div>
         </div>
-        <p class="text-black-50 font-weight-bold"> Don't have an account??<a href="../passenger/register.php"> Register Now</a></p>
+        <div class="form-row">
+          <div class="col-6">
+              <p class="text-black-50 font-weight-bold"> Don't have an account??<a href="../passenger/register.php"> Register Now</a></p>
+          </div>
+          <div class="col-6">
+            <p class="text-black-50 font-weight-bold"> Login as admin<a href="/admin/adminlogin.php"> Admin Login</a></p>
+          </div>
+        </div>
       </form>
     </div>
   </div>
