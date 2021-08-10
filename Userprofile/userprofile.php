@@ -1,18 +1,25 @@
 <?php
 session_start();
 include('database\dbcon.php');
-include('headfoot\head.php'); ?>
+include('headfoot\head.php');
+
+date_default_timezone_set('Asia/Kathmandu');
+$datetime = date("Y-m-d H:i:s");
+$date_time = strtotime($datetime);
+
+?>
 
 <?php
+$ab;
 
 $query = "SELECT * FROM user WHERE id=:id";
 $stmt = $pdo->prepare($query);
 $stmt->bindParam(':id', $_SESSION['id']);
 $stmt->execute();
 $user = $stmt->fetch();
-$a=0;
+$a = 0;
 
-$query1 = "SELECT distinct code,tid,pid,date,class,berth  from book  where uid=:id AND flag=:flag order by date desc limit 0, 3";
+$query1 = "SELECT distinct code,tid,pid,date,class,berth,timestamp  from book  where uid=:id AND flag=:flag order by timestamp desc limit 0, 5";
 $stmt1 = $pdo->prepare($query1);
 $stmt1->bindParam(':id', $_SESSION['id']);
 $stmt1->bindParam(':flag', $a);
@@ -21,7 +28,7 @@ $result = $stmt1->fetchAll(PDO::FETCH_OBJ);
 
 
 
-$query2 = "SELECT distinct code,tid,pid,date,class,berth  from book  where uid=:id AND flag=1 order by date desc limit 0, 2";
+$query2 = "SELECT distinct code,tid,pid,date,class,berth  from book  where uid=:id AND flag=1 order by timestamp desc limit 0, 2";
 $stmt2 = $pdo->prepare($query2);
 $stmt2->bindParam(':id', $_SESSION['id']);
 $stmt2->execute();
@@ -86,60 +93,77 @@ if (isset($_POST['submit'])) {
         <div class="row pt-5">
             <div class="col-md-5  border-right">
                 <div class="card  mt-3 bg-primary">
-                    
+
                     <div class="card-body">
                     </div>
                 </div>
-                    <div class=" align-items-center text-center">
-                        <i style="color:#428df5;padding-left:20px; margin-top:50px;" class="fas fa-user-circle fa-5x"></i>
-                        <h4><span class="text-black-50 font-weight-bold"><?php echo $user['pname']; ?></span></h4><span> </span>
-                    </div>
-                    <div class="card  mt-5 mb-3 bg-primary">
-                    
+                <div class=" align-items-center text-center">
+                    <i style="color:#428df5;padding-left:10px; margin-top:50px;" class="fas fa-user-circle fa-5x"></i>
+                    <h4><span class="text-black-50 font-weight-bold"><?php echo $user['pname']; ?></span></h4><span> </span>
+                </div>
+                <div class="card  mt-5 mb-3 bg-primary">
+
                     <div class="card-body">
                     </div>
                 </div>
-               
+
 
 
             </div>
             <div class="col-md-6  bg-warning ml-3" style="border-radius: 10px; ">
                 <div class="py-4 ">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right text-white">Profile Details</h4>
+                        <h4 class="text-right">Profile Details</h4>
                     </div>
 
                     <div class="row mt-3">
-                        <div class="col-md-6"><label class="labels">PhoneNumber <h3>
-                                    <span class="font-weight-bold"><?php echo $user['phone']; ?></span>
-                                </h3></label></div>
+                        <div class="col-md-6">
+                            <label class="labels">
+                                PhoneNumber
+                                <h3>
+                                    <span class="font-weight-bold" id="value"><?php echo $user['phone']; ?></span>
+                                </h3>
+                            </label>
+                        </div>
                         <div class="col-md-6"><label class="labels">Address</label>
                             <h3>
-                                <span class="font-weight-bold"><?php echo $user['city']; ?></span>
+                                <span class="font-weight-bold" id="value"><?php echo $user['city']; ?></span>
                             </h3>
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-6"><label class="labels">Email ID</label>
+                        <div class="col-md-6">
+                            <label class="labels">
+                                Email ID
+                            </label>
                             <h3>
-                                <span class="font-weight-bold"><?php echo $user['email']; ?></span>
+                                <span class="font-weight-bold" id="value"><?php echo $user['email']; ?></span>
                             </h3>
                         </div>
-                        <div class="col-md-6"><label class="labels">Near Station</label>
+                        <div class="col-md-6">
+                            <label class="labels">
+                                Near Station
+                            </label>
                             <h3>
-                                <span class="font-weight-bold"><?php echo $user['station']; ?></span>
+                                <span class="font-weight-bold" id="value"><?php echo $user['station']; ?></span>
                             </h3>
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-6"><label class="labels">Gender</label>
+                        <div class="col-md-6">
+                            <label class="labels">
+                                Gender
+                            </label>
                             <h3>
-                                <span class="font-weight-bold"><?php echo $user['gender']; ?></span>
+                                <span class="font-weight-bold " id="value"><?php echo $user['gender']; ?></span>
                             </h3>
                         </div>
-                        <div class="col-md-6"><label class="labels">Age</label>
+                        <div class="col-md-6">
+                            <label class="labels">
+                                Age
+                            </label>
                             <h3>
-                                <span class="font-weight-bold"><?php echo $user['age']; ?></span>
+                                <span class="font-weight-bold" id="value"><?php echo $user['age']; ?></span>
                             </h3>
                         </div>
                     </div>
@@ -166,8 +190,9 @@ if (isset($_POST['submit'])) {
                                 <th scope="col">From</th>
                                 <th scope="col">To</th>
                                 <th scope="col">Time</th>
-                                <th scope="col"> Trevellers No. </th>
+
                                 <th scope="col">Date</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -199,13 +224,26 @@ if (isset($_POST['submit'])) {
 
                                     <td><?php echo $ress['_to']; ?></td>
                                     <td><?php echo $ress['time']; ?></td>
-                                    <td><?php echo $res['phone']; ?></td>
+
                                     <td><?php echo $row->date; ?></td>
                                     <td>
-                                    <a onclick="return confirm('Are you sure to delete this entry?')" href="cancle.php?id=<?php echo $row->code;?>">
-                                    <button class=" btn btn-danger btn-sm" data-toggle="tool-tip" title="Cancle">Cancle</button></a>
+                                        <p class=" font-weight-bold text-success">BOOKED</p>
+                                    </td>
+                                    <td><?php
+                                        date_default_timezone_set('Asia/Kathmandu');
+                                        $ab = strtotime($row->timestamp);
 
-                            </tbody><?php } ?>
+                                        if ($date_time > $ab) { ?>
+                                            <button class=" btn btn-danger btn-sm" disabled data-toggle="tool-tip" id="cancle" title="Cancle">Cancle</button></a>
+
+
+                                        <?php } else { ?>
+                                            <a onclick="return confirm('Are you sure to delete this entry?')" href="cancle.php?id=<?php echo $row->code; ?>">
+                                                <button class=" btn btn-danger btn-sm" data-toggle="tool-tip" id="cancle" title="Cancle">Cancle</button></a>
+                                        <?php } ?>
+                            </tbody>
+
+                        <?php } ?>
                     </table>
 
                 </div>
@@ -233,8 +271,9 @@ if (isset($_POST['submit'])) {
                                 <th scope="col">From</th>
                                 <th scope="col">To</th>
                                 <th scope="col">Time</th>
-                                <th scope="col"> Trevellers No. </th>
+
                                 <th scope="col">Date</th>
+
                                 <th scope="col">Status</th>
                             </tr>
                         </thead>
@@ -266,10 +305,12 @@ if (isset($_POST['submit'])) {
 
                                     <td><?php echo $ress['_to']; ?></td>
                                     <td><?php echo $ress['time']; ?></td>
-                                    <td><?php echo $res['phone']; ?></td>
+
                                     <td><?php echo $row->date; ?></td>
-                                    <td><p class=" font-weight-bold text-info">CANCALLED</p></td>
-                                    
+                                    <td>
+                                        <p class=" font-weight-bold text-info">CANCALLED</p>
+                                    </td>
+
                             </tbody><?php } ?>
                     </table>
 
@@ -347,7 +388,7 @@ if (isset($_POST['submit'])) {
                             <div class="form-group">
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="radio"  checked value="male">
+                                    <input class="form-check-input" type="radio" name="gender" id="radio" checked value="male">
                                     <label class="form-check-label" for="inlineRadio1">Male</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -372,6 +413,7 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </div>
+    <?php include('..\inc\footer.php');?>
 
     <script type="text/javascript">
         function toggler() {
@@ -380,16 +422,13 @@ if (isset($_POST['submit'])) {
             var pop = document.getElementById('pop');
             pop.classList.toggle('active');
         }
-        function cancle(){
-            var v=$(this).value;
+
+        function cancle() {
+            var v = $(this).value;
             alert(v);
         }
-
-
-
-        
     </script>
-   
+
 
 
 </body>

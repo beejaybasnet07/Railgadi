@@ -12,7 +12,7 @@
  
  <link rel="stylesheet" href="../CSS/search.css">
  <link rel="stylesheet" href="../CSS/register.css">
- 
+ <link rel="stylesheet" href="../CSS/footer.css">
  <link rel="stylesheet" href="../CSS/review.css">
  <link rel="stylesheet" href="../CSS/ticket.css">
 

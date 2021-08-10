@@ -2,6 +2,8 @@
 session_start();
 include('database\dbcon.php');
 include('inc\header.php');
+
+
 ?>
 <?php if (!isset($_SESSION['id'])) {
 
@@ -31,7 +33,6 @@ include('inc\header.php');
 <?php if (isset($_POST['ac2'])) {
 
     $tnumber = $_POST['tnumber'];
-
     $_SESSION["trainid"] = $tnumber;
     $_SESSION["tire"] = "AC 2 Tire (2A) | MEDIUM CLASS";
     $_SESSION["class"] = "ac2";
@@ -59,7 +60,7 @@ $result = $stmt->fetch();
         </a>
     </nav>
     <div class="container mt-5" id="sub" style="background-color:white;">
-        <div class="row" id="name" style="background-color:whitesmoke;">
+        <div class="row text-info border-bottom" id="name" style="background-color:rgb(255,255,225,0.1);">
             <div class="col">
                 
                 <h2><?php echo $result['name']; ?></h2>
@@ -222,4 +223,4 @@ $result = $stmt->fetch();
     </div>
     </form>
 </div>
-<?php include('inc\footer.php'); ?>
+<?php include('..\inc\footer.php'); ?>

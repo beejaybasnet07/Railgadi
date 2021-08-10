@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include('database\dbcon.php');
+include('..\database\dbcon.php');
 include('headfoot\head.php');
 
 ?>
@@ -60,11 +60,12 @@ $result = $stmt->fetch();
     </nav>
     <div class="row" id="inside">
         <div class="col-9 mt-3 ml-3" id="up">
-            <div class="row" id="rename">
-                <div class="col text-warning">
-                    <h2><?php echo $result['name']; ?></h2>
-                </div>
+        <div class="row text-info border-bottom" id="name" style="background-color:rgb(255,255,225,0.1);">
+            <div class="col">
+                
+                <h2><?php echo $result['name']; ?></h2>
             </div>
+        </div>
             <div class="row mt-3 mb-2" id="resource" style="background-color: white;">
                 <div class="col-md-3">
                     <h4>6:00 | <?php echo $result['_from']; ?></h4>
@@ -78,14 +79,37 @@ $result = $stmt->fetch();
                     <h5><?php echo $result['date']; ?></h5>
                 </div>
                 <div class="col-md-3">
-                    <h4>Available-0077</h4>
+                <?php
+                $res = array();
+                $query2 = "Select COUNT(seat) from book where tid=:tnumber AND date=:date AND class=:class";
+                $stmt = $pdo->prepare($query2);
+                $stmt->bindParam(':tnumber', $result['id']);
+                $stmt->bindParam(':date', $result['date']);
+                $stmt->bindParam(':class', $_SESSION['class']);
+                $stmt->execute();
+                $res = $stmt->fetch();
+
+
+
+
+                ?>
+                <h5>Seats<span style="color:red;font-size:bold;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;<?php if ($_SESSION["class"] == "sleeper") {
+                                                    echo (46 - ($res[0]));
+                                                }
+                                                if ($_SESSION["class"] == "ac3") {
+                                                    echo (22 - ($res[0]));
+                                                }
+                                                if ($_SESSION["class"] == "ac2") {
+                                                    echo (32 - ($res[0]));
+                                                }  ?> </span> </h5>
                 </div>
             </div>
 
 
             <div class="row" id="reboarding">
                 <div class="col-md">
-                    <h6>1 Adult | 0 children | <?php echo $_SESSION["tire"]; ?> |
+                    <h6><?php echo $phone;?> | 0 children | <?php echo $_SESSION["tire"]; ?> |
                         Boarding at <?php echo $result['_to']; ?> |<?php echo $result['date']; ?> </h6>
                 </div>
             </div>
