@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<title>Railgadi</title>
 <head>
 
   <?php include('inc\header.php'); ?>
   <?php include('inc\nav.php'); ?>
 
   <link rel="stylesheet" type="text/css" href="CSS/style.css">
-  <title> </title>
 </head>
 
 <body>
