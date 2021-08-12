@@ -67,11 +67,10 @@
                         <label id="lb"></label>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="col-md-6">
                     <button type="submit" class="fa fa-save btn btn-success"> Update</button>
                 </div>
             </form>
-            <a href="/train/index.php"><button class="fa fa-ban btn btn-dark"> Cancel</button></a>
         </div>
     </div>
 </div>

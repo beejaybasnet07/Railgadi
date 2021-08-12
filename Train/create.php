@@ -115,11 +115,10 @@
                         <input type="number" name="sprice" id="sprice" class="form-control" required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="fa fa-save btn btn-success"> Save and Back</button>
+                <div class="col-md-6">
+                    <button type="submit" class="fa fa-save btn btn-success"> Save</button>
                 </div>
             </form>
-            <a href="/train/index.php"><button class="fa fa-ban btn btn-dark"> Cancel</button></a>
         </div>
     </div>
 </div>

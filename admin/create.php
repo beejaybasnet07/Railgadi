@@ -58,7 +58,7 @@
                         <label id="lb"></label>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="col-md-6">
                     <button type="submit" class="fa fa-save btn btn-success"> Save</button>
                 </div>
             </form>

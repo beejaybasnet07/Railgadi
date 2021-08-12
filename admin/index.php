@@ -22,13 +22,13 @@
     </div>
 
     <div class="mt-2" id="horizontal" style="width:100%; height:400px; overflow: scroll;">
-            <table class="table table-striped table-bordered" style="white-space:nowrap;">
-                <thead>
+        <table class="table table-striped table-bordered " style="white-space:nowrap;">
+                <thead class="thead-dark">
                         <tr>
                             <th>S.N</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Actions</th>
+                            <th style="width:10%">Actions</th>
                         </tr>
                 </thead>
                     <tbody>
@@ -45,6 +45,8 @@
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
-            </table>
+        </table>
     </div>
 </div>
+
+<div style="height: 35px;"></div>

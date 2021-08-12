@@ -3,10 +3,9 @@
     require '../database/dbcon.php'; 
     
     $sql = 'SELECT * FROM train';
+
     $statement = $pdo->prepare($sql);
-
     $statement->execute();
-
     $infos = $statement->fetchAll(PDO::FETCH_OBJ);
 ?>
 
@@ -23,7 +22,7 @@
 
     <div class="mt-2" id="horizontal" style="table-layout: auto; width:100%; height:500px; overflow: scroll; ">
             <table id="fixed-headers" class="table table-striped table-bordered" style="white-space:nowrap;">
-                <thead>
+                <thead class="thead-dark">
                         <tr>
                             <th>S.N</th>
                             <th>Name</th>
