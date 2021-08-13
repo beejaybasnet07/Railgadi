@@ -3,6 +3,7 @@ $arr=array();
 function random(){
     return(rand(237,240));
 }
+
 $count=0;
 $n=2;
 include('dbcon.php');
