@@ -1,6 +1,9 @@
 <title>Admin :: Railgadi</title>
-<?php include('../inc/header.php'); ?>
-<?php include('../admin/nav.php'); ?>
+
+<?php  
+    include('../inc/header.php');  
+    include('../admin/nav.php'); 
+?>
 
 <?php 
     require '../database/dbcon.php';
@@ -32,7 +35,7 @@
     }
     
     if(!empty($name)){
-        $sql .= "SELECT b.date, b.code, b.class, b.berth, b.seat, p.pname FROM book as b LEFT JOIN passenger as p ON p.id = b.pid WHERE p.pname = '$name';";
+        $sql .= "SELECT b.date, b.code, b.class, b.berth, b.seat, p.pname FROM book as b LEFT JOIN passenger as p ON p.id = b.pid WHERE p.pname LIKE '%$name%';";
     }   
 
     $statement = $pdo->prepare($sql);
@@ -65,6 +68,12 @@
 </div>
 
 <div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>Information</h2>
+        </div>
+    </div>
+
     <form method="post">
         <div class="row">
             <div class="form-group col-md-2">
@@ -86,14 +95,7 @@
             </div>
         </div>
     </form>
-</div>
-
-<div class="container">
-    <div class="card">
-        <div class="card-header">
-            <h2>Information</h2>
-        </div>
-    </div>
+    
     <div style="height:400px; overflow: scroll;">
         <table class="table table-bordered mt-2">
             <thead class="thead-dark">
@@ -113,12 +115,12 @@
                 <?php foreach($infos as $info): ?>
                     <tr>
                         <td><?= $i++;?></td>
-                        <td><?= $info->date;?></td>
                         <td><?= $info->code;?></td>
+                        <td><?= $info->date;?></td>
+                        <td><?= $info->pname;?></td>
                         <td><?= $info->class;?></td>
                         <td><?= $info->berth;?></td>
                         <td><?= $info->seat;?></td>
-                        <td><?= $info->pname;?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

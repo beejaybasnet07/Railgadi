@@ -6,10 +6,6 @@
 <?php 
     require '../database/dbcon.php';
 
-    $statement = $pdo->prepare("SELECT * FROM user");
-    $statement->execute();
-    $infos = $statement->fetchAll(PDO::FETCH_OBJ);
-
     $name = isset($_POST['name']) ? $_POST['name'] : NULL;
     $age = isset($_POST['age']) ? $_POST['age'] : NULL;
     $contact = isset($_POST['contact']) ? $_POST['contact'] : NULL;
@@ -22,7 +18,7 @@
     }
 
     if(!empty($name)){
-        $sql .= "SELECT pname, age, gender, phone, email FROM user WHERE pname = '$name';";
+        $sql .= "SELECT pname, age, gender, phone, email FROM user WHERE pname LIKE '%$name%';";
     }
     
     if(!empty($age)){
@@ -30,11 +26,11 @@
     }
     
     if(!empty($contact)){
-        $sql .= "SELECT pname, age, gender, phone, email FROM user WHERE phone = '$contact';";
+        $sql .= "SELECT pname, age, gender, phone, email FROM user WHERE phone LIKE '%$contact%';";
     } 
 
     if(!empty($email)){
-        $sql .= "SELECT pname, age, gender, phone, email FROM user WHERE email = '$email';";
+        $sql .= "SELECT pname, age, gender, phone, email FROM user WHERE email LIKE '%$email%';";
     } 
 
     $statement = $pdo->prepare($sql);
@@ -43,39 +39,39 @@
 ?>
 
 <div class="container">
-    <form method="post">
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label for="name">Name</label>
-                <input type="text" name="name" class="form-control">
-            </div>
-            <div class="form-group col-md-2">
-                <label for="age">age</label>
-                <input type="number" name ="age" class="form-control">
-            </div>
-            <div class="form-group col-md-2">
-                <label for="contact">Contact</label>
-                <input type="text" name="contact" class="form-control">
-            </div>
-            <div class="form-group col-md-2">
-                <label for="email">Email</label>
-                <input type="email" name="email" class="form-control">
-            </div>
-            
-            <div class="col-md-3" style="margin-top:34px">
-                <button type ="submit" class="btn btn-info btn-sm" id="filter">Search</button>
-                <button class="btn btn-danger btn-sm" id="clear">Clear</button>
-            </div>
-        </div>
-    </form>
+    
 </div>
 
 <div class="container">
     <div class="card">
         <div class="card-header">
-                <h2>User<a href="/admin/index.php" style="font-size:small"></a></h2>
+                <h2>Users<a href="/admin/index.php" style="font-size:small"></a></h2>
         </div>
-
+        <form method="post">
+            <div class="row">
+                <div class="form-group col-md-2">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="age">Age</label>
+                    <input type="number" name ="age" class="form-control">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="contact">Contact</label>
+                    <input type="text" name="contact" class="form-control">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" class="form-control">
+                </div>
+                
+                <div class="col-md-3" style="margin-top:34px">
+                    <button type ="submit" class="btn btn-info btn-sm" id="filter">Search</button>
+                    <button class="btn btn-danger btn-sm" id="clear">Clear</button>
+                </div>
+            </div>
+        </form>
         <div style="height:400px; overflow: scroll;">
         <table class="table table-bordered mt-2">
             <thead class="thead-dark">

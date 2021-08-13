@@ -1,4 +1,10 @@
 <title>Trains :: Railgadi</title>
+
+<?php 
+    include('../inc/header.php'); 
+    include('../admin/nav.php'); 
+?>
+
 <?php 
     require '../database/dbcon.php'; 
     
@@ -8,9 +14,6 @@
     $statement->execute();
     $infos = $statement->fetchAll(PDO::FETCH_OBJ);
 ?>
-
-<?php include('../inc/header.php'); ?>
-<?php include('../admin/nav.php'); ?>
 
 <div class="container">
     <div class="card">

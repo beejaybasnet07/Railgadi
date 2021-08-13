@@ -1,17 +1,35 @@
 <title>Admin :: Railgadi</title>
+
+<?php 
+    include('../inc/header.php'); 
+    include('../admin/nav.php'); 
+?>
+
 <?php 
     require '../database/dbcon.php'; 
     
-    $sql = 'SELECT * FROM admin';
+    $name = isset($_POST['name']) ? $_POST['name'] : NULL;
+    $email = isset($_POST['email']) ? $_POST['email'] : NULL;
+    $sql = "";
+    
+    if(empty($name) && empty($email)){
+        $sql = "SELECT * FROM admin;";
+    }
+    
+    if(!empty($name)){
+        $sql .= "SELECT * FROM admin WHERE name LIKE '%$name%';";
+    }
+    
+    if(!empty($email)){
+        $sql .= "SELECT * FROM admin WHERE email LIKE '%$email%';";
+    } 
+
     $statement = $pdo->prepare($sql);
-
     $statement->execute();
-
     $infos = $statement->fetchAll(PDO::FETCH_OBJ);
 ?>
 
-<?php include('../inc/header.php'); ?>
-<?php include('../admin/nav.php'); ?>
+
 
 <div class="container">
     <div class="card">
@@ -20,6 +38,23 @@
             <a href="create.php"><button class="fa fa-plus btn btn-primary">Add Admin</button></a>
         </div>
     </div>
+
+    <form method="post">
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label for="name">Name</label>
+                <input type="text" name="name" class="form-control">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="email">Email</label>
+                <input type="text" name ="email" class="form-control">
+            </div>
+            <div class="col-md-3" style="margin-top:34px">
+                <button type ="submit" class="btn btn-info btn-sm" id="filter">Search</button>
+                <button class="btn btn-danger btn-sm" id="clear">Clear</button>
+            </div>
+        </div>
+    </form>
 
     <div class="mt-2" id="horizontal" style="width:100%; height:400px; overflow: scroll;">
         <table class="table table-striped table-bordered " style="white-space:nowrap;">

@@ -1,7 +1,12 @@
 <title>Edit Train :: Railgadi</title>
 
 <?php 
-        require '../database/dbcon.php';
+    include('../inc/header.php'); 
+    include('../admin/nav.php'); 
+?>
+
+<?php 
+    require '../database/dbcon.php';
 
     $id =  $_GET['id'];
     
@@ -36,9 +41,6 @@
         }
     }
 ?>
-
-<?php include('../inc/header.php'); ?>
-<?php include('../admin/nav.php'); ?>
 
 <div class="container">
     <div class="card">

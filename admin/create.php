@@ -1,4 +1,10 @@
 <title>Add Admin :: Railgadi</title>
+
+<?php 
+    include('../inc/header.php');
+    include('../admin/nav.php'); 
+?>
+
 <?php 
     require '../database/dbcon.php';
 
@@ -26,9 +32,6 @@
         }
     }   
 ?>
-
-<?php include('../inc/header.php'); ?>
-<?php include('../admin/nav.php'); ?>
 
 <div class="container">
     <div class="card">
