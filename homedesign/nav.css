@@ -1,79 +1,86 @@
-body{
+body {
     margin: 0;
     padding: 0;
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
 }
-#form-box{
-    background:#d1d9e6;
+
+#form-box {
+    background: #d1d9e6;
     padding: 30px;
-    border:1px solid white;
+    border: 1px solid white;
     border-radius: 10px;
     margin-bottom: 200px;
 }
 
-.search-field{
-    height:50px;
-    padding:10px;
+.search-field {
+    height: 50px;
+    padding: 10px;
     border: none;
     border-radius: 25px;
     outline: none;
 }
-.location{
+
+.location {
     width: 250px;
 }
-.date{
+
+.date {
     width: 250px;
 }
-.search-btn{
+
+.search-btn {
     height: 50px;
     width: 150px;
     font-weight: 38px;
     font-style: bold;
-    background:blue;
+    background: blue;
     border: none;
-    color:white;
+    color: white;
     border-radius: 25px;
 }
-#imgcon{
-     background-image:
-  url('https://c4.wallpaperflare.com/wallpaper/901/438/550/winter-train-vehicle-white-wallpaper-preview.jpg');
-  background-size:cover;
-    background-position:center;
+
+#imgcon {
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/901/438/550/winter-train-vehicle-white-wallpaper-preview.jpg');
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#indexsearch{
-    
+
+#indexsearch {
     text-transform: uppercase;
     color: tomato;
     letter-spacing: 3px;
     text-align: center;
-    }
-    #indexslogon{
-    
-    
+}
+
+#indexslogon {
     text-align: center;
     color: whitesmoke;
-    }
-    
- .card{
-    border:solid 3px white;
+}
+
+.card {
+    border: solid 3px white;
     border-radius: 10px;
-   /* border-top:solid 7px orange;
+    /* border-top:solid 7px orange;
     border-bottom:solid 7px orange;*/
 }
-#con{ background-color: #d3dbe5;
-margin-top: 10px;}
 
-#book{
+#con {
+    background-color: #d3dbe5;
+    margin-top: 10px;
+}
+
+#book {
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
     font-size: 28px;
     font-weight: normal;
     line-height: 32px;
     color: #1c1e21;
 }
-#bookp{
+
+#bookp {
     font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
     font-size: 15px;
     line-height: 24px;

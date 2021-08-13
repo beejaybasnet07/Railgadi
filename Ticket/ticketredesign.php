@@ -1,7 +1,7 @@
 <?php
 
 include('database\dbcon.php');
-include('headfoot\head.php');
+include('..\inc\header.php');
 $tire = "AC 3 Tire (3A) | HIGH CLASS";
 $tname = "Sagarmath Express";
 $tnumber = 1220;

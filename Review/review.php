@@ -2,7 +2,7 @@
 
 session_start();
 include('..\database\dbcon.php');
-include('headfoot\head.php');
+include('..\inc\header.php');
 
 ?>
 

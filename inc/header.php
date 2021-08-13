@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
 
 <!-- bootstrap -->
 
@@ -35,18 +34,17 @@
 integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" 
 crossorigin="anonymous" />
 
-<link rel="stylesheet" type= "text/css" href="../CSS/style.css">
-<link rel="stylesheet" type="text/css" href="../CSS/login.css">
-<link rel="stylesheet" type="text/css" href="../CSS/footer.css">
-<link rel="stylesheet" type="text/css" href="../CSS/login.css">
-<link rel="stylesheet" type="text/css" href="../CSS/register.css">
-<link rel="stylesheet" type="text/css" href="../CSS/search.css">
-<link rel="stylesheet" type="text/css" href="../CSS/about.css">
-<link rel="stylesheet" type="text/css" href="../CSS/book.css">
+<link rel="stylesheet" type="text/css" href="../css/footer.css">
+<link rel="stylesheet" type= "text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/login.css">
+<link rel="stylesheet" type="text/css" href="../css/login.css">
+<link rel="stylesheet" type="text/css" href="../css/register.css">
+<link rel="stylesheet" type="text/css" href="../css/search.css">
+<link rel="stylesheet" type="text/css" href="../css/about.css">
+<link rel="stylesheet" type="text/css" href="../css/book.css">
 
 
 </head>
 
 </html>
-
 

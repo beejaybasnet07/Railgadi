@@ -1,51 +1,53 @@
-#contact_details{
-    font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
-          font-size: 15px;
-          line-height: 24px;
-          margin-bottom: 12px;
-}
-#contact{
-    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
-          font-size: 20px;
-          font-weight: normal;
-          line-height: 32px;
-          color: #1c1e21; padding-left:100px;
-
-}
-#copyright{
-    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;font-size: 15px;font-weight: normal; color: white;
-}
-.footer{
-    height: 3vh;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-  }
-  #fa{
-      height: 40px;
-      width: 50px;
-      text-align: center;
-      line-height: 100px;
-  }
-  
-   #fa i{
-       transition: all 0.3s linear;
-   }
-  
-   #fa:hover i{
-       transform: scale(1.4);
-   }
-  
-   .fa-instagram{
-       color: #e84393;
-   }
-   .fa-youtube{
-       color:#e84118;
-   }
-   .fa-twitter{
-       color: #0097e6;
-   }
-   .fa-facebook{
-       color: #3a0ca6;
-   }
-   
+    #footer_content {
+        font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+        background-color: #a8aded;
+        font-weight: bold;
+        color: white;
+    }
+    
+    #contact_details {
+        font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+        font-size: 15px;
+    }
+    
+    #contact {
+        font-size: 20px;
+    }
+    
+    .footer {
+        height: 3vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #fa {
+        height: 40px;
+        width: 50px;
+        text-align: center;
+        line-height: 100px;
+    }
+    
+    #fa i {
+        transition: all 0.3s linear;
+    }
+    
+    #fa:hover i {
+        transform: scale(1.4);
+    }
+    
+    .fa-instagram {
+        color: #e84393;
+    }
+    
+    .fa-youtube {
+        color: #e84118;
+    }
+    
+    .fa-twitter {
+        color: #0097e6;
+    }
+    
+    .fa-facebook {
+        color: #3a0ca6;
+    }

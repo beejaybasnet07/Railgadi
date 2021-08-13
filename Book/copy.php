@@ -1,4 +1,4 @@
-<?php include('headfoot\head.php'); ?>
+<?php include('..\inc\header.php'); ?>
 
 <div class="alert alert-success">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

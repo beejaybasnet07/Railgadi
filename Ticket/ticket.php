@@ -1,7 +1,7 @@
 <?php
 
 include('database\dbcon.php');
-include('headfoot\head.php');
+include('..\inc\header.php');
 ?>
 <?php
 function  funname() {

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('database\dbcon.php');
-include('headfoot\head.php');
+include('..\inc\header.php');
 
 date_default_timezone_set('Asia/Kathmandu');
 $datetime = date("Y-m-d H:i:s");

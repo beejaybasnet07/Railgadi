@@ -1,7 +1,6 @@
 <?php
 
-include('headfoot\head.php');
-include('database\dbcon.php');
+include('..\inc\header.php');include('database\dbcon.php');
 include('inc\nav.php'); ?>
 <?php
 
