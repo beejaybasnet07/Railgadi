@@ -26,13 +26,13 @@ session_start(); ?>
         //echo $_SESSION['id'];
         if (isset($_SESSION['id'])) { ?>
           <li class="nav-item">
-            <a class="nav-link" href="..\passenger\logout.php" >Logout</a>
+            <a class="nav-link" href="/passenger/logout.php" style="display: inline;">Logout</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="..\Railgadi\Userprofile\userprofile.php"><i class="fa fa-user fa-1x"></i></a>
           </li><?php } else{?>
           <li class="nav-item">
-          <a class="nav-link" href="..\passenger\login.php" >Login</a>
+          <a class="nav-link" href="/passenger/login.php" style="display: inline;">Login</a>
         </li><?php } ?>
       </ul>
     </div>
