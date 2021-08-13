@@ -31,12 +31,12 @@ include('headfoot\head.php');
             <button type="submit" class="btn1 mt-3 mb-3 loginbtn">login</button>
           </div>
         </div>
-        <div class="form-row">
-          <div class="col-6">
+        <div class="row">
+          <div class="col-7">
               <p class="text-black-50 font-weight-bold"> Don't have an account??<a href="../passenger/register.php"> Register Now</a></p>
           </div>
-          <div class="col-6">
-            <p class="text-black-50 font-weight-bold"> Login as admin<a href="/admin/adminlogin.php"> Admin Login</a></p>
+          <div class="col-5">
+            <p class="text-black-50 font-weight-bold"><a href="/admin/adminlogin.php">Login as Admin</a></p>
           </div>
         </div>
       </form>

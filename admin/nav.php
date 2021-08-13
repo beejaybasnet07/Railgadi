@@ -1,3 +1,7 @@
+<?php 
+  session_start();
+?>
+
 <div class="container">
   <nav class="navbar navbar-expand-lg navbar-light bg-white" style="margin-top:-50px">
     <nav class="navbar navbar-light bg-white">
@@ -18,8 +22,13 @@
           <a class="nav-link" href="../train/index.php" style="display: inline;">Train</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../admin/userinfo.php" style="display: inline;">Users</a>
+          <a class="nav-link" href="/admin/userinfo.php" style="display: inline;">Users</a>
         </li>
+        <?php if(isset($_SESSION['id'])): ?>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/adminlogout.php" style="display: inline;">Logout</a>
+        </li>
+        <?php endif; ?>
       </ul>
     </div>
   </nav>
