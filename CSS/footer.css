@@ -1,21 +1,38 @@
+#contact_details{
+    font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+          font-size: 15px;
+          line-height: 24px;
+          margin-bottom: 12px;
+}
+#contact{
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+          font-size: 20px;
+          font-weight: normal;
+          line-height: 32px;
+          color: #1c1e21; padding-left:100px;
+
+}
+#copyright{
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;font-size: 15px;font-weight: normal; color: white;
+}
 .footer{
     height: 3vh;
     display: flex;
     justify-content:center;
     align-items: center;
   }
-  a{
-      height: 50px;
+  #fa{
+      height: 40px;
       width: 50px;
       text-align: center;
       line-height: 100px;
   }
   
-   a i{
+   #fa i{
        transition: all 0.3s linear;
    }
   
-   a:hover i{
+   #fa:hover i{
        transform: scale(1.4);
    }
   

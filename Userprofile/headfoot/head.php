@@ -16,8 +16,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/userprofile.css">
+  <link rel="stylesheet" type="text/css" href="..\CSS\footer.css">
   <style>
   #blur.active{
 filter: blur(5px); 
@@ -58,7 +59,6 @@ user-select: none;
     
     }
   </style>
-  <link rel="stylesheet" type="text/css" href="../CSS/userprofile.css">
-  
+
 
 </head>

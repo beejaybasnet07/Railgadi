@@ -1,43 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   
-<?php include('inc\header.php')?>
-<?php include('inc\nav.php')?>
 
-<link rel="stylesheet" type= "text/css" href="css/about.css">
+<head>
+
+    <?php include('inc\header.php') ?>
+    <?php include('inc\nav.php') ?>
+
+    <link rel="stylesheet" type="text/css" href="css/about.css">
 
     <title></title>
 </head>
+
 <body>
-   
-<section class="my-5">
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-12">
-            <img src="img/img5.jpg" class="img-fluid aboutimg">
+    <section class="my-1">
+        <div class="container">
+            <div class="row">
+                <div class="col" style=" position: relative;text-align: center;">
+                    <div class="card text-center">
+                        <img src="img/gt.jpg" class="img-fluid">
+                        <div class="card-body" style="position: absolute; top: 8px;left: 26px;">
+                            <h1 class=" text-white text-weight-bold display-1">Railgadi
+                            </h1>
+                            <p class="display-4  text-weight-bold text-warning"><strong>Easying your booking.</strong></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card text-center" style="border:none;">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Railgadi</h5>
+                            <p class="card-text">Rail Gadi facilitates the passengers to enquire
+                                about the trains available on the basis of source and destination,
+                                Booking and Cancellation of tickets, enquire about the status of the booked ticket, etc.
+                                It is the computerized system of reserving the seats of train seats in advanced.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col offset-5 pl-5">
+                    <button type="button" class="btn btn-info">more info</button>
+                </div>
+            </div>
+            <div class="row">
+           
+            </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-12">
-             <h2>Rail Gadi</h2>
-             <p class="py-3">Rail Gadi facilitates the passengers to enquire
-                  about the trains available on the basis of source and destination, 
-                  Booking and Cancellation of tickets, enquire about the status of the booked ticket, etc. 
-                 It is the computerized system of reserving the seats of train seats in advanced.
-                </p>
-                <a href="about.php" class="bth btn-success">check more</a>
-        </div>
-    </div>
-</div>    
-</section>
+    </section>
 
 
 </body>
 
-<?php include('inc\footer.php')?> 
+<?php include('inc\footer.php') ?>
+
 </html>
-
-
-
-
-
- 

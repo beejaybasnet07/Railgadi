@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-  <?php include('inc\header.php');
-  session_start(); ?>
-  
-
-  <link rel="stylesheet" type="text/css" href="CSS/style.css">
-  <title> </title>
-</head>
-
-<body>
-<div class="container mb-5 mt-5">
-  <nav class="navbar navbar-expand-sm navbar-light bg-white">
+<?php include('header.php'); ?>
+<style>
+  .nav ul li a {
+    text-transform: uppercase;
+  }
+</style>
+<div class="container mb-5">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <a class="navbar-brand" href="#">
-      <img src="images\logore.png" width="100" height="100" class="d-inline-block align-top" alt="">
+      <img src="..\images\logore.png" width="80" height="80" class="d-inline-block align-top" alt="">
+     
     </a>
     <a class="navbar-brand" href="#">
     <span class="font-weight-normal text-info">Railgadi</span></a>
@@ -25,26 +18,26 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
       <li class="nav-item">
-          <a class="nav-link" href="../Railgadi/index.php" >Home</a>
+          <a class="nav-link" href="/index.php" >Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../Railgadi/passenger/register.php">Sign up</a>
+          <a class="nav-link" href="/passenger/register.php">Sign up</a>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="../Railgadi/about.php" >About us</a>
+          <a class="nav-link" href="/about.php" >About us</a>
         </li>
         <?php
         //echo $_SESSION['id'];
         if (isset($_SESSION['id'])) { ?>
           <li class="nav-item">
-            <a class="nav-link" href="../Railgadi/passenger/logout.php" >Logout</a>
+            <a class="nav-link" href="/passenger/logout.php" >Logout</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../Railgadi/Userprofile/userprofile.php"><i class="fa fa-user fa-1x"></i></a>
           </li><?php } else{?>
           <li class="nav-item">
-          <a class="nav-link" href="../Railgadi/passenger/login.php" >Login</a>
+          <a class="nav-link" href="/passenger/login.php" >Login</a>
         </li><?php } ?>
 
       </ul>
@@ -82,8 +75,8 @@
   <div class="container bg-warning" id="con">
     <div class="row">
       <div class="col pl-5 pt-3">
-        <h2 id="book">Book trains seats in 3 steps</h2>
-        <p id="bookp">Railgadi provies easier and faster bookings</p>
+        <h2 class="book">Book trains seats in 3 steps</h2>
+        <p class="bookp">Railgadi provies easier and faster bookings</p>
       </div>
     </div>
     <div class="card-columns mt-2 pb-2">
@@ -121,8 +114,4 @@
     </div>
   </div>
 </div>
-</body>
-
-<?php include('inc\footer.php') ?>
-
-</html>
+<?php include('..\inc\footer.php') ?>

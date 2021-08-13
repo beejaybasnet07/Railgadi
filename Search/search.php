@@ -61,7 +61,7 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
             <div class="form-group">
               <div class="form-label-group">
                 <label for="name">Modify Search</label>
-                <input type="submit" class="btn btn-success btn-block" id="register" name="search" value="submit"></input>
+                <input type="submit" class="btn btn-info btn-block" id="register" name="search" value="submit"></input>
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
                 </h3>
               </div>
               <div class="col-lg-5">
-                <h5> <span style="color: white;">Runs On<span> <span class="text-black-50 font-weight-bold">&nbsp;&nbsp;&nbsp;M T U T F S S</span></h5>
+                <h5> <span class="text-black-50">Runs On<span> <span class="text-muted font-weigh-normal">&nbsp;&nbsp;[&nbsp; M T U T F S S &nbsp;]</span></h5>
               </div>
               <div class="col-lg-2">
                 <input class="btn btn-primary" type="submit" value="Schedule">

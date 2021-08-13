@@ -33,14 +33,8 @@
 integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" 
 crossorigin="anonymous" />
 
-<link rel="stylesheet" type= "text/css" href="../CSS/style.css">
-<link rel="stylesheet" type="text/css" href="../CSS/login.css">
-<link rel="stylesheet" type="text/css" href="../CSS/footer.css">
-<link rel="stylesheet" type="text/css" href="../CSS/login.css">
-<link rel="stylesheet" type="text/css" href="../CSS/register.css">
-<link rel="stylesheet" type="text/css" href="../CSS/search.css">
-<link rel="stylesheet" type="text/css" href="../CSS/about.css">
-<link rel="stylesheet" type="text/css" href="../CSS/book.css">
+<link rel="stylesheet" type= "text/css" href="nav.css">
+
 </head>
 
 </html>

@@ -153,13 +153,11 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-
-
 <div class="container" style="background-color:#f8f9fa;">
     <nav class="navbar navbar-light " style="background-color:#f8f9fa;">
         <a class="navbar-brand" href="..\index.php">
             <img src="..\images\logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
-            <span style="color:skyblue;"> Railgadi</span>
+            <span class="font-weight-normal text-info">Railgadi</span></a>
         </a>
     </nav>
     <div class="container" style="border:2px solid whitesmoke;margin-bottom:10px;border-radius:10px; background-color:white;">
@@ -199,7 +197,7 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 offset-2" id="tcon1" style=" background-color: white;
+            <div class="col-md-4 offset-md-2 mb-2" id="tcon1" style=" background-color: white;
               border-radius: 10px;
               border: 1px solid skyblue;">
                 <div class="row">
@@ -209,7 +207,7 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
                 <div class="row ">
-                    <div class="col-md pl-5">
+                    <div class="col-md pl-5 ">
                         <h6>Passenger </h6>
                         <h3> <?php echo $pname; ?></h3>
                     </div>
@@ -221,13 +219,13 @@ if (isset($_POST['submit'])) {
                     </div>
 
 
-                    <div class="col-md">
+                    <div class="col-md pl-5">
                         <h6> phone</h6>
                         <h3>98484949</h3>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md pl-5">
+                    <div class="col-md pl-sm-5">
                         <h6> Age</h6>
                         <h3><?php echo $age ?></h3>
                     </div>
@@ -239,7 +237,7 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md pl-5">
+                    <div class="col-md pl-md-5">
                         <h6>Email</h6>
                         <h4><?php echo $email; ?></h4>
                     </div>
@@ -247,10 +245,10 @@ if (isset($_POST['submit'])) {
 
 
             </div>
-            <div class="col-5" id="con2">
+            <div class="col-md-5 offset-md-1" id="con2">
 
                 <div class="row">
-                    <div class="col-md offset-1">
+                    <div class="col-md offset-md-1">
                         <h2> <i class="fa fa-train" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp; Journey Details</h2>
                         <hr>
                     </div>
