@@ -8,6 +8,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_POST['email'];
         $password = $_POST['password'];
+        $password = MD5($password);
 
         $query = "SELECT * FROM admin WHERE email=:email AND password=:password";
         $stmt = $pdo->prepare($query);
@@ -24,7 +25,7 @@
             $_SESSION['id'] = $admin->id;
             $_SESSION['role'] = 'admin';
 
-            echo "<script>alert(' Login Sucessful...!!!!');
+            echo "<script>alert(' Login Sucessful!!');
             window.location.href='../datasearch/index.php';</script>";      
         } 
         else {

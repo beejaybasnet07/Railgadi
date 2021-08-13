@@ -16,6 +16,7 @@
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = $_POST['password'];
+        $password = MD5($password);
 
         $sql = 'INSERT INTO admin (name, email, password) VALUES (:name, :email, :password)';
     

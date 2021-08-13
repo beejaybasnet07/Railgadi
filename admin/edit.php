@@ -24,6 +24,7 @@
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = $_POST['password'];
+        $password = MD5($password);
 
         $sql = 'UPDATE admin SET name=:name, email=:email, password=:password WHERE id=:id';
         

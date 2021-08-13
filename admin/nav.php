@@ -26,7 +26,7 @@
         </li>
         <?php if(isset($_SESSION['id'])): ?>
           <li class="nav-item">
-            <a class="nav-link" href="/admin/adminlogout.php" style="display: inline;">Logout</a>
+            <a class="nav-link" onclick="return confirm('Are you sure you want to logout?')"  href="/admin/adminlogout.php" style="display: inline;">Logout</a>
         </li>
         <?php endif; ?>
       </ul>
