@@ -1,7 +1,12 @@
 <title>Edit Train :: Railgadi</title>
 
 <?php 
-        require '../database/dbcon.php';
+    include('../inc/header.php'); 
+    include('../admin/nav.php'); 
+?>
+
+<?php 
+    require '../database/dbcon.php';
 
     $id =  $_GET['id'];
     
@@ -19,6 +24,7 @@
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = $_POST['password'];
+        $password = MD5($password);
 
         $sql = 'UPDATE admin SET name=:name, email=:email, password=:password WHERE id=:id';
         
@@ -36,9 +42,6 @@
         }
     }
 ?>
-
-<?php include('../inc/header.php'); ?>
-<?php include('../admin/nav.php'); ?>
 
 <div class="container">
     <div class="card">
@@ -67,11 +70,10 @@
                         <label id="lb"></label>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="col-md-6">
                     <button type="submit" class="fa fa-save btn btn-success"> Update</button>
                 </div>
             </form>
-            <a href="/train/index.php"><button class="fa fa-ban btn btn-dark"> Cancel</button></a>
         </div>
     </div>
 </div>

@@ -1,4 +1,10 @@
 <title>Add Admin :: Railgadi</title>
+
+<?php 
+    include('../inc/header.php');
+    include('../admin/nav.php'); 
+?>
+
 <?php 
     require '../database/dbcon.php';
 
@@ -10,6 +16,7 @@
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = $_POST['password'];
+        $password = MD5($password);
 
         $sql = 'INSERT INTO admin (name, email, password) VALUES (:name, :email, :password)';
     
@@ -26,9 +33,6 @@
         }
     }   
 ?>
-
-<?php include('../inc/header.php'); ?>
-<?php include('../admin/nav.php'); ?>
 
 <div class="container">
     <div class="card">
@@ -58,7 +62,7 @@
                         <label id="lb"></label>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="col-md-6">
                     <button type="submit" class="fa fa-save btn btn-success"> Save</button>
                 </div>
             </form>

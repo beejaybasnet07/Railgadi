@@ -1,3 +1,7 @@
+<?php 
+  session_start();
+?>
+
 <div class="container">
   <nav class="navbar navbar-expand-lg navbar-light bg-white" style="margin-top:-50px">
     <nav class="navbar navbar-light bg-white">
@@ -12,11 +16,19 @@
           <a class="nav-link" href="../datasearch/index.php" style="display: inline;">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="create.php" style="display: inline;">Add Admin</a>
+          <a class="nav-link" href="/admin/index.php" style="display: inline;">Admin</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../train/create.php" style="display: inline;">Add Train</a>
+          <a class="nav-link" href="../train/index.php" style="display: inline;">Train</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/userinfo.php" style="display: inline;">Users</a>
+        </li>
+        <?php if(isset($_SESSION['id'])): ?>
+          <li class="nav-item">
+            <a class="nav-link" onclick="return confirm('Are you sure you want to logout?')"  href="/admin/adminlogout.php" style="display: inline;">Logout</a>
+        </li>
+        <?php endif; ?>
       </ul>
     </div>
   </nav>
