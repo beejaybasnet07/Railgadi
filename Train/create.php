@@ -70,7 +70,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-                <h2 style="margin-bottom:-30px;">Train <a href="/train/index.php" style="font-size:small"><< Back to Trains</a></h2>
+                <h2>Train <a href="/train/index.php" style="font-size:small"><< Back to Trains</a></h2>
         </div>
 
         <div class="card-body">
