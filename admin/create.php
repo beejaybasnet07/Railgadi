@@ -37,7 +37,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-                <h2 style="margin-bottom:-30px;">Admin <a href="/admin/index.php" style="font-size:small"><< Back to Admins</a></h2>
+                <h2>Admin <a href="/admin/index.php" style="font-size:small"><< Back to Admins</a></h2>
         </div>
 
         <div class="card-body">
