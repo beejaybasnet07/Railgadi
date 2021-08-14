@@ -28,13 +28,13 @@ if (isset($_POST['submit'])) {
     $age = $_POST['page'];
     $gender = $_POST['gender'];
     $preference = $_POST['preference'];
-    echo $preference;
+
     $country = $_POST['country'];
     $station = $_POST['station'];
     $scity = $_POST['scity'];
     $_SESSION['passenger'] = $_POST['phone'];
     $email = $_POST['email'];
-    echo $_SESSION['passenger'];
+    
 
     $query = "Select * from train where tnumber=:tnumber";
     $stmt = $pdo->prepare($query);
@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':gender', $gender);
     $stmt->execute();
-    echo ("passenger added");
+    
 
 
 
@@ -96,7 +96,6 @@ if (isset($_POST['submit'])) {
     $stmt = $pdo->prepare($query2);
     $stmt->bindParam(':tid', $result['id']);
     $stmt->bindParam(':class', $_SESSION['class']);
-    echo  $_SESSION["class"];
     $stmt->bindParam(':date', $result['date']);
     $stmt->bindParam(':berth', $preference);
     $stmt->execute();
