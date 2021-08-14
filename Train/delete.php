@@ -6,6 +6,6 @@
     $statement = $pdo->prepare($sql);
 
     if($statement->execute([':id' => $id])){
-        header('Location: /train/index.php');
+        header('Location: ../train/index.php');
     }
 ?>
