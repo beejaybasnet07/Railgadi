@@ -189,7 +189,7 @@ if (isset($_POST['submit'])) {
                                 <th scope="col">Berth</th>
                                 <th scope="col">From</th>
                                 <th scope="col">To</th>
-                                <th scope="col">Time</th>
+                                <!-- <th scope="col">Time</th> -->
 
                                 <th scope="col">Date</th>
                                 <th scope="col">Status</th>
@@ -223,7 +223,6 @@ if (isset($_POST['submit'])) {
                                     <td><?php echo $ress['_from']; ?></td>
 
                                     <td><?php echo $ress['_to']; ?></td>
-                                    <td><?php echo $ress['time']; ?></td>
 
                                     <td><?php echo $row->date; ?></td>
                                     <td>
@@ -270,7 +269,6 @@ if (isset($_POST['submit'])) {
                                 <th scope="col">Berth</th>
                                 <th scope="col">From</th>
                                 <th scope="col">To</th>
-                                <th scope="col">Time</th>
 
                                 <th scope="col">Date</th>
 
@@ -304,7 +302,6 @@ if (isset($_POST['submit'])) {
                                     <td><?php echo $ress['_from']; ?></td>
 
                                     <td><?php echo $ress['_to']; ?></td>
-                                    <td><?php echo $ress['time']; ?></td>
 
                                     <td><?php echo $row->date; ?></td>
                                     <td>
