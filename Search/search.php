@@ -107,7 +107,7 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
               <div class="col-sm-6">
                 <h5>
                   <?php
-                  echo trim($row->time);
+                  // echo trim($row->time); 
                   echo ("  |  ");
                   echo ($row->_from);
                   echo ("  | ");
