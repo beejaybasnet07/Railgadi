@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
     $scity = $_POST['scity'];
     $_SESSION['passenger'] = $_POST['phone'];
     $email = $_POST['email'];
-    
+
 
     $query = "Select * from train where tnumber=:tnumber";
     $stmt = $pdo->prepare($query);
@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':gender', $gender);
     $stmt->execute();
-    
+
 
 
 
@@ -67,7 +67,6 @@ if (isset($_POST['submit'])) {
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     $ti = $stmt->fetch();
-    echo $ti['id'];
     $passid = $ti['id'];
     $seatava = 0;
 
@@ -112,8 +111,9 @@ if (isset($_POST['submit'])) {
             $count = 0;
             $ab = random($num1, $num2);
             $ar[$x] = $ab;
-            $query1 = "Select seat from book where tid=1;";
-            $stmt = $pdo->query($query1);
+            $query1 = "Select seat from book where tid=:tnumber;";
+            $stmt = $pdo->prepare($query1);
+            $stmt->bindParam(':tnumber', $_SESSION["trainid"]);
             $stmt->execute();
             $r = $stmt->fetchAll(PDO::FETCH_OBJ);
             //echo $ab;
@@ -158,6 +158,9 @@ if (isset($_POST['submit'])) {
             <img src="..\images\logore.png" width="100" height="100" class="d-inline-block align-center " alt="">
             <span class="font-weight-normal text-info">Railgadi</span></a>
         </a>
+        
+ <a style="color:skyblue;" data-toggle="tooltip"  title="myprofile" class="nav-link" href="../Userprofile/userprofile.php"><i class="fa fa-user fa-3x"></i></a>
+               
     </nav>
     <div class="container" style="border:2px solid whitesmoke;margin-bottom:10px;border-radius:10px; background-color:white;">
         <div class="row">
@@ -184,7 +187,7 @@ if (isset($_POST['submit'])) {
                     <input type="hidden" name="receiver_pre" id="receiver_pre" value="<?php echo $preference; ?>">
                     <input type="hidden" name="receiver_tname" id="receiver_tname" value="<?php echo $result['name']; ?>">
                     <input type="hidden" name="receiver_tdate" id="receiver_tdate" value="<?php echo $result['date']; ?>">
-                    <input type="hidden" name="receiver_time" id="receiver_time" value="<?php echo $result['time']; ?>">
+                    <input type="hidden" name="receiver_time" id="receiver_time" value="<?php echo $result['depature_time']; ?>">
                     <input type="hidden" name="code" id="s_to" value="<?php echo $_SESSION['s_to']; ?>" />
                     <input type="hidden" name="code" id="code" value="<?php echo $code; ?>" />
                     <input type="hidden" name="code" id="s_from" value="<?php echo $_SESSION['s_from']; ?>" />

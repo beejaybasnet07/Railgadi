@@ -12,8 +12,8 @@
 </head>
 
 <body>
-<div class="container mb-5 mt-5">
-  <nav class="navbar navbar-expand-sm navbar-light bg-white">
+<div class="container mb-5 mt-2">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <a class="navbar-brand" href="#">
       <img src="images\logore.png" width="100" height="100" class="d-inline-block align-top" alt="">
     </a>
@@ -41,7 +41,7 @@
             <a class="nav-link" href="../Railgadi/passenger/logout.php" >Logout</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../Railgadi/Userprofile/userprofile.php"><i class="fa fa-user fa-1x"></i></a>
+            <a  style="color:skyblue;" class="nav-link"  data-toggle="tooltip"  title="userprofile"href="../Railgadi/Userprofile/userprofile.php"><i class="fa fa-user fa-1x"></i></a>
           </li><?php } else{?>
           <li class="nav-item">
           <a class="nav-link" href="../Railgadi/passenger/login.php" >Login</a>

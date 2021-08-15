@@ -128,8 +128,8 @@
                             <td><?= $i++?></td>
                             <td><?= $info->name?></td>
                             <td><?= $info->tnumber?></td>
-                            <td><?= date('h:i',strtotime($info->arrival_time))?></td>
-                            <td><?= date('h:i',strtotime($info->departure_time))?></td>
+                            <td><?= date('h:i A',strtotime($info->arrival_time))?></td>
+                            <td><?= date('h:i A',strtotime($info->departure_time))?></td>
                             <td><?= $info->date?></td>
                             <td><?= $info->_from?></td>
                             <td><?= $info->_to?></td>

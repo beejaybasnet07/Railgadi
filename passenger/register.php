@@ -35,7 +35,7 @@ include('headfoot\head.php'); ?>
                     <div class="col-md-5 pt-3">
                         <div class="form-group">
                             <div class="form-label-group">
-                                <input type="text" class="form-control" placeholder="Your Name" id="name" name="pname" required="required" pattern="^[A-Za-z]{2,25}">
+                                <input type="text" class="form-control" placeholder="Your Name" id="name" name="pname" required="required">
                             </div>
                         </div>
                     </div>
@@ -155,6 +155,7 @@ include('headfoot\head.php'); ?>
         </div>
     </div>
 </div>
+<?php include('..\inc\footer.php'); ?>
 
 <script>
     function check() {
@@ -189,11 +190,8 @@ if (isset($_POST['submit'])) {
     $pass = $_POST['password'];
     $gender = $_POST['gender'];
 
-
-    
-    
     $password = md5($pass);
-    echo   $scity . $station . $email . $pass . $gender;
+
 
     $query = "INSERT INTO user (pname, age, gender, city, station, phone, email, pass1)
                         VALUES(:pname, :age, :gender, :scity, :station, :phone, :email, :pass)";
@@ -211,8 +209,8 @@ if (isset($_POST['submit'])) {
     $s=$stmt->execute();
 if($s=!null){
     echo "<script>alert(' Congrulations !!! you are now our member.');
-    window.location.href='../passenger/register.php'; </script>";
+    window.location.href='../passenger/login.php'; </script>";
 }
 
 }
-?><?php include('..\inc\footer.php'); ?>
+?>

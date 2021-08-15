@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col" style=" position: relative;text-align: center;">
                     <div class="card text-center">
-                        <img src="img/gt.jpg" class="img-fluid">
+                        <img src="images/gt.jpg" class="img-fluid">
                         <div class="card-body" style="position: absolute; top: 8px;left: 26px;">
                             <h1 class=" text-white text-weight-bold display-1">Railgadi
                             </h1>

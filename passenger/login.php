@@ -23,7 +23,7 @@ include('headfoot\head.php');
         </div>
         <div class="form-row">
           <div class="col-lg-7">
-            <input type="password" name="pass1" placeholder="Password" class="form-control my-3 p-4">
+            <input type="password" name="pass1" placeholder="Password" class="form-control my-3 p-4" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
           </div>
         </div>
         <div class="form-row">
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $email = $_POST['email'];
   $pass = $_POST['pass1'];
   $password = md5($pass);
-  echo $password;
+
   $query = "SELECT * FROM user WHERE email=:email AND pass1=:password";
   $stmt = $pdo->prepare($query);
   $stmt->bindParam(':email', $email);
@@ -51,7 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (!empty($user)) {
 
     $_SESSION['id'] = $user['id'];
-    echo  $_SESSION['id'];
     echo "<script>alert(' Login Sucessful...!!!!');
     window.location.href='../index.php';</script>";
 

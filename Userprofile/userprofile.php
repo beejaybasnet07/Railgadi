@@ -98,7 +98,7 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
                 <div class=" align-items-center text-center">
-                    <i style="color:#428df5;padding-left:10px; margin-top:50px;" class="fas fa-user-circle fa-5x"></i>
+                    <i style="color:#428df5;padding-left:10px; margin-top:50px;" class="fa fa-user-circle fa-5x"></i>
                     <h4><span class="text-black-50 font-weight-bold"><?php echo $user['pname']; ?></span></h4><span> </span>
                 </div>
                 <div class="card  mt-5 mb-3 bg-primary">
@@ -117,7 +117,7 @@ if (isset($_POST['submit'])) {
                     </div>
 
                     <div class="row mt-3">
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                             <label class="labels">
                                 PhoneNumber
                                 <h3>
@@ -125,46 +125,53 @@ if (isset($_POST['submit'])) {
                                 </h3>
                             </label>
                         </div>
-                        <div class="col-md-6"><label class="labels">Address</label>
+                        <div class="col-md-5">
+                        <label class="labels">
+                        Address
                             <h3>
                                 <span class="font-weight-bold" id="value"><?php echo $user['city']; ?></span>
                             </h3>
+                            </label>
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                             <label class="labels">
                                 Email ID
-                            </label>
+                            
                             <h3>
                                 <span class="font-weight-bold" id="value"><?php echo $user['email']; ?></span>
                             </h3>
+                            </label>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <label class="labels">
                                 Near Station
-                            </label>
+                            
                             <h3>
                                 <span class="font-weight-bold" id="value"><?php echo $user['station']; ?></span>
                             </h3>
+                            </label>
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                             <label class="labels">
                                 Gender
-                            </label>
+                            
                             <h3>
                                 <span class="font-weight-bold " id="value"><?php echo $user['gender']; ?></span>
                             </h3>
+                            </label>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <label class="labels">
                                 Age
-                            </label>
+                            
                             <h3>
                                 <span class="font-weight-bold" id="value"><?php echo $user['age']; ?></span>
                             </h3>
+                            </label>
                         </div>
                     </div>
 
@@ -367,7 +374,7 @@ if (isset($_POST['submit'])) {
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input class="form-control input-lg" id="inputlg" type="password" name="password" placeholder="password">
+                                <input class="form-control input-lg" id="inputlg" type="text" name="password" value=<?php echo md5($user['pass1']); ?> placeholder="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" required>
                             </div>
                         </div>
                     </div>

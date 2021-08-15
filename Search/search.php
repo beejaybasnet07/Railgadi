@@ -2,7 +2,8 @@
 
 include('headfoot\head.php');
 include('database\dbcon.php');
-include('inc\nav.php'); ?>
+include('inc\nav.php'); 
+session_start();?>
 <?php
 
 $ac3 = "AC 3 Tire (3A) | HIGH CLASS";
@@ -24,7 +25,7 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 <body>
-  <div class="container">
+  <div class="container mt-3">
     <div class="container">
       <form action="" method="POST">
         <div class="row" id="ro2">
@@ -33,7 +34,7 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
             <div class="form-group">
               <div class="form-label-group">
                 <label for="exampleInputEmail1">From</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="from" aria-describedby="emailHelp" value="<?php echo  $_SESSION['s_from']; ?>" placeholder="From">
+                <input type="text" class="form-control" id="exampleInputEmail1" name="from" aria-describedby="emailHelp" required="required" value="<?php echo  $_SESSION['s_from']; ?>" placeholder="From">
               </div>
             </div>
           </div>
@@ -81,7 +82,8 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
       if (empty($result)) { ?>
         <div class="row">
           <div class="col">
-            <img style=" margin:50px 0px 0px 60px;" src="http://www.medical.sjp.ac.lk/my-scripts/staff-profiles/view-profiles/supports/images/no-results-found.png">
+          
+            <img  class="img-fluid" alt="Responsive image" src="http://www.medical.sjp.ac.lk/my-scripts/staff-profiles/view-profiles/supports/images/no-results-found.png">
           </div>
         </div>
       <?php  } ?>
@@ -107,20 +109,31 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
               <div class="col-sm-6">
                 <h5>
                   <?php
-                  // echo trim($row->time); 
-                  echo ("  |  ");
+
+                  
+                  $query1 = "SELECT TIMEDIFF(arrival_time,depature_time) as depart from train where id=:id";
+                  $stmt = $pdo->prepare($query1);
+                  $stmt->bindParam(':id', $a);
+                  $stmt->execute();
+                  $ti = $stmt->fetch();
+                  echo $ti['depart'];
+
+                   
+          
+                
                   echo ($row->_from);
                   echo ("  | ");
                   echo ($row->date); ?>
                 </h5>
               </div>
               <div class="col-sm-3">
-                <h5> 5 hours</h5>
+                <h5><?php echo date('h:i A',strtotime($row->depature_time));?></h5>
               </div>
               <div class="col-sm-3">
                 <h5><?php echo ($row->_to);
                     echo (" | ");
                     echo ($row->date); ?></h5>
+                     
               </div>
             </div>
             <form method="POST" action="../Book/book.php">
